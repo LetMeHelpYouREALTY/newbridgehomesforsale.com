@@ -3,6 +3,8 @@
  * Each domain maps to neighborhood-specific content rendered server-side via middleware.
  */
 
+import { PROJECT_PRODUCTION_HOST } from "./canonical-url";
+
 export interface DomainConfig {
   domain: string;
   neighborhood: string;
@@ -38,6 +40,7 @@ export const DOMAIN_CONFIGS: Record<string, DomainConfig> = {
   "macdonaldhighlandshomes.com": { domain: "macdonaldhighlandshomes.com", neighborhood: "MacDonald Highlands", tagline: "MacDonald Highlands Luxury Homes", description: "MacDonald Highlands luxury homes for sale in Henderson, Nevada. Expert guidance from Dr. Jan Duffy.", heroHeadline: "MacDonald Highlands Homes for Sale", heroSubheadline: "Henderson's most prestigious guard-gated luxury community.", keywords: ["MacDonald Highlands homes", "Henderson luxury real estate", "MacDonald Highlands Henderson"], pageType: "luxury", realscoutAgentId: REALSCOUT_AGENT_ID, ctaBadge: "Luxury Specialist", ctaHeadline: "MacDonald Highlands Living Awaits", ctaSubheadline: "Private tours available. Let me show you what makes MacDonald Highlands extraordinary." },
   "midtownlasvegascondos.com": { domain: "midtownlasvegascondos.com", neighborhood: "Midtown Las Vegas", tagline: "Midtown Las Vegas Condos for Sale", description: "Search midtown Las Vegas condos and high-rise living. Expert guidance from Dr. Jan Duffy.", heroHeadline: "Midtown Las Vegas Condos for Sale", heroSubheadline: "Urban living, walkable neighborhoods, and Las Vegas Strip views.", keywords: ["midtown Las Vegas condos", "Las Vegas urban living", "downtown Las Vegas real estate"], pageType: "luxury", realscoutAgentId: REALSCOUT_AGENT_ID, ctaBadge: "Condo Specialist", ctaHeadline: "Find Your Las Vegas Condo", ctaSubheadline: "From high-rises to urban lofts — I know every midtown building and floor plan." },
   "mountainedgehomes.com": { domain: "mountainedgehomes.com", neighborhood: "Mountain's Edge", tagline: "Mountain's Edge Homes for Sale", description: "Search Mountain's Edge homes for sale in Southwest Las Vegas. Expert guidance from Dr. Jan Duffy.", heroHeadline: "Mountain's Edge Homes for Sale", heroSubheadline: "Master-planned community living at its finest in Southwest Las Vegas.", keywords: ["Mountain's Edge homes", "Mountain Edge Las Vegas", "Southwest Las Vegas real estate"], pageType: "community", realscoutAgentId: REALSCOUT_AGENT_ID, ctaBadge: "Mountain's Edge Expert", ctaHeadline: "Find Your Mountain's Edge Home", ctaSubheadline: "One of Las Vegas' most beautiful master-planned communities — let me be your guide." },
+  "newbridgehomesforsale.com": { domain: "newbridgehomesforsale.com", neighborhood: "Newbridge", tagline: "Newbridge Homes for Sale", description: "Search Newbridge homes for sale in Southwest Las Vegas near Blue Diamond Road (ZIP 89139). Independent buyer representation from Dr. Jan Duffy, BHHS Nevada Properties.", heroHeadline: "Newbridge Homes for Sale", heroSubheadline: "Richmond American ranch plans near Blue Diamond Road. An independent BHHS buyer’s agent — not the builder desk.", keywords: ["Newbridge homes for sale", "Newbridge Las Vegas 89139", "Richmond American Newbridge", "Blue Diamond Road homes Las Vegas"], pageType: "community", realscoutAgentId: REALSCOUT_AGENT_ID, ctaBadge: "Newbridge Buyer Agent", ctaHeadline: "Tour Newbridge With Your Own Agent", ctaSubheadline: "Call 702-222-1964. I represent you, not the builder." },
   "openhouseupdate.com": { domain: "openhouseupdate.com", neighborhood: "Las Vegas", tagline: "Las Vegas Open House Schedule", description: "Las Vegas open houses this weekend. Find open homes near you with Dr. Jan Duffy.", heroHeadline: "Las Vegas Open Houses", heroSubheadline: "This weekend's open houses across the Las Vegas Valley — updated in real time.", keywords: ["Las Vegas open houses", "open house Las Vegas", "homes open this weekend Las Vegas"], pageType: "search", realscoutAgentId: REALSCOUT_AGENT_ID, ctaBadge: "Open House Expert", ctaHeadline: "Schedule a Private Showing", ctaSubheadline: "Can't make the open house? I'll get you a private tour on your schedule." },
   "openhouseupdates.com": { domain: "openhouseupdates.com", neighborhood: "Las Vegas", tagline: "Las Vegas Open House Updates", description: "Current Las Vegas open house listings and schedule. Find your next home this weekend.", heroHeadline: "Las Vegas Open House Updates", heroSubheadline: "Real-time open house schedule for Las Vegas, Henderson, and Summerlin.", keywords: ["Las Vegas open house updates", "Henderson open houses", "Summerlin open houses"], pageType: "search", realscoutAgentId: REALSCOUT_AGENT_ID, ctaBadge: "Weekend Open Houses", ctaHeadline: "Never Miss an Open House", ctaSubheadline: "I'll alert you to new open houses matching your criteria before they're announced." },
   "samaritanpharma.com": { domain: "samaritanpharma.com", neighborhood: "Las Vegas", tagline: "Las Vegas Real Estate", description: "Las Vegas real estate services from Dr. Jan Duffy, BHHS Nevada Properties.", heroHeadline: "Las Vegas Homes for Sale", heroSubheadline: "Expert Las Vegas real estate guidance from Dr. Jan Duffy.", keywords: ["Las Vegas homes for sale", "Las Vegas real estate", "Dr Jan Duffy"], pageType: "search", realscoutAgentId: REALSCOUT_AGENT_ID, ctaBadge: "Las Vegas Expert", ctaHeadline: "Find Your Las Vegas Home", ctaSubheadline: "30+ years of experience working for you." },
@@ -71,6 +74,31 @@ export const DEFAULT_CONFIG: DomainConfig = {
 };
 
 export function getDomainConfig(hostname: string): DomainConfig {
-  const clean = hostname.replace(/^www\./, "").toLowerCase();
-  return DOMAIN_CONFIGS[clean] ?? DEFAULT_CONFIG;
+  const clean = hostname
+    .replace(/^https?:\/\//, "")
+    .replace(/^www\./, "")
+    .toLowerCase()
+    .split(",")[0]
+    .trim()
+    .replace(/:\d+$/, "")
+    .replace(/\/.*$/, "");
+
+  if (DOMAIN_CONFIGS[clean]) return DOMAIN_CONFIGS[clean];
+
+  const isPreview =
+    !clean ||
+    clean === "localhost" ||
+    clean.startsWith("127.") ||
+    clean.endsWith(".vercel.app");
+
+  if (isPreview) {
+    const prod = (process.env.VERCEL_PROJECT_PRODUCTION_URL || PROJECT_PRODUCTION_HOST)
+      .replace(/^https?:\/\//, "")
+      .replace(/^www\./, "")
+      .split("/")[0]
+      .toLowerCase();
+    return DOMAIN_CONFIGS[prod] ?? DOMAIN_CONFIGS[PROJECT_PRODUCTION_HOST] ?? DEFAULT_CONFIG;
+  }
+
+  return DEFAULT_CONFIG;
 }

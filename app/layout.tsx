@@ -1,14 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
-import { headers } from "next/headers";
 import { getDomainConfig } from "@/lib/domain-config";
+import { getRequestHostname, getRequestSiteUrl } from "@/lib/canonical-url";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
-
-const SITE_URL = "https://www.heyberkshire.com";
 
 export const viewport: Viewport = {
   themeColor: "#0f172a",
@@ -19,12 +17,13 @@ export const viewport: Viewport = {
 export const revalidate = 3600;
 
 export async function generateMetadata(): Promise<Metadata> {
-  const domain = headers().get("x-domain") || "";
-  const config = getDomainConfig(domain);
+  const hostname = getRequestHostname();
+  const siteUrl = getRequestSiteUrl();
+  const config = getDomainConfig(hostname);
   const title = `${config.neighborhood} | Dr. Jan Duffy, REALTOR® | BHHS Nevada`;
 
   return {
-    metadataBase: new URL(SITE_URL),
+    metadataBase: new URL(siteUrl),
     title,
     description: config.description,
     keywords: config.keywords,
@@ -45,7 +44,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description: config.description,
       type: "website",
       locale: "en_US",
-      url: SITE_URL,
+      url: siteUrl,
       siteName: "Berkshire Hathaway HomeServices Nevada Properties",
     },
     twitter: {

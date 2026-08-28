@@ -50,6 +50,17 @@ const nextConfig = {
         destination: 'https://www.heyberkshire.com/:path*',
         permanent: true,
       },
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'newbridgehomesforsale.com',
+          },
+        ],
+        destination: 'https://www.newbridgehomesforsale.com/:path*',
+        permanent: true,
+      },
     ]
   },
 

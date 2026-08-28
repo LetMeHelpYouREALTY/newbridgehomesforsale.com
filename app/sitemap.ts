@@ -1,7 +1,10 @@
 import { MetadataRoute } from "next";
+import { getCanonicalSiteUrl, PROJECT_PRODUCTION_HOST } from "@/lib/canonical-url";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://www.heyberkshire.com";
+  const baseUrl = getCanonicalSiteUrl(
+    process.env.VERCEL_PROJECT_PRODUCTION_URL || PROJECT_PRODUCTION_HOST
+  );
   const lastModified = new Date();
 
   // Core pages

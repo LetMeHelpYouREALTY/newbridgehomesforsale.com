@@ -8,17 +8,18 @@ import SeoSection from "@/components/seo/SeoSection";
 import FaqAeo from "@/components/seo/FaqAeo";
 import CtaBanner from "@/components/seo/CtaBanner";
 import { images, NAP } from "@/lib/site-images";
+import { getRequestSiteUrl } from "@/lib/canonical-url";
 
 const homeFaqs = [
   {
-    question: "Who is the listing agent behind heyberkshire.com?",
+    question: "Who represents buyers at Newbridge in Las Vegas?",
     answer:
-      "Dr. Jan Duffy, REALTOR®, License S.0197614.LLC, with Berkshire Hathaway HomeServices Nevada Properties at 9406 W Lake Mead Blvd, Suite 100, Las Vegas, NV 89134. Call 702-222-1964.",
+      "Dr. Jan Duffy, REALTOR®, License S.0197614.LLC, with Berkshire Hathaway HomeServices Nevada Properties at 9406 W Lake Mead Blvd, Suite 100, Las Vegas, NV 89134. Call 702-222-1964. She is an independent buyer’s agent, not the builder sales desk.",
   },
   {
     question: "What areas of Las Vegas does Dr. Jan Duffy serve?",
     answer:
-      "She represents buyers and sellers across Las Vegas, Henderson, Summerlin, Green Valley, North Las Vegas, Southern Highlands, Skye Canyon, Centennial Hills, Inspirada, Mountain's Edge, The Ridges, Lake Las Vegas, and Anthem.",
+      "She represents buyers and sellers across Newbridge and Southwest Las Vegas, plus Henderson, Summerlin, Green Valley, North Las Vegas, Southern Highlands, Skye Canyon, Centennial Hills, Inspirada, Mountain's Edge, The Ridges, Lake Las Vegas, and Anthem.",
   },
   {
     question: "What was the Las Vegas median home price as of January 2026?",
@@ -34,15 +35,16 @@ const homeFaqs = [
 
 export default async function Home() {
   const config = await getPageDomainConfig();
+  const siteUrl = getRequestSiteUrl();
 
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
     name: NAP.name,
-    url: "https://www.heyberkshire.com",
+    url: siteUrl,
     telephone: "+17022221964",
     email: NAP.email,
-    image: `https://www.heyberkshire.com${images.office.src}`,
+    image: `${siteUrl}${images.office.src}`,
     address: {
       "@type": "PostalAddress",
       streetAddress: NAP.street,
@@ -51,7 +53,7 @@ export default async function Home() {
       postalCode: NAP.zip,
     },
     geo: { "@type": "GeoCoordinates", latitude: 36.1941, longitude: -115.2678 },
-    areaServed: ["Las Vegas NV", "Henderson NV", "Summerlin NV"],
+    areaServed: ["Newbridge Las Vegas NV", "Southwest Las Vegas NV", "Las Vegas NV", "Henderson NV", "Summerlin NV"],
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.9",
