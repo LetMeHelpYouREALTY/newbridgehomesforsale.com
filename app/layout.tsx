@@ -4,6 +4,7 @@ import "./globals.css";
 import { getDomainConfig } from "@/lib/domain-config";
 import { SITE_ORIGIN } from "@/lib/canonical-url";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from "next/script";
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
@@ -108,6 +109,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           window.widgetTracker("send","pageview");
         `}</Script>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
