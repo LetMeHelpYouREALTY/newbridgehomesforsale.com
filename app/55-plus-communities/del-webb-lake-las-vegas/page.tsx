@@ -1,6 +1,5 @@
-import Navbar from "@/components/layouts/Navbar";
-import Footer from "@/components/layouts/Footer";
 import RealScoutListings from "@/components/realscout/RealScoutListings";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Phone,
@@ -16,7 +15,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Del Webb at Lake Las Vegas Homes | Berkshire Hathaway HomeServices",
   description:
-    "Lakefront 55+ living at Del Webb Lake Las Vegas. Homes from $400K-$900K. Resort amenities, stunning lake and mountain views. Dr. Jan Duffy. Call (702) 500-1942.",
+    "Lakefront 55+ living at Del Webb Lake Las Vegas. Homes from $400K-$900K. Resort amenities, stunning lake and mountain views. Dr. Jan Duffy. Call (702) 222-1964.",
   keywords: [
     "Del Webb Lake Las Vegas",
     "Lake Las Vegas 55 plus",
@@ -29,7 +28,6 @@ export const metadata: Metadata = {
 export default function DelWebbLakeLasVegasPage() {
   return (
     <>
-      <Navbar />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">
           {/* Breadcrumb */}
@@ -44,13 +42,24 @@ export default function DelWebbLakeLasVegasPage() {
           </div>
 
           {/* Hero */}
+          <div className="relative mb-10 h-56 overflow-hidden rounded-2xl md:h-80 max-w-6xl mx-auto">
+            <Image
+              src="/images/neighborhoods/lake-las-vegas.jpg"
+              alt="Lake Las Vegas Henderson for Del Webb buyers"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+
           <div className="max-w-4xl mx-auto text-center mb-16">
             <div className="inline-flex items-center bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
               <Waves className="h-4 w-4 mr-2" />
               Lakefront 55+ Living
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
-              Del Webb at Lake Las Vegas
+              Del Webb Lake Las Vegas Homes | 55+ Henderson Waterfront Area
             </h1>
             <p className="text-xl text-slate-600">
               Modern homes. Lake views. Resort living. The newest Del Webb in Las Vegas.
@@ -268,11 +277,11 @@ export default function DelWebbLakeLasVegasPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+17025001942"
+                href="tel:+17022221964"
                 className="inline-flex items-center justify-center bg-white text-blue-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-50 transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Call (702) 500-1942
+                Call (702) 222-1964
               </a>
               <Link
                 href="/contact"
@@ -286,7 +295,6 @@ export default function DelWebbLakeLasVegasPage() {
         <div className="text-center text-sm text-slate-500 mt-8">Last Updated: January 2026</div>
       </main>
       <RealScoutListings />
-      <Footer />
     </>
   );
 }

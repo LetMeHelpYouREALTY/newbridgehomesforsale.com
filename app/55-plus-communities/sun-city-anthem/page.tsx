@@ -1,6 +1,5 @@
-import Navbar from "@/components/layouts/Navbar";
-import Footer from "@/components/layouts/Footer";
 import RealScoutListings from "@/components/realscout/RealScoutListings";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Phone,
@@ -24,7 +23,7 @@ import {
 export const metadata: Metadata = {
   title: "Sun City Anthem Homes for Sale | Berkshire Hathaway HomeServices",
   description:
-    "Henderson's premier 55+ community. Sun City Anthem homes from $350K-$1.2M. 2 championship golf courses, stunning mountain views. Dr. Jan Duffy. Call (702) 500-1942.",
+    "Henderson's premier 55+ community. Sun City Anthem homes from $350K-$1.2M. 2 championship golf courses, stunning mountain views. Dr. Jan Duffy. Call (702) 222-1964.",
   keywords: [
     "Sun City Anthem homes for sale",
     "Sun City Anthem Henderson",
@@ -103,7 +102,6 @@ export default function SunCityAnthemPage() {
     <>
       {/* Combined JSON-LD Schema: Breadcrumb + ResidentialComplex + FAQ */}
       <SchemaScript schema={pageSchemas} id="sun-city-anthem-schema" />
-      <Navbar />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">
           {/* Breadcrumb */}
@@ -118,13 +116,24 @@ export default function SunCityAnthemPage() {
           </div>
 
           {/* Hero */}
+          <div className="relative mb-10 h-56 overflow-hidden rounded-2xl md:h-80 max-w-6xl mx-auto">
+            <Image
+              src="/images/neighborhoods/anthem.jpg"
+              alt="Anthem Henderson 55-plus community landscape"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+
           <div className="max-w-4xl mx-auto text-center mb-16">
             <div className="inline-flex items-center bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
               <Mountain className="h-4 w-4 mr-2" />
               Henderson's Premier 55+ Community
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
-              Sun City Anthem
+              Sun City Anthem Homes for Sale | 55+ Henderson
             </h1>
             <p className="text-xl text-slate-600">
               7,100+ homes. Mountain views. Henderson safety. Championship golf.
@@ -192,7 +201,7 @@ export default function SunCityAnthemPage() {
                     Why Henderson Matters
                   </h3>
                   <p className="text-slate-700 mb-4">
-                    Henderson consistently ranks as one of America's safest cities. For 55+ buyers,
+                    Henderson consistently ranks as one of America's cities with published municipal services. For 55+ buyers,
                     this translates to peace of mind, stable property values, and a community that
                     attracts similar residents who value safety and quality of life.
                   </p>
@@ -323,11 +332,11 @@ export default function SunCityAnthemPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+17025001942"
+                href="tel:+17022221964"
                 className="inline-flex items-center justify-center bg-white text-green-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-green-50 transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Call (702) 500-1942
+                Call (702) 222-1964
               </a>
               <Link
                 href="/contact"
@@ -341,7 +350,6 @@ export default function SunCityAnthemPage() {
         <div className="text-center text-sm text-slate-500 mt-8">Last Updated: January 2026</div>
       </main>
       <RealScoutListings />
-      <Footer />
     </>
   );
 }

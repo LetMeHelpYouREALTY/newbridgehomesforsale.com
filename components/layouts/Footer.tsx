@@ -51,14 +51,12 @@ export default function Footer() {
             <h3 className="font-bold text-lg mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a
-                  href="http://drjanduffy.realscout.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/listings"
                   className="text-slate-300 hover:text-white transition-colors text-sm"
                 >
-                  All Properties
-                </a>
+                  MLS Homes for Sale
+                </Link>
               </li>
               <li>
                 <Link
@@ -157,10 +155,26 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/market-insights"
+                  href="/condos"
                   className="text-slate-300 hover:text-white transition-colors text-sm"
                 >
-                  Market Insights
+                  Condos & High-Rises
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/open-houses"
+                  className="text-slate-300 hover:text-white transition-colors text-sm"
+                >
+                  Open Houses
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/sold"
+                  className="text-slate-300 hover:text-white transition-colors text-sm"
+                >
+                  Recently Sold
                 </Link>
               </li>
             </ul>
@@ -181,10 +195,10 @@ export default function Footer() {
               <li className="flex items-center">
                 <Phone className="h-5 w-5 mr-3 text-blue-400 flex-shrink-0" />
                 <Link
-                  href="tel:+17025001942"
+                  href="tel:+17022221964"
                   className="text-slate-300 hover:text-white transition-colors text-sm"
                 >
-                  (702) 500-1942
+                  (702) 222-1964
                 </Link>
               </li>
               <li className="flex items-center">
@@ -208,8 +222,23 @@ export default function Footer() {
               Reserved.
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm">
+              <Link href="/reviews" className="text-slate-400 hover:text-white transition-colors">
+                Reviews
+              </Link>
+              <Link href="/resources" className="text-slate-400 hover:text-white transition-colors">
+                Guides
+              </Link>
               <Link href="/faq" className="text-slate-400 hover:text-white transition-colors">
                 FAQ
+              </Link>
+              <Link href="/privacy" className="text-slate-400 hover:text-white transition-colors">
+                Privacy
+              </Link>
+              <Link href="/terms" className="text-slate-400 hover:text-white transition-colors">
+                Terms
+              </Link>
+              <Link href="/equal-housing" className="text-slate-400 hover:text-white transition-colors">
+                Equal Housing
               </Link>
               <Link href="/sitemap.xml" className="text-slate-400 hover:text-white transition-colors">
                 Sitemap

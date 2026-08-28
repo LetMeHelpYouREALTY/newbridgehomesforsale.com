@@ -1,27 +1,27 @@
-// Site Configuration - HeyBerkshire.com
+// Site Configuration - Newbridge Homes for Sale
 // Berkshire Hathaway HomeServices Nevada Properties
 
 export const siteConfig = {
-  name: "HeyBerkshire",
+  name: "Newbridge Homes for Sale",
   fullName: "Berkshire Hathaway HomeServices Nevada Properties",
-  tagline: "Private Client Real Estate Advisory",
+  tagline: "Newbridge Las Vegas · ZIP 89139",
   /** Full brand line for titles and OG: Berkshire Hathaway HomeServices Nevada Properties | Private Client Real Estate Advisory */
   brandLine:
-    "Berkshire Hathaway HomeServices Nevada Properties | Private Client Real Estate Advisory",
+    "Berkshire Hathaway HomeServices Nevada Properties | Newbridge Las Vegas",
   brandName: "Berkshire Hathaway HomeServices",
   shortName: "BHHS",
-  url: "https://heyberkshire.com",
+  url: "https://www.newbridgehomesforsale.com",
   description:
-    "Expert real estate services in Las Vegas and Henderson, NV. Buy, sell, or invest with Dr. Jan Duffy, your trusted Berkshire Hathaway HomeServices Nevada Properties agent.",
+    "Search Newbridge homes for sale in Southwest Las Vegas near Blue Diamond Road (ZIP 89139). Independent buyer representation from Dr. Jan Duffy, BHHS Nevada Properties.",
 };
 
 export const agentInfo = {
   name: "Dr. Jan Duffy",
   title: "REALTOR®",
   license: "S.0197614.LLC",
-  phone: "(702) 500-1942",
-  phoneFormatted: "(702) 500-1942",
-  phoneTel: "tel:+17025001942",
+  phone: "(702) 222-1964",
+  phoneFormatted: "(702) 222-1964",
+  phoneTel: "tel:+17022221964",
   email: "homes@heyberkshire.com",
   brokerage: "Berkshire Hathaway HomeServices Nevada Properties",
 };
@@ -39,8 +39,8 @@ export const officeInfo = {
     lat: 36.1893,
     lng: -115.2821,
   },
-  phone: "(702) 500-1942",
-  phoneTel: "tel:+17025001942",
+  phone: "(702) 222-1964",
+  phoneTel: "tel:+17022221964",
 };
 
 // Market Statistics (Updated January 2026)
@@ -102,16 +102,16 @@ export const neighborhoods = [
   {
     name: "Summerlin",
     slug: "summerlin",
-    description: "Master-planned community with parks, trails, and top-rated schools",
+    description: "Master-planned community with parks, trails, and CCSD-assigned campuses",
     medianPrice: "$625,000",
     highlights: ["Red Rock views", "150+ parks", "Top schools", "Golf courses"],
   },
   {
     name: "Henderson",
     slug: "henderson",
-    description: "Nevada's second-largest city with family-friendly neighborhoods",
+    description: "Nevada's second-largest city with residential neighborhoods",
     medianPrice: "$485,000",
-    highlights: ["Low crime rate", "Excellent schools", "Lake Las Vegas", "Green Valley"],
+    highlights: ["Street lighting and patrol coverage rate", "CCSD-assigned campuses (verify by address)", "Lake Las Vegas", "Green Valley"],
   },
   {
     name: "Green Valley",
@@ -139,28 +139,28 @@ export const neighborhoods = [
     slug: "north-las-vegas",
     description: "Rapidly growing area with affordable new construction",
     medianPrice: "$385,000",
-    highlights: ["New construction", "Affordable", "Growing area", "Family-friendly"],
+    highlights: ["New construction", "Affordable", "Growing area", "Residential"],
   },
   {
     name: "Skye Canyon",
     slug: "skye-canyon",
     description: "Newer master-planned community in northwest Las Vegas",
     medianPrice: "$550,000",
-    highlights: ["New homes", "Mountain views", "Modern amenities", "Great schools"],
+    highlights: ["New homes", "Mountain views", "Modern amenities", "CCSD campus assignments"],
   },
   {
     name: "Centennial Hills",
     slug: "centennial-hills",
     description: "Northwest Las Vegas community with mountain proximity",
     medianPrice: "$495,000",
-    highlights: ["Mountain access", "Parks", "Shopping", "Family-friendly"],
+    highlights: ["Mountain access", "Parks", "Shopping", "Residential"],
   },
   {
     name: "Inspirada",
     slug: "inspirada",
     description: "Henderson master-planned community with resort-style living",
     medianPrice: "$525,000",
-    highlights: ["Resort pools", "Walking trails", "New construction", "Great schools"],
+    highlights: ["Resort pools", "Walking trails", "New construction", "CCSD campus assignments"],
   },
   {
     name: "Mountains Edge",

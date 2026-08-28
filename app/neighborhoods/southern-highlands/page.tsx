@@ -1,6 +1,5 @@
-import Navbar from "@/components/layouts/Navbar";
-import Footer from "@/components/layouts/Footer";
 import RealScoutListings from "@/components/realscout/RealScoutListings";
+import Image from "next/image";
 import Link from "next/link";
 import { Phone, Shield, Mountain, Star, MapPin } from "lucide-react";
 import type { Metadata } from "next";
@@ -8,7 +7,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Berkshire Hathaway HomeServices Southern Highlands | Las Vegas Golf Community",
   description:
-    "Find Southern Highlands homes with Berkshire Hathaway HomeServices Nevada Properties. Dr. Jan Duffy specializes in this premier golf community. Median price $750K. Call (702) 500-1942.",
+    "Find Southern Highlands homes with Berkshire Hathaway HomeServices Nevada Properties. Dr. Jan Duffy specializes in this premier golf community. Median price $750K. Call (702) 222-1964.",
   keywords: [
     "Berkshire Hathaway HomeServices Southern Highlands",
     "Southern Highlands homes for sale",
@@ -64,7 +63,6 @@ export default function SouthernHighlandsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <Navbar />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">
           {/* Breadcrumb */}
@@ -79,12 +77,23 @@ export default function SouthernHighlandsPage() {
           </div>
 
           {/* Hero */}
+          <div className="relative mb-10 h-56 overflow-hidden rounded-2xl md:h-80 max-w-6xl mx-auto">
+            <Image
+              src="/images/neighborhoods/southern-highlands.jpg"
+              alt="Southern Highlands Las Vegas golf course community"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+
           <div className="max-w-4xl mx-auto text-center mb-16">
             <div className="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
               Berkshire Hathaway HomeServices Nevada Properties
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
-              Berkshire Hathaway HomeServices Southern Highlands
+              Southern Highlands Homes for Sale | Golf Community Las Vegas
             </h1>
             <p className="text-xl text-slate-600">
               Premier golf course living in southwest Las Vegas. Discover Southern Highlands with{" "}
@@ -142,7 +151,7 @@ export default function SouthernHighlandsPage() {
                 <strong>Berkshire Hathaway HomeServices Nevada Properties</strong> has represented buyers
                 and sellers in Southern Highlands for over two decades. Dr. Jan Duffy understands the
                 community's various sections—from the guard-gated luxury estates surrounding the golf
-                course to the family-friendly neighborhoods in the community's newer phases. Whether
+                course to the residential neighborhoods in the community's newer phases. Whether
                 you're seeking a golf course lot with Strip views or a spacious family home with top-rated
                 schools, BHHS has the local expertise to guide your search.
               </p>
@@ -308,7 +317,7 @@ export default function SouthernHighlandsPage() {
               <blockquote className="text-lg text-slate-700 italic mb-4">
                 "Southern Highlands delivers luxury living at prices that often surprise buyers—especially
                 those relocating from California. You get championship golf, guard-gated security, mountain
-                views, and excellent schools, all just 15 minutes from the Strip. As a Berkshire Hathaway
+                views, and CCSD-assigned campuses (verify by address), all just 15 minutes from the Strip. As a Berkshire Hathaway
                 HomeServices agent, I help clients see beyond the golf course to the community's full potential."
               </blockquote>
               <cite className="text-slate-900 font-semibold">
@@ -376,11 +385,11 @@ export default function SouthernHighlandsPage() {
               for expert guidance in this premier golf community.
             </p>
             <a
-              href="tel:+17025001942"
+              href="tel:+17022221964"
               className="inline-flex items-center bg-white text-blue-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-50 transition-colors"
             >
               <Phone className="h-5 w-5 mr-2" />
-              Call (702) 500-1942
+              Call (702) 222-1964
             </a>
             <p className="mt-4 text-blue-200 text-sm">
               Berkshire Hathaway HomeServices Nevada Properties
@@ -390,7 +399,6 @@ export default function SouthernHighlandsPage() {
         <div className="text-center text-sm text-slate-500 mt-8">Last Updated: January 2026</div>
       </main>
       <RealScoutListings />
-      <Footer />
     </>
   );
 }

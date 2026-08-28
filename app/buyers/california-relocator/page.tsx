@@ -1,6 +1,5 @@
-import Navbar from "@/components/layouts/Navbar";
-import Footer from "@/components/layouts/Footer";
 import RealScoutListings from "@/components/realscout/RealScoutListings";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Phone,
@@ -21,7 +20,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Relocating from California to Las Vegas | Berkshire Hathaway HomeServices",
   description:
-    "Moving from California to Las Vegas? Zero state income tax, 40-60% lower home prices, same sunshine. Dr. Jan Duffy helps CA relocators find their perfect Las Vegas home. Call (702) 500-1942.",
+    "Moving from California to Las Vegas? Zero state income tax, 40-60% lower home prices, same sunshine. Dr. Jan Duffy helps CA relocators find their perfect Las Vegas home. Call (702) 222-1964.",
   keywords: [
     "California to Las Vegas relocation",
     "moving from California to Nevada",
@@ -49,7 +48,7 @@ const faqSchema = {
       name: "What neighborhoods do California relocators prefer in Las Vegas?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "California buyers typically gravitate toward Summerlin (similar to Irvine/coastal communities), Henderson (family-friendly like San Diego suburbs), and The Ridges (comparable to Newport Coast luxury). These areas offer the quality and amenities California buyers expect.",
+        text: "California buyers typically gravitate toward Summerlin (similar to Irvine/coastal communities), Henderson (residential like San Diego suburbs), and The Ridges (comparable to Newport Coast luxury). These areas offer the quality and amenities California buyers expect.",
       },
     },
     {
@@ -83,8 +82,8 @@ const realEstateAgentSchema = {
   "@context": "https://schema.org",
   "@type": "RealEstateAgent",
   name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
-  telephone: "+17025001942",
-  url: "https://heyberkshire.com/buyers/california-relocator",
+  telephone: "+17022221964",
+  url: "https://www.newbridgehomesforsale.com/buyers/california-relocator",
   address: {
     "@type": "PostalAddress",
     streetAddress: "9406 W Lake Mead Blvd, Suite 100",
@@ -107,7 +106,6 @@ export default function CaliforniaRelocatorPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(realEstateAgentSchema) }}
       />
-      <Navbar />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">
           {/* Breadcrumb */}
@@ -122,24 +120,33 @@ export default function CaliforniaRelocatorPage() {
           </div>
 
           {/* Hero */}
+          <div className="relative mb-10 h-56 overflow-hidden rounded-2xl md:h-80 max-w-6xl mx-auto">
+            <Image
+              src="/images/sections/relocation.jpg"
+              alt="Las Vegas skyline at sunset for California relocators"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
           <div className="max-w-4xl mx-auto text-center mb-16">
             <div className="inline-flex items-center bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
               <Sun className="h-4 w-4 mr-2" />
               37% of Las Vegas Buyers Are From California
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
-              Relocating from California?<br />
-              <span className="text-blue-600">Welcome Home to Las Vegas</span>
+              California to Las Vegas Relocation | Homes, Taxes, and Timing
             </h1>
             <p className="text-xl md:text-2xl text-slate-600 mb-8">
               Zero state income tax. 40-60% lower home prices. Same sunshine.
             </p>
             <a
-              href="tel:+17025001942"
+              href="tel:+17022221964"
               className="inline-flex items-center bg-blue-600 text-white px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-700 transition-colors"
             >
               <Phone className="h-5 w-5 mr-2" />
-              Start Your Tax-Free Life → (702) 500-1942
+              Start Your Tax-Free Life → (702) 222-1964
             </a>
           </div>
 
@@ -403,7 +410,7 @@ export default function CaliforniaRelocatorPage() {
                 </h3>
                 <p className="text-slate-600">
                   California buyers typically gravitate toward Summerlin (similar to Irvine/coastal
-                  communities), Henderson (family-friendly like San Diego suburbs), and The Ridges
+                  communities), Henderson (residential like San Diego suburbs), and The Ridges
                   (comparable to Newport Coast luxury). These areas offer the quality and amenities
                   California buyers expect.
                 </p>
@@ -435,7 +442,7 @@ export default function CaliforniaRelocatorPage() {
                 <p className="text-slate-600">
                   Nevada public schools overall rank lower than California's, but individual schools
                   in Summerlin and Henderson rate highly. Many California families choose areas with
-                  top-rated schools or consider private options. Dr. Jan provides school-specific
+                  CCSD-assigned campuses or consider private options. Dr. Jan provides school-specific
                   guidance for every neighborhood.
                 </p>
               </div>
@@ -470,11 +477,11 @@ export default function CaliforniaRelocatorPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+17025001942"
+                href="tel:+17022221964"
                 className="inline-flex items-center justify-center bg-white text-blue-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-50 transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Call/Text (702) 500-1942
+                Call/Text (702) 222-1964
               </a>
               <Link
                 href="/contact"
@@ -491,7 +498,6 @@ export default function CaliforniaRelocatorPage() {
         <div className="text-center text-sm text-slate-500 mt-8">Last Updated: January 2026</div>
       </main>
       <RealScoutListings />
-      <Footer />
     </>
   );
 }

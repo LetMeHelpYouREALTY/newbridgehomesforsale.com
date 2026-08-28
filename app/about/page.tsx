@@ -1,6 +1,5 @@
-import Navbar from "@/components/layouts/Navbar";
-import Footer from "@/components/layouts/Footer";
 import RealScoutListings from "@/components/realscout/RealScoutListings";
+import Image from "next/image";
 import Link from "next/link";
 import { 
   Phone, 
@@ -21,7 +20,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About Dr. Jan Duffy | Berkshire Hathaway HomeServices Las Vegas",
   description:
-    "Meet Dr. Jan Duffy, your trusted Berkshire Hathaway HomeServices Nevada Properties agent. Serving Las Vegas since 2008, $127M+ in transactions, Henderson & Summerlin specialist. Call (702) 500-1942.",
+    "Meet Dr. Jan Duffy, your trusted Berkshire Hathaway HomeServices Nevada Properties agent. Serving Las Vegas since 2008, $127M+ in transactions, Henderson & Summerlin specialist. Call (702) 222-1964.",
   keywords: [
     "Dr. Jan Duffy",
     "Berkshire Hathaway HomeServices agent",
@@ -40,9 +39,9 @@ const personSchema = {
   jobTitle: "REALTOR®",
   description:
     "Licensed real estate agent with Berkshire Hathaway HomeServices Nevada Properties, serving Las Vegas, Henderson, and Summerlin since 2008.",
-  telephone: "+17025001942",
+  telephone: "+17022221964",
   email: "homes@heyberkshire.com",
-  url: "https://heyberkshire.com/about",
+  url: "https://www.newbridgehomesforsale.com/about",
   worksFor: {
     "@type": "RealEstateAgent",
     name: "Berkshire Hathaway HomeServices Nevada Properties",
@@ -119,16 +118,26 @@ export default function AboutPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
-      <Navbar />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">
           {/* Hero Section */}
+          <div className="relative mb-10 h-56 overflow-hidden rounded-2xl md:h-80 max-w-6xl mx-auto">
+            <Image
+              src="/images/sections/why-work-with-dr-jan.jpg"
+              alt="Berkshire Hathaway HomeServices Nevada Properties office in Las Vegas"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+
           <div className="max-w-4xl mx-auto text-center mb-16">
             <div className="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
               Berkshire Hathaway HomeServices Nevada Properties
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
-              Meet Your Berkshire Hathaway HomeServices Agent
+              Dr. Jan Duffy, Las Vegas REALTOR® | BHHS Nevada Properties
             </h1>
             <p className="text-xl text-slate-600">
               Dr. Jan Duffy has been serving Las Vegas since 2008—backed by the most
@@ -141,7 +150,7 @@ export default function AboutPage() {
           <section className="mb-16">
             <div className="grid md:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Dr. Jan Duffy</h2>
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Who is Dr. Jan Duffy?</h2>
                 <p className="text-lg text-blue-600 mb-6">
                   REALTOR® | License S.0197614.LLC
                 </p>
@@ -182,11 +191,11 @@ export default function AboutPage() {
                   <h3 className="font-bold text-slate-900 mb-4">Contact Dr. Jan Duffy</h3>
                   <div className="space-y-3">
                     <a
-                      href="tel:+17025001942"
+                      href="tel:+17022221964"
                       className="flex items-center text-slate-700 hover:text-blue-600"
                     >
                       <Phone className="h-5 w-5 mr-3 text-blue-600" />
-                      <span className="font-semibold">(702) 500-1942</span>
+                      <span className="font-semibold">(702) 222-1964</span>
                     </a>
                     <a
                       href="mailto:homes@heyberkshire.com"
@@ -435,11 +444,11 @@ export default function AboutPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+17025001942"
+                href="tel:+17022221964"
                 className="inline-flex items-center justify-center bg-white text-blue-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-50 transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Call (702) 500-1942
+                Call (702) 222-1964
               </a>
               <Link
                 href="/contact"
@@ -460,7 +469,6 @@ export default function AboutPage() {
         </div>
       </main>
       <RealScoutListings />
-      <Footer />
     </>
   );
 }

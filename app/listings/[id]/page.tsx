@@ -1,13 +1,12 @@
-import Navbar from "@/components/layouts/Navbar";
-import Footer from "@/components/layouts/Footer";
 import Image from "next/image";
 import { Bed, Bath, Square, MapPin, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Property Details | Las Vegas & Henderson Real Estate",
-  description: "View detailed information about this property listing in Las Vegas or Henderson, NV.",
+  title: "Property Details | Newbridge Las Vegas Listings",
+  description:
+    "View this listing with Dr. Jan Duffy. Newbridge and Southwest Las Vegas (89139) buyer representation, BHHS Nevada Properties. Call 702-222-1964.",
 };
 
 // This would typically fetch from RealScout API
@@ -18,27 +17,26 @@ async function getProperty(id: string) {
     name: "Modern Luxury Home",
     location: "Summerlin, Las Vegas, NV",
     price: "$850,000",
-    image: "/Image/hero_bg_1.jpg",
+    image: "/images/sections/featured-las-vegas-homes.jpg",
     bedrooms: 4,
     bathrooms: 3,
     squareFeet: 3200,
     yearBuilt: 2018,
     description:
-      "Stunning modern home in desirable Summerlin community. Features open floor plan, updated kitchen, and beautiful backyard. Close to schools, shopping, and entertainment.",
+      "Stunning modern home in Summerlin. Open floor plan, updated kitchen, and backyard. Near shopping and employment centers.",
   };
 }
 
 type PropertyPageProps = {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 };
 
 export default async function PropertyPage({ params }: PropertyPageProps) {
-  const { id } = await params;
+  const { id } = params;
   const property = await getProperty(id);
 
   return (
     <>
-      <Navbar />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">
           {/* Breadcrumb */}
@@ -78,6 +76,7 @@ export default async function PropertyPage({ params }: PropertyPageProps) {
               src={property.image}
               alt={property.name}
               fill
+              sizes="100vw"
               className="object-cover"
               priority
             />
@@ -136,7 +135,7 @@ export default async function PropertyPage({ params }: PropertyPageProps) {
                 </p>
                 <div className="space-y-3">
                   <Button asChild className="w-full bg-blue-600 hover:bg-blue-700">
-                    <a href="tel:+17025001942">Call (702) 500-1942</a>
+                    <a href="tel:+17022221964">Call (702) 222-1964</a>
                   </Button>
                   <Button asChild variant="outline" className="w-full">
                     <a href="/contact">Send Message</a>
@@ -147,7 +146,6 @@ export default async function PropertyPage({ params }: PropertyPageProps) {
           </div>
         </div>
       </main>
-      <Footer />
     </>
   );
 }

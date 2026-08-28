@@ -1,29 +1,39 @@
-import Navbar from "@/components/layouts/Navbar";
 import RealScoutListings from "@/components/realscout/RealScoutListings";
-import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import ReviewsSection from "@/components/sections/ReviewsSection";
-import FAQSection from "@/components/sections/FAQSection";
-import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
-import { Phone, Home as HomeIcon, TrendingUp, Shield, Users } from "lucide-react";
+import { Home as HomeIcon, TrendingUp, Shield, Users } from "lucide-react";
 import { getPageDomainConfig } from "@/lib/get-domain-config";
+import SeoHero from "@/components/seo/SeoHero";
+import SeoSection from "@/components/seo/SeoSection";
+import FaqAeo from "@/components/seo/FaqAeo";
+import CtaBanner from "@/components/seo/CtaBanner";
+import { images, NAP } from "@/lib/site-images";
+import { getRequestSiteUrl } from "@/lib/canonical-url";
+import { NEWBRIDGE_FAQS } from "@/lib/newbridge-seo";
+
+const homeFaqs = NEWBRIDGE_FAQS;
 
 export default async function Home() {
   const config = await getPageDomainConfig();
+  const siteUrl = getRequestSiteUrl();
 
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
-    name: `Dr. Jan Duffy - ${config.neighborhood} Real Estate`,
-    url: `https://${config.domain !== "default" ? config.domain : "heyberkshire.com"}`,
+    name: NAP.name,
+    url: siteUrl,
     telephone: "+17022221964",
+    email: NAP.email,
+    image: `${siteUrl}${images.office.src}`,
     address: {
       "@type": "PostalAddress",
-      streetAddress: "9406 W Lake Mead Blvd, Suite 100",
-      addressLocality: "Las Vegas",
-      addressRegion: "NV",
-      postalCode: "89134",
+      streetAddress: NAP.street,
+      addressLocality: NAP.city,
+      addressRegion: NAP.state,
+      postalCode: NAP.zip,
     },
+    geo: { "@type": "GeoCoordinates", latitude: 36.1941, longitude: -115.2678 },
+    areaServed: ["Newbridge Las Vegas NV", "Southwest Las Vegas NV", "Las Vegas NV", "Henderson NV", "Summerlin NV"],
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.9",
@@ -37,71 +47,38 @@ export default async function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
-      <Navbar />
-      <main>
-        {/* Domain-Aware Hero */}
-        <section className="relative bg-slate-900 text-white py-24 md:py-32 overflow-hidden">
-          <div
-            className="absolute inset-0 bg-cover bg-center opacity-30"
-            style={{ backgroundImage: "url('/Image/hero_bg_1.jpg')" }}
-          />
-          <div className="relative z-10 container mx-auto px-4 text-center">
-            {config.ctaBadge && (
-              <span className="inline-block bg-blue-600 text-white text-sm font-semibold px-4 py-1 rounded-full mb-6">
-                {config.ctaBadge}
-              </span>
-            )}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              {config.heroHeadline}
-            </h1>
-            <p className="text-xl md:text-2xl text-white/80 mb-10 max-w-3xl mx-auto">
-              {config.heroSubheadline}
-            </p>
-
-            {/* RealScout Search Widget */}
-            <div className="mb-8 flex justify-center">
+      <main className="pt-24 pb-16">
+        <div className="container mx-auto px-4">
+          <SeoHero
+            h1={`${config.neighborhood} Homes for Sale | Dr. Jan Duffy, BHHS Nevada Properties`}
+            lede={`${config.heroSubheadline} 500+ closed transactions, $127M+ in career volume, serving Southern Nevada since 2008. Call ${NAP.phoneDisplay}.`}
+            image={images.heroHomes.src}
+            imageAlt={images.heroHomes.alt}
+            priority
+          >
+            <div className="flex justify-center">
               <div
                 dangerouslySetInnerHTML={{
                   __html: `<realscout-simple-search agent-encoded-id="${config.realscoutAgentId}"></realscout-simple-search>`,
                 }}
               />
             </div>
+          </SeoHero>
 
-            {/* Trust Indicators */}
-            <div className="flex flex-wrap justify-center gap-6 text-white/80 text-sm">
-              <div className="flex items-center gap-2">
-                <span className="font-semibold text-white">500+</span>
-                <span>Families Helped</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="font-semibold text-white">30+ Years</span>
-                <span>Las Vegas Experience</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="font-semibold text-white">4.9★</span>
-                <span>Client Rating</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Value Proposition */}
-        <section className="py-16 md:py-20 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-                Why Work With Dr. Jan Duffy?
-              </h2>
-              <p className="text-lg text-slate-600">
-                Berkshire Hathaway HomeServices Nevada Properties — the most trusted name in Las Vegas real estate.
-              </p>
-            </div>
+          <section className="mb-16">
+            <h2 className="text-3xl font-bold text-slate-900 mb-4 text-center">
+              Why work with Dr. Jan Duffy at Newbridge?
+            </h2>
+            <p className="mx-auto mb-10 max-w-3xl text-center text-lg text-slate-600">
+              You get a BHHS Nevada Properties agent who answers her own phone, plus a 50,000-agent
+              referral network—without a second layer of assistants between you and the deal.
+            </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
               {[
-                { icon: Shield, title: "Trusted Brand", desc: "Backed by Warren Buffett's Berkshire Hathaway — unmatched integrity" },
-                { icon: Users, title: "50K+ Network", desc: "Global referral network for seamless moves to or from any market" },
-                { icon: TrendingUp, title: "$127M+ Sold", desc: "Proven results across every Las Vegas neighborhood since 2008" },
-                { icon: HomeIcon, title: "Full Service", desc: "Buying, selling, 55+, luxury, investment — one expert handles it all" },
+                { icon: Shield, title: "BHHS brand", desc: "Berkshire Hathaway HomeServices Nevada Properties at 9406 W Lake Mead Blvd." },
+                { icon: Users, title: "50K+ network", desc: "Global referral coverage for moves into or out of Clark County." },
+                { icon: TrendingUp, title: "$127M+ sold", desc: "Documented career volume across Las Vegas, Henderson, and Summerlin." },
+                { icon: HomeIcon, title: "One advisor", desc: "Buy, sell, 55+, luxury, new construction, and investment in one file." },
               ].map(({ icon: Icon, title, desc }) => (
                 <div key={title} className="text-center p-6">
                   <div className="bg-blue-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
@@ -112,76 +89,91 @@ export default async function Home() {
                 </div>
               ))}
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* Market Stats */}
-        <section className="py-16 bg-slate-900 text-white">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold mb-3">
-                {config.neighborhood} Real Estate Market
-              </h2>
-              <p className="text-slate-400">Current data — updated regularly</p>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+          <SeoSection
+            h2={`What is the ${config.neighborhood} housing market doing?`}
+            answer={`As of January 2026 this site’s valley snapshot showed a $450K median price, 28 average days on market, 4,850 active listings, and 2.1 months of inventory. ${config.neighborhood} numbers move weekly—request a dated CMA before you write an offer or list.`}
+            image={images.market.src}
+            imageAlt={images.market.alt}
+          >
+            <div className="grid grid-cols-2 gap-4 text-center">
               {[
-                { value: "$450K", label: "Median Price", sub: "+4.2% YoY" },
-                { value: "28", label: "Avg Days on Market", sub: "" },
-                { value: "4,850", label: "Active Listings", sub: "" },
-                { value: "2.1", label: "Months Inventory", sub: "" },
-              ].map(({ value, label, sub }) => (
-                <div key={label} className="text-center">
-                  <div className="text-4xl font-bold text-blue-400 mb-1">{value}</div>
-                  <div className="text-slate-300 text-sm">{label}</div>
-                  {sub && <div className="text-green-400 text-xs mt-1">{sub}</div>}
+                { value: "$450K", label: "Median price" },
+                { value: "28", label: "Days on market" },
+                { value: "4,850", label: "Active listings" },
+                { value: "2.1", label: "Months inventory" },
+              ].map(({ value, label }) => (
+                <div key={label} className="rounded-lg bg-slate-50 p-4">
+                  <div className="text-2xl font-bold text-blue-600">{value}</div>
+                  <div className="text-sm text-slate-600">{label}</div>
                 </div>
               ))}
             </div>
-            <div className="text-center mt-8">
-              <Link href="/market-report" className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-semibold transition-colors">
-                Full Market Report
+            <Link href="/market-report" className="mt-4 inline-block font-semibold text-blue-600">
+              Read the full Las Vegas market report →
+            </Link>
+          </SeoSection>
+
+          <SeoSection
+            h2="Which Las Vegas neighborhoods should you tour after Newbridge?"
+            answer="After Newbridge (89139), compare Mountain's Edge, Summerlin, Henderson, Green Valley, The Ridges, Southern Highlands, North Las Vegas, Skye Canyon, Centennial Hills, Inspirada, Lake Las Vegas, and Anthem by commute, square footage, HOA, and price band."
+            image={images.neighborhoods.newbridge.src}
+            imageAlt={images.neighborhoods.newbridge.alt}
+            reverse
+          >
+            <div className="flex flex-wrap gap-2">
+              {[
+                ["Newbridge", "/neighborhoods/newbridge"],
+                ["Mountain's Edge", "/neighborhoods/mountains-edge"],
+                ["Summerlin", "/neighborhoods/summerlin"],
+                ["Henderson", "/neighborhoods/henderson"],
+                ["The Ridges", "/neighborhoods/the-ridges"],
+                ["Anthem", "/neighborhoods/anthem"],
+              ].map(([label, href]) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className="rounded-full bg-slate-100 px-4 py-2 text-sm font-medium text-slate-800 hover:bg-blue-50 hover:text-blue-700"
+                >
+                  {label} homes
+                </Link>
+              ))}
+            </div>
+          </SeoSection>
+
+          <RealScoutListings />
+
+          <SeoSection
+            h2="How do you buy or sell a home in Clark County?"
+            answer="Buyers: pre-approval, MLS search, offer, inspection, close in about 30–45 days. Sellers: CMA, prep, professional media, MLS + BHHS syndication, negotiation, then escrow. Dr. Jan Duffy runs both sides from the Lake Mead Boulevard office."
+            image={images.buying.src}
+            imageAlt={images.buying.alt}
+          >
+            <div className="flex flex-wrap gap-3">
+              <Link href="/buyers" className="font-semibold text-blue-600">
+                Las Vegas buyer guide →
+              </Link>
+              <Link href="/sellers" className="font-semibold text-blue-600">
+                Sell your Las Vegas home →
+              </Link>
+              <Link href="/home-valuation" className="font-semibold text-blue-600">
+                Free home valuation →
               </Link>
             </div>
-          </div>
-        </section>
+          </SeoSection>
 
-        <RealScoutListings />
-        <WhyChooseUs />
-        <ReviewsSection />
-        <FAQSection />
-
-        {/* Domain-Specific CTA */}
-        <section className="py-16 md:py-20 bg-blue-600 text-white">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {config.ctaHeadline}
-            </h2>
-            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              {config.ctaSubheadline}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="tel:+17022221964"
-                className="inline-flex items-center justify-center bg-white text-blue-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-50 transition-colors"
-              >
-                <Phone className="h-5 w-5 mr-2" />
-                Call 702-222-1964
-              </a>
-              <Link
-                href="/contact"
-                className="inline-block bg-blue-700 hover:bg-blue-800 text-white px-8 py-4 rounded-md font-bold text-lg transition-colors"
-              >
-                Send a Message
-              </Link>
-            </div>
-            <p className="mt-6 text-blue-200 text-sm">
-              Dr. Jan Duffy | License S.0197614.LLC | Berkshire Hathaway HomeServices Nevada Properties
-            </p>
-          </div>
-        </section>
+          <ReviewsSection />
+          <FaqAeo
+            title="Newbridge Las Vegas questions, answered"
+            faqs={homeFaqs}
+          />
+          <CtaBanner
+            h2={config.ctaHeadline}
+            sub={`${config.ctaSubheadline} ${NAP.fullAddress}. License ${NAP.license}.`}
+          />
+        </div>
       </main>
-      <Footer />
     </>
   );
 }

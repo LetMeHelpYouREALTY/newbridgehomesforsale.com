@@ -1,6 +1,5 @@
-import Navbar from "@/components/layouts/Navbar";
-import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Phone,
   Home,
@@ -22,7 +21,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Las Vegas Homes for Sale | MLS Property Search | Berkshire Hathaway HomeServices",
   description:
-    "Browse all Las Vegas and Henderson homes for sale with live MLS listings. Search by neighborhood, price, and features. Dr. Jan Duffy, Berkshire Hathaway HomeServices. Call (702) 500-1942.",
+    "Browse all Las Vegas and Henderson homes for sale with live MLS listings. Search by neighborhood, price, and features. Dr. Jan Duffy, Berkshire Hathaway HomeServices. Call (702) 222-1964.",
   keywords: [
     "Las Vegas homes for sale",
     "Henderson real estate",
@@ -41,7 +40,7 @@ const listingsSchema = {
   provider: {
     "@type": "RealEstateAgent",
     name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
-    telephone: "+17025001942",
+    telephone: "+17022221964",
   },
   areaServed: [
     { "@type": "City", name: "Las Vegas, NV" },
@@ -76,7 +75,7 @@ const neighborhoods = [
   },
   {
     name: "Henderson",
-    description: "Nevada's second-largest city with family-friendly communities and low crime",
+    description: "Nevada's second-largest city with residential communities and published municipal services",
     medianPrice: "$485,000",
     daysOnMarket: 24,
   },
@@ -113,16 +112,26 @@ export default function ListingsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(listingsSchema) }}
       />
-      <Navbar />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">
           {/* Hero Section */}
+          <div className="relative mb-10 h-56 overflow-hidden rounded-2xl md:h-80 max-w-6xl mx-auto">
+            <Image
+              src="/images/sections/featured-las-vegas-homes.jpg"
+              alt="Featured Las Vegas home for sale"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+
           <div className="max-w-4xl mx-auto text-center mb-12">
             <div className="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
               Berkshire Hathaway HomeServices Nevada Properties
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
-              Las Vegas Homes for Sale
+              Las Vegas Homes for Sale | Live MLS Search
             </h1>
             <p className="text-xl text-slate-600 mb-8">
               Search thousands of Las Vegas, Henderson, and Summerlin properties with live MLS 
@@ -159,7 +168,7 @@ export default function ListingsPage() {
             </h2>
             <p className="text-slate-600 text-center max-w-3xl mx-auto mb-8">
               Las Vegas offers diverse neighborhoods for every lifestyle and budget. Whether you're 
-              seeking luxury estates in guard-gated communities, family homes near top-rated schools, 
+              seeking luxury estates in guard-gated communities, family homes near CCSD-assigned campuses, 
               or affordable new construction, our comprehensive search tools help you find exactly 
               what you're looking for. Browse the most popular searches below or use the advanced 
               filters to customize your home search experience.
@@ -220,7 +229,7 @@ export default function ListingsPage() {
             </h2>
             <p className="text-slate-600 text-center max-w-3xl mx-auto mb-8">
               Each Las Vegas neighborhood offers a unique lifestyle, from the resort-style living 
-              of Summerlin to the family-friendly communities of Henderson. Understanding these 
+              of Summerlin to the residential communities of Henderson. Understanding these 
               differences is crucial to finding a home that fits your needs. As a Berkshire 
               Hathaway HomeServices agent serving Las Vegas since 2008, Dr. Jan Duffy provides 
               expert guidance on which neighborhoods match your priorities—whether that's schools, 
@@ -478,11 +487,11 @@ export default function ListingsPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+17025001942"
+                href="tel:+17022221964"
                 className="inline-flex items-center justify-center bg-white text-blue-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-50 transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Call (702) 500-1942
+                Call (702) 222-1964
               </a>
               <Link
                 href="/contact"
@@ -500,7 +509,6 @@ export default function ListingsPage() {
         {/* Last Updated */}
         <div className="text-center text-sm text-slate-500 mt-8">Last Updated: January 2026</div>
       </main>
-      <Footer />
     </>
   );
 }

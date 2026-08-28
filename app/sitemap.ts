@@ -1,7 +1,8 @@
 import { MetadataRoute } from "next";
+import { SITE_ORIGIN } from "@/lib/canonical-url";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://heyberkshire.com";
+  const baseUrl = SITE_ORIGIN;
   const lastModified = new Date();
 
   // Core pages
@@ -10,6 +11,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/about`, priority: 0.9, changeFrequency: "monthly" as const },
     { url: `${baseUrl}/contact`, priority: 0.9, changeFrequency: "monthly" as const },
     { url: `${baseUrl}/listings`, priority: 0.9, changeFrequency: "daily" as const },
+    { url: `${baseUrl}/open-houses`, priority: 0.8, changeFrequency: "daily" as const },
+    { url: `${baseUrl}/sold`, priority: 0.8, changeFrequency: "weekly" as const },
+    { url: `${baseUrl}/reviews`, priority: 0.8, changeFrequency: "monthly" as const },
+    { url: `${baseUrl}/resources`, priority: 0.8, changeFrequency: "monthly" as const },
+    { url: `${baseUrl}/condos`, priority: 0.8, changeFrequency: "weekly" as const },
+    { url: `${baseUrl}/privacy`, priority: 0.3, changeFrequency: "yearly" as const },
+    { url: `${baseUrl}/terms`, priority: 0.3, changeFrequency: "yearly" as const },
+    { url: `${baseUrl}/equal-housing`, priority: 0.4, changeFrequency: "yearly" as const },
     { url: `${baseUrl}/why-berkshire-hathaway`, priority: 0.9, changeFrequency: "monthly" as const },
     { url: `${baseUrl}/market-report`, priority: 0.9, changeFrequency: "weekly" as const },
     { url: `${baseUrl}/market-update`, priority: 0.9, changeFrequency: "weekly" as const },
@@ -51,11 +60,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/55-plus-communities/sun-city-summerlin`, priority: 0.8, changeFrequency: "monthly" as const },
     { url: `${baseUrl}/55-plus-communities/sun-city-anthem`, priority: 0.8, changeFrequency: "monthly" as const },
     { url: `${baseUrl}/55-plus-communities/del-webb-lake-las-vegas`, priority: 0.8, changeFrequency: "monthly" as const },
+    { url: `${baseUrl}/55-plus-communities/sun-city-aliante`, priority: 0.8, changeFrequency: "monthly" as const },
+    { url: `${baseUrl}/55-plus-communities/trilogy-summerlin`, priority: 0.8, changeFrequency: "monthly" as const },
+    { url: `${baseUrl}/55-plus-communities/solera-anthem`, priority: 0.8, changeFrequency: "monthly" as const },
+    { url: `${baseUrl}/55-plus-communities/heritage-stonebridge`, priority: 0.8, changeFrequency: "monthly" as const },
   ];
 
   // Neighborhood pages
   const neighborhoodPages = [
     { url: `${baseUrl}/neighborhoods`, priority: 0.8, changeFrequency: "weekly" as const },
+    { url: `${baseUrl}/neighborhoods/newbridge`, priority: 0.9, changeFrequency: "weekly" as const },
     { url: `${baseUrl}/neighborhoods/summerlin`, priority: 0.8, changeFrequency: "weekly" as const },
     { url: `${baseUrl}/neighborhoods/henderson`, priority: 0.8, changeFrequency: "weekly" as const },
     { url: `${baseUrl}/neighborhoods/green-valley`, priority: 0.7, changeFrequency: "weekly" as const },
@@ -66,6 +80,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/neighborhoods/centennial-hills`, priority: 0.7, changeFrequency: "weekly" as const },
     { url: `${baseUrl}/neighborhoods/inspirada`, priority: 0.7, changeFrequency: "weekly" as const },
     { url: `${baseUrl}/neighborhoods/mountains-edge`, priority: 0.7, changeFrequency: "weekly" as const },
+    { url: `${baseUrl}/neighborhoods/lake-las-vegas`, priority: 0.8, changeFrequency: "weekly" as const },
+    { url: `${baseUrl}/neighborhoods/anthem`, priority: 0.8, changeFrequency: "weekly" as const },
   ];
 
   const allPages = [...corePages, ...servicePages, ...buyerPersonaPages, ...sellerPersonaPages, ...fiftyPlusCommunityPages, ...neighborhoodPages];

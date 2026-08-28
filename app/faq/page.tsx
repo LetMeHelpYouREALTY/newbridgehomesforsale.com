@@ -1,6 +1,5 @@
-import Navbar from "@/components/layouts/Navbar";
-import Footer from "@/components/layouts/Footer";
 import RealScoutListings from "@/components/realscout/RealScoutListings";
+import Image from "next/image";
 import Link from "next/link";
 import { Phone } from "lucide-react";
 import type { Metadata } from "next";
@@ -129,7 +128,7 @@ const faqCategories = [
       },
       {
         q: "What are the best neighborhoods for families?",
-        a: "Summerlin, Henderson (Green Valley, Inspirada), and Centennial Hills are top choices for families, offering excellent schools, parks, and community amenities. Dr. Jan can match you with the right neighborhood based on your priorities.",
+        a: "Summerlin, Henderson (Green Valley, Inspirada), and Centennial Hills are top choices for families, offering CCSD-assigned campuses (verify by address), parks, and community amenities. Dr. Jan can match you with the right neighborhood based on your priorities.",
       },
       {
         q: "How is the cost of living in Las Vegas?",
@@ -146,7 +145,7 @@ const faqCategories = [
       },
       {
         q: "How do I contact Dr. Jan Duffy?",
-        a: "Call or text (702) 500-1942 or email homes@heyberkshire.com. Office located at 9406 W Lake Mead Blvd, Suite 100, Las Vegas, NV 89134.",
+        a: "Call or text (702) 222-1964 or email homes@heyberkshire.com. Office located at 9406 W Lake Mead Blvd, Suite 100, Las Vegas, NV 89134.",
       },
       {
         q: "What areas does Dr. Jan cover?",
@@ -182,16 +181,26 @@ export default function FAQPage() {
     <>
       {/* Combined JSON-LD Schema: Breadcrumb + WebPage + FAQPage (all categories) */}
       <SchemaScript schema={pageSchemas} id="faq-page-schema" />
-      <Navbar />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">
           {/* Hero */}
+          <div className="relative mb-10 h-56 overflow-hidden rounded-2xl md:h-80 max-w-6xl mx-auto">
+            <Image
+              src="/images/sections/las-vegas-office.jpg"
+              alt="Las Vegas real estate office of Dr. Jan Duffy"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+
           <div className="max-w-4xl mx-auto text-center mb-16">
             <div className="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
               Berkshire Hathaway HomeServices Nevada Properties
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
-              Frequently Asked Questions
+              Las Vegas Real Estate FAQ | Buying and Selling Answers
             </h1>
             <p className="text-xl text-slate-600">
               Everything you need to know about working with{" "}
@@ -226,11 +235,11 @@ export default function FAQPage() {
               with Berkshire Hathaway HomeServices.
             </p>
             <a
-              href="tel:+17025001942"
+              href="tel:+17022221964"
               className="inline-flex items-center bg-white text-blue-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-50 transition-colors"
             >
               <Phone className="h-5 w-5 mr-2" />
-              Call (702) 500-1942
+              Call (702) 222-1964
             </a>
             <p className="mt-4 text-blue-200 text-sm">
               Berkshire Hathaway HomeServices Nevada Properties
@@ -242,7 +251,6 @@ export default function FAQPage() {
         <div className="text-center text-sm text-slate-500 mt-8">Last Updated: January 2026</div>
       </main>
       <RealScoutListings />
-      <Footer />
     </>
   );
 }
