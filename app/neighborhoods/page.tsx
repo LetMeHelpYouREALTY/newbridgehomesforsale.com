@@ -1,6 +1,5 @@
-import Navbar from "@/components/layouts/Navbar";
-import Footer from "@/components/layouts/Footer";
 import RealScoutListings from "@/components/realscout/RealScoutListings";
+import Image from "next/image";
 import Link from "next/link";
 import { MapPin, Phone, Home, Users, GraduationCap } from "lucide-react";
 import type { Metadata } from "next";
@@ -24,18 +23,18 @@ const neighborhoods = [
     slug: "summerlin",
     medianPrice: "$625,000",
     priceChange: "+6.8%",
-    description: "Premier master-planned community with parks, trails, and top-rated schools",
-    highlights: ["150+ Parks", "Top Schools", "Red Rock Views", "Downtown Summerlin"],
-    bestFor: "Families, professionals, outdoor enthusiasts",
+    description: "Premier master-planned community with parks, trails, and Red Rock Canyon views",
+    highlights: ["150+ Parks", "Red Rock Views", "Downtown Summerlin", "150+ Trail Miles"],
+    bestFor: "Red Rock access, Downtown Summerlin, parks",
   },
   {
     name: "Henderson",
     slug: "henderson",
     medianPrice: "$485,000",
     priceChange: "+5.1%",
-    description: "Nevada's second-largest city known for safety, schools, and family-friendly living",
-    highlights: ["Low Crime Rate", "Excellent Schools", "Lake Las Vegas", "Green Valley"],
-    bestFor: "Families, retirees, commuters",
+    description: "Nevada's second-largest city with Lake Las Vegas, Green Valley, and I-215 access",
+    highlights: ["Lake Las Vegas", "Green Valley", "I-215 Access", "City Services"],
+    bestFor: "Henderson commuters, golf, lake-adjacent inventory",
   },
   {
     name: "Green Valley",
@@ -69,9 +68,9 @@ const neighborhoods = [
     slug: "north-las-vegas",
     medianPrice: "$385,000",
     priceChange: "+3.2%",
-    description: "Rapidly growing area with affordable new construction and family-friendly communities",
-    highlights: ["New Construction", "Affordable", "Growing Area", "Family-Friendly"],
-    bestFor: "First-time buyers, young families, investors",
+    description: "Rapidly growing area with new construction and a lower median price than the valley average",
+    highlights: ["New Construction", "Lower Median", "Growing Area", "I-15 Access"],
+    bestFor: "First-time buyers, investors, new builds",
   },
   {
     name: "Skye Canyon",
@@ -79,8 +78,8 @@ const neighborhoods = [
     medianPrice: "$550,000",
     priceChange: "+5.5%",
     description: "Newer master-planned community in northwest Las Vegas with mountain views",
-    highlights: ["New Homes", "Mountain Views", "Skye Center", "Great Schools"],
-    bestFor: "Young families, outdoor enthusiasts, commuters",
+    highlights: ["New Homes", "Mountain Views", "Skye Center", "Trailheads"],
+    bestFor: "Northwest commute, new inventory, mountain views",
   },
   {
     name: "Centennial Hills",
@@ -88,8 +87,8 @@ const neighborhoods = [
     medianPrice: "$495,000",
     priceChange: "+4.8%",
     description: "Northwest Las Vegas community with mountain proximity and family amenities",
-    highlights: ["Mountain Access", "Parks", "Shopping", "Family-Friendly"],
-    bestFor: "Families, outdoor lovers, professionals",
+    highlights: ["Mountain Access", "Parks", "Shopping", "Trailheads"],
+    bestFor: "Northwest Las Vegas, parks, shopping",
   },
   {
     name: "Inspirada",
@@ -97,8 +96,8 @@ const neighborhoods = [
     medianPrice: "$525,000",
     priceChange: "+5.0%",
     description: "Henderson master-planned community with resort-style living and modern homes",
-    highlights: ["Resort Pools", "Walking Trails", "New Construction", "Great Schools"],
-    bestFor: "Families, active adults, new home buyers",
+    highlights: ["Resort Pools", "Walking Trails", "New Construction", "Henderson"],
+    bestFor: "New construction, resort amenities, Henderson",
   },
   {
     name: "Mountains Edge",
@@ -107,27 +106,55 @@ const neighborhoods = [
     priceChange: "+4.5%",
     description: "Southwest Las Vegas master-planned community with mountain views and parks",
     highlights: ["Mountain Views", "Parks", "Growing Area", "Affordable Luxury"],
-    bestFor: "Families, commuters, value-seekers",
+    bestFor: "Southwest commute, mountain lots, parks",
+  },
+  {
+    name: "Lake Las Vegas",
+    slug: "lake-las-vegas",
+    medianPrice: "Ask for CMA",
+    priceChange: "Varies",
+    description: "Henderson community around a private lake with golf and a mix of water-adjacent and hillside homes",
+    highlights: ["Lake", "Golf", "Henderson", "Resort Adjacent"],
+    bestFor: "Water-adjacent inventory, golf, Henderson commute",
+  },
+  {
+    name: "Anthem",
+    slug: "anthem",
+    medianPrice: "Ask for CMA",
+    priceChange: "Varies",
+    description: "Henderson master-planned area with golf, parks, and nearby 55+ villages including Sun City Anthem",
+    highlights: ["Golf", "Parks", "55+ Nearby", "Henderson"],
+    bestFor: "Anthem villages, golf, southern Henderson",
   },
 ];
 
 export default function NeighborhoodsPage() {
   return (
     <>
-      <Navbar />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">
           {/* Hero */}
+          <div className="relative mb-10 h-56 overflow-hidden rounded-2xl md:h-80 max-w-6xl mx-auto">
+            <Image
+              src="/images/sections/las-vegas-housing-market.jpg"
+              alt="Aerial view of Las Vegas Valley neighborhoods"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+
           <div className="max-w-4xl mx-auto text-center mb-16">
             <div className="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
               Berkshire Hathaway HomeServices Nevada Properties
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
-              Las Vegas & Henderson Neighborhoods
+              Las Vegas and Henderson Neighborhoods | Homes by Area
             </h1>
             <p className="text-xl text-slate-600">
-              Explore the best communities in Southern Nevada with Dr. Jan Duffy, your{" "}
-              <strong>Berkshire Hathaway HomeServices</strong> neighborhood expert
+              Compare square footage, HOA, commute, and January 2026 median prices across Las Vegas and Henderson with Dr. Jan Duffy,{" "}
+              <strong>Berkshire Hathaway HomeServices Nevada Properties</strong>.
             </p>
           </div>
 
@@ -138,8 +165,18 @@ export default function NeighborhoodsPage() {
                 <Link
                   key={neighborhood.slug}
                   href={`/neighborhoods/${neighborhood.slug}`}
-                  className="bg-white border border-slate-200 rounded-lg p-6 hover:shadow-lg transition-all hover:border-blue-300 group"
+                  className="bg-white border border-slate-200 rounded-lg overflow-hidden hover:shadow-lg transition-all hover:border-blue-300 group"
                 >
+                  <div className="relative h-40">
+                    <Image
+                      src={`/images/neighborhoods/${neighborhood.slug === "mountains-edge" ? "mountains-edge" : neighborhood.slug}.jpg`}
+                      alt={`${neighborhood.name} homes in Las Vegas and Henderson`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="p-6">
                   <div className="flex justify-between items-start mb-3">
                     <div>
                       <h2 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
@@ -162,6 +199,7 @@ export default function NeighborhoodsPage() {
                         {highlight}
                       </span>
                     ))}
+                  </div>
                   </div>
                 </Link>
               ))}
@@ -238,7 +276,6 @@ export default function NeighborhoodsPage() {
         <div className="text-center text-sm text-slate-500 mt-8">Last Updated: January 2026</div>
       </main>
       <RealScoutListings />
-      <Footer />
     </>
   );
 }

@@ -16,8 +16,8 @@ const nextConfig = {
   // Compression (handled by Cloudflare)
   compress: false,
 
-  // Performance optimizations
-  swcMinify: true,
+  reactStrictMode: true,
+  poweredByHeader: false,
 
   // Environment variables
   env: {
@@ -41,15 +41,19 @@ const nextConfig = {
     ]
   },
 
-  // Python API rewrites
+  // Proxy only Flask FAQ routes in development
   rewrites: async () => {
+    if (process.env.NODE_ENV !== 'development') {
+      return []
+    }
     return [
       {
-        source: '/api/:path*',
-        destination:
-          process.env.NODE_ENV === 'development'
-            ? 'http://127.0.0.1:5328/api/:path*'
-            : '/api/',
+        source: '/api/generate-faq',
+        destination: 'http://127.0.0.1:5328/api/generate-faq',
+      },
+      {
+        source: '/api/hello',
+        destination: 'http://127.0.0.1:5328/api/hello',
       },
     ]
   },
@@ -88,12 +92,10 @@ const nextConfig = {
     return config
   },
 
-  // Experimental features for Cloudflare
   experimental: {
-    // Use lighter runtime
     serverMinification: true,
-    // Optimize server components
-    serverComponentsExternalPackages: ['sharp'],
+    serverComponentsExternalPackages: ['sharp', '@anthropic-ai/sdk', 'openai'],
+    optimizePackageImports: ['lucide-react', '@radix-ui/react-slot', '@radix-ui/react-toast'],
   },
 }
 

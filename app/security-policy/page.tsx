@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function SecurityPolicyPage() {
   return (
-    <div className="min-h-screen bg-white py-12">
+    <div className="min-h-screen bg-white py-12 pt-28">
       <div className="container mx-auto max-w-4xl px-4">
         <h1 className="text-4xl font-bold text-gray-900 mb-8">
           Security Policy

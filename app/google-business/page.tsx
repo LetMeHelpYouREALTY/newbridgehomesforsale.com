@@ -1,6 +1,5 @@
-import Navbar from "@/components/layouts/Navbar";
-import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Phone,
   Mail,
@@ -61,7 +60,6 @@ export default function GoogleBusinessPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <Navbar />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">
           {/* Hero - NAP Prominent */}
@@ -74,7 +72,7 @@ export default function GoogleBusinessPage() {
                     <span className="text-yellow-400 font-semibold">Berkshire Hathaway HomeServices</span>
                   </div>
                   <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                    Dr. Jan Duffy
+                    Dr. Jan Duffy | Las Vegas REALTOR®
                   </h1>
                   <p className="text-xl text-blue-200 mb-2">REALTOR® | License {businessInfo.license}</p>
                   <p className="text-slate-300 mb-6">Nevada Properties</p>
@@ -105,6 +103,15 @@ export default function GoogleBusinessPage() {
                 
                 {/* Rating & CTA */}
                 <div className="text-center bg-white/10 rounded-xl p-8">
+                  <div className="relative mx-auto mb-4 h-32 w-full overflow-hidden rounded-lg">
+                    <Image
+                      src="/images/sections/las-vegas-office.jpg"
+                      alt="Las Vegas office matching Google Business Profile NAP"
+                      fill
+                      sizes="400px"
+                      className="object-cover"
+                    />
+                  </div>
                   <div className="flex justify-center mb-4">
                     {[1, 2, 3, 4, 5].map((star) => (
                       <Star key={star} className="h-8 w-8 text-yellow-400 fill-yellow-400" />
@@ -310,7 +317,6 @@ export default function GoogleBusinessPage() {
         </div>
         <div className="text-center text-sm text-slate-500 mt-8">Last Updated: January 2026</div>
       </main>
-      <Footer />
     </>
   );
 }

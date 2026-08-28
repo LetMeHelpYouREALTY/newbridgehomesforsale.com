@@ -1,6 +1,5 @@
-import Navbar from "@/components/layouts/Navbar";
-import Footer from "@/components/layouts/Footer";
 import RealScoutListings from "@/components/realscout/RealScoutListings";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Phone,
@@ -29,7 +28,6 @@ export const metadata: Metadata = {
 export default function DelWebbLakeLasVegasPage() {
   return (
     <>
-      <Navbar />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">
           {/* Breadcrumb */}
@@ -44,13 +42,24 @@ export default function DelWebbLakeLasVegasPage() {
           </div>
 
           {/* Hero */}
+          <div className="relative mb-10 h-56 overflow-hidden rounded-2xl md:h-80 max-w-6xl mx-auto">
+            <Image
+              src="/images/neighborhoods/lake-las-vegas.jpg"
+              alt="Lake Las Vegas Henderson for Del Webb buyers"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+
           <div className="max-w-4xl mx-auto text-center mb-16">
             <div className="inline-flex items-center bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
               <Waves className="h-4 w-4 mr-2" />
               Lakefront 55+ Living
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
-              Del Webb at Lake Las Vegas
+              Del Webb Lake Las Vegas Homes | 55+ Henderson Waterfront Area
             </h1>
             <p className="text-xl text-slate-600">
               Modern homes. Lake views. Resort living. The newest Del Webb in Las Vegas.
@@ -286,7 +295,6 @@ export default function DelWebbLakeLasVegasPage() {
         <div className="text-center text-sm text-slate-500 mt-8">Last Updated: January 2026</div>
       </main>
       <RealScoutListings />
-      <Footer />
     </>
   );
 }

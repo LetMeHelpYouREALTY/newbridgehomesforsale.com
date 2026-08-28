@@ -1,5 +1,3 @@
-import Navbar from "@/components/layouts/Navbar";
-import Footer from "@/components/layouts/Footer";
 import Image from "next/image";
 import { Bed, Bath, Square, MapPin, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -18,13 +16,13 @@ async function getProperty(id: string) {
     name: "Modern Luxury Home",
     location: "Summerlin, Las Vegas, NV",
     price: "$850,000",
-    image: "/Image/hero_bg_1.jpg",
+    image: "/images/sections/featured-las-vegas-homes.jpg",
     bedrooms: 4,
     bathrooms: 3,
     squareFeet: 3200,
     yearBuilt: 2018,
     description:
-      "Stunning modern home in desirable Summerlin community. Features open floor plan, updated kitchen, and beautiful backyard. Close to schools, shopping, and entertainment.",
+      "Stunning modern home in Summerlin. Open floor plan, updated kitchen, and backyard. Near shopping and employment centers.",
   };
 }
 
@@ -38,7 +36,6 @@ export default async function PropertyPage({ params }: PropertyPageProps) {
 
   return (
     <>
-      <Navbar />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">
           {/* Breadcrumb */}
@@ -78,6 +75,7 @@ export default async function PropertyPage({ params }: PropertyPageProps) {
               src={property.image}
               alt={property.name}
               fill
+              sizes="100vw"
               className="object-cover"
               priority
             />
@@ -147,7 +145,6 @@ export default async function PropertyPage({ params }: PropertyPageProps) {
           </div>
         </div>
       </main>
-      <Footer />
     </>
   );
 }

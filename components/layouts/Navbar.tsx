@@ -29,11 +29,15 @@ export default function Navbar() {
   const serviceLinks = [
     { href: "/buyers", label: "Home Buying" },
     { href: "/sellers", label: "Home Selling" },
+    { href: "/listings", label: "MLS Search" },
     { href: "/luxury-homes", label: "Luxury Homes" },
+    { href: "/condos", label: "Condos" },
     { href: "/55-plus-communities", label: "55+ Communities" },
     { href: "/new-construction", label: "New Construction" },
+    { href: "/open-houses", label: "Open Houses" },
+    { href: "/sold", label: "Recently Sold" },
+    { href: "/resources", label: "Guides" },
     { href: "/market-report", label: "Market Report" },
-    { href: "/market-insights", label: "Market Insights" },
   ];
 
   return (
