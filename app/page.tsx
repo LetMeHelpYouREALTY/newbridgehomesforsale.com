@@ -9,29 +9,9 @@ import FaqAeo from "@/components/seo/FaqAeo";
 import CtaBanner from "@/components/seo/CtaBanner";
 import { images, NAP } from "@/lib/site-images";
 import { getRequestSiteUrl } from "@/lib/canonical-url";
+import { NEWBRIDGE_FAQS } from "@/lib/newbridge-seo";
 
-const homeFaqs = [
-  {
-    question: "Who represents buyers at Newbridge in Las Vegas?",
-    answer:
-      "Dr. Jan Duffy, REALTOR®, License S.0197614.LLC, with Berkshire Hathaway HomeServices Nevada Properties at 9406 W Lake Mead Blvd, Suite 100, Las Vegas, NV 89134. Call 702-222-1964. She is an independent buyer’s agent, not the builder sales desk.",
-  },
-  {
-    question: "What areas of Las Vegas does Dr. Jan Duffy serve?",
-    answer:
-      "She represents buyers and sellers across Newbridge and Southwest Las Vegas, plus Henderson, Summerlin, Green Valley, North Las Vegas, Southern Highlands, Skye Canyon, Centennial Hills, Inspirada, Mountain's Edge, The Ridges, Lake Las Vegas, and Anthem.",
-  },
-  {
-    question: "What was the Las Vegas median home price as of January 2026?",
-    answer:
-      "As of January 2026, the Las Vegas Valley median sale price on this site’s market snapshot was $450,000, with 28 average days on market and about 2.1 months of inventory. Ask Dr. Jan for a current CMA before you price or bid.",
-  },
-  {
-    question: "Does a Berkshire Hathaway buyer’s agent cost extra?",
-    answer:
-      "Buyer representation is typically paid from the listing side of the commission. You still get a dedicated agent, full MLS access, and contract review. Confirm current compensation in writing before you tour.",
-  },
-];
+const homeFaqs = NEWBRIDGE_FAQS;
 
 export default async function Home() {
   const config = await getPageDomainConfig();
@@ -87,7 +67,7 @@ export default async function Home() {
 
           <section className="mb-16">
             <h2 className="text-3xl font-bold text-slate-900 mb-4 text-center">
-              Why work with Dr. Jan Duffy in Las Vegas?
+              Why work with Dr. Jan Duffy at Newbridge?
             </h2>
             <p className="mx-auto mb-10 max-w-3xl text-center text-lg text-slate-600">
               You get a BHHS Nevada Properties agent who answers her own phone, plus a 50,000-agent
@@ -136,19 +116,19 @@ export default async function Home() {
           </SeoSection>
 
           <SeoSection
-            h2="Which Las Vegas neighborhoods should you tour first?"
-            answer="Start with commute, square footage, HOA rules, and price band—not adjectives. Summerlin, Henderson, Green Valley, The Ridges, Southern Highlands, North Las Vegas, Skye Canyon, Centennial Hills, Inspirada, and Mountain's Edge each have distinct inventory."
-            image={images.neighborhoods.summerlin.src}
-            imageAlt={images.neighborhoods.summerlin.alt}
+            h2="Which Las Vegas neighborhoods should you tour after Newbridge?"
+            answer="After Newbridge (89139), compare Mountain's Edge, Summerlin, Henderson, Green Valley, The Ridges, Southern Highlands, North Las Vegas, Skye Canyon, Centennial Hills, Inspirada, Lake Las Vegas, and Anthem by commute, square footage, HOA, and price band."
+            image={images.neighborhoods.newbridge.src}
+            imageAlt={images.neighborhoods.newbridge.alt}
             reverse
           >
             <div className="flex flex-wrap gap-2">
               {[
+                ["Newbridge", "/neighborhoods/newbridge"],
+                ["Mountain's Edge", "/neighborhoods/mountains-edge"],
                 ["Summerlin", "/neighborhoods/summerlin"],
                 ["Henderson", "/neighborhoods/henderson"],
                 ["The Ridges", "/neighborhoods/the-ridges"],
-                ["Green Valley", "/neighborhoods/green-valley"],
-                ["Lake Las Vegas", "/neighborhoods/lake-las-vegas"],
                 ["Anthem", "/neighborhoods/anthem"],
               ].map(([label, href]) => (
                 <Link
@@ -185,7 +165,7 @@ export default async function Home() {
 
           <ReviewsSection />
           <FaqAeo
-            title="Las Vegas real estate questions, answered"
+            title="Newbridge Las Vegas questions, answered"
             faqs={homeFaqs}
           />
           <CtaBanner

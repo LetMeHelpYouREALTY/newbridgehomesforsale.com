@@ -3,9 +3,9 @@ import SeoHero from "@/components/seo/SeoHero";
 import { images, NAP } from "@/lib/site-images";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | HeyBerkshire | Dr. Jan Duffy",
+  title: "Privacy Policy | Newbridge Homes | Dr. Jan Duffy",
   description:
-    "Privacy practices for heyberkshire.com, the website of Dr. Jan Duffy, Berkshire Hathaway HomeServices Nevada Properties.",
+    "Privacy practices for newbridgehomesforsale.com, the Newbridge Las Vegas website of Dr. Jan Duffy, Berkshire Hathaway HomeServices Nevada Properties.",
 };
 
 export default function PrivacyPage() {
@@ -13,7 +13,7 @@ export default function PrivacyPage() {
     <main className="pt-24 pb-16">
       <div className="container mx-auto px-4 max-w-3xl">
         <SeoHero
-          h1="Privacy Policy for heyberkshire.com"
+          h1="Privacy Policy for newbridgehomesforsale.com"
           lede={`${NAP.name} collects contact details you submit so we can respond to real estate inquiries. We do not sell your information.`}
           image={images.office.src}
           imageAlt={images.office.alt}

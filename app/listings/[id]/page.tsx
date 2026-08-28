@@ -4,8 +4,9 @@ import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Property Details | Las Vegas & Henderson Real Estate",
-  description: "View detailed information about this property listing in Las Vegas or Henderson, NV.",
+  title: "Property Details | Newbridge Las Vegas Listings",
+  description:
+    "View this listing with Dr. Jan Duffy. Newbridge and Southwest Las Vegas (89139) buyer representation, BHHS Nevada Properties. Call 702-222-1964.",
 };
 
 // This would typically fetch from RealScout API
@@ -27,11 +28,11 @@ async function getProperty(id: string) {
 }
 
 type PropertyPageProps = {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 };
 
 export default async function PropertyPage({ params }: PropertyPageProps) {
-  const { id } = await params;
+  const { id } = params;
   const property = await getProperty(id);
 
   return (
@@ -134,7 +135,7 @@ export default async function PropertyPage({ params }: PropertyPageProps) {
                 </p>
                 <div className="space-y-3">
                   <Button asChild className="w-full bg-blue-600 hover:bg-blue-700">
-                    <a href="tel:+17025001942">Call (702) 500-1942</a>
+                    <a href="tel:+17022221964">Call (702) 222-1964</a>
                   </Button>
                   <Button asChild variant="outline" className="w-full">
                     <a href="/contact">Send Message</a>

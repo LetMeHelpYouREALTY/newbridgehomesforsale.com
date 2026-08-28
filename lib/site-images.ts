@@ -1,4 +1,4 @@
-/** Generated section and neighborhood photography for heyberkshire.com (Aug 2026). */
+/** Generated section and neighborhood photography for newbridgehomesforsale.com (Aug 2026). */
 
 export const images = {
   heroHomes: {
@@ -117,6 +117,10 @@ export const images = {
     anthem: {
       src: "/images/neighborhoods/anthem.jpg",
       alt: "Anthem Henderson Nevada master-planned community",
+    },
+    newbridge: {
+      src: "/images/neighborhoods/newbridge.jpg",
+      alt: "Newbridge Las Vegas ranch-style homes near Blue Diamond Road in ZIP 89139",
     },
   },
 } as const;

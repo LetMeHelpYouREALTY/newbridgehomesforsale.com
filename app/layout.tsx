@@ -2,11 +2,13 @@ import type { Metadata, Viewport } from "next";
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import { getDomainConfig } from "@/lib/domain-config";
-import { getRequestHostname, getRequestSiteUrl } from "@/lib/canonical-url";
+import { SITE_ORIGIN } from "@/lib/canonical-url";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
+
+const config = getDomainConfig("newbridgehomesforsale.com");
 
 export const viewport: Viewport = {
   themeColor: "#0f172a",
@@ -16,64 +18,60 @@ export const viewport: Viewport = {
 
 export const revalidate = 3600;
 
-export async function generateMetadata(): Promise<Metadata> {
-  const hostname = getRequestHostname();
-  const siteUrl = getRequestSiteUrl();
-  const config = getDomainConfig(hostname);
-  const title = `${config.neighborhood} | Dr. Jan Duffy, REALTOR® | BHHS Nevada`;
-
-  return {
-    metadataBase: new URL(siteUrl),
-    title,
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_ORIGIN),
+  title: {
+    default: "Newbridge Homes for Sale | Dr. Jan Duffy, REALTOR® | BHHS Nevada",
+    template: "%s | Newbridge Las Vegas",
+  },
+  description: config.description,
+  keywords: config.keywords,
+  applicationName: "Berkshire Hathaway HomeServices Nevada Properties",
+  authors: [{ name: "Dr. Jan Duffy" }],
+  creator: "Dr. Jan Duffy",
+  publisher: "Berkshire Hathaway HomeServices Nevada Properties",
+  formatDetection: {
+    telephone: true,
+    email: true,
+    address: true,
+  },
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: config.heroHeadline,
     description: config.description,
-    keywords: config.keywords,
-    applicationName: "Berkshire Hathaway HomeServices Nevada Properties",
-    authors: [{ name: "Dr. Jan Duffy" }],
-    creator: "Dr. Jan Duffy",
-    publisher: "Berkshire Hathaway HomeServices Nevada Properties",
-    formatDetection: {
-      telephone: true,
-      email: true,
-      address: true,
-    },
-    alternates: {
-      canonical: "/",
-    },
-    openGraph: {
-      title: config.heroHeadline,
-      description: config.description,
-      type: "website",
-      locale: "en_US",
-      url: siteUrl,
-      siteName: "Berkshire Hathaway HomeServices Nevada Properties",
-      images: [
-        {
-          url: `${siteUrl}/opengraph-image`,
-          width: 1200,
-          height: 630,
-          alt: `${config.heroHeadline} | Dr. Jan Duffy, BHHS Nevada Properties`,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: config.heroHeadline,
-      description: config.description,
-      images: [`${siteUrl}/twitter-image`],
-    },
-    robots: {
+    type: "website",
+    locale: "en_US",
+    url: SITE_ORIGIN,
+    siteName: "Berkshire Hathaway HomeServices Nevada Properties",
+    images: [
+      {
+        url: `${SITE_ORIGIN}/og.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "Newbridge homes for sale in Southwest Las Vegas | Dr. Jan Duffy, BHHS Nevada Properties",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: config.heroHeadline,
+    description: config.description,
+    images: [`${SITE_ORIGIN}/og.jpg`],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
       index: true,
       follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-        "max-video-preview": -1,
-      },
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
     },
-  };
-}
+  },
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

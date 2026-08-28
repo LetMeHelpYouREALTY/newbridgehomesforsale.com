@@ -3,21 +3,27 @@ import Image from "next/image";
 import Link from "next/link";
 import { MapPin, Phone, Home, Users, GraduationCap } from "lucide-react";
 import type { Metadata } from "next";
+import { newbridgeMetadata } from "@/lib/newbridge-seo";
 
-export const metadata: Metadata = {
-  title: "Las Vegas Neighborhoods | Berkshire Hathaway HomeServices",
+export const metadata: Metadata = newbridgeMetadata({
+  title: "Las Vegas Neighborhoods Near Newbridge | Dr. Jan Duffy",
   description:
-    "Explore Las Vegas and Henderson neighborhoods with Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. Summerlin, Henderson, The Ridges, Southern Highlands & more.",
-  keywords: [
-    "Las Vegas neighborhoods",
-    "Henderson communities",
-    "Summerlin real estate",
-    "best neighborhoods Las Vegas",
-    "where to live Las Vegas",
-  ],
-};
+    "Start in Newbridge (ZIP 89139), then compare Mountain's Edge, Summerlin, Henderson, and more with Dr. Jan Duffy, BHHS Nevada Properties. Call 702-222-1964.",
+  path: "/neighborhoods",
+  keywords: ["Las Vegas neighborhoods", "Southwest Las Vegas 89139", "Mountain's Edge near Newbridge"],
+});
 
 const neighborhoods = [
+  {
+    name: "Newbridge",
+    slug: "newbridge",
+    medianPrice: "Ask for CMA",
+    priceChange: "Live MLS",
+    description:
+      "Richmond American ranch community in Southwest Las Vegas, ZIP 89139, near Blue Diamond Road. Confirm remaining lots and resales before you tour.",
+    highlights: ["ZIP 89139", "Ranch plans", "Blue Diamond Rd", "Buyer’s agent"],
+    bestFor: "Southwest Las Vegas, single-story plans, independent representation",
+  },
   {
     name: "Summerlin",
     slug: "summerlin",
@@ -150,10 +156,10 @@ export default function NeighborhoodsPage() {
               Berkshire Hathaway HomeServices Nevada Properties
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
-              Las Vegas and Henderson Neighborhoods | Homes by Area
+              Newbridge and Nearby Las Vegas Neighborhoods
             </h1>
             <p className="text-xl text-slate-600">
-              Compare square footage, HOA, commute, and January 2026 median prices across Las Vegas and Henderson with Dr. Jan Duffy,{" "}
+              Start with Newbridge in ZIP 89139, then compare Mountain's Edge, Summerlin, Henderson, and more with Dr. Jan Duffy,{" "}
               <strong>Berkshire Hathaway HomeServices Nevada Properties</strong>.
             </p>
           </div>
@@ -211,7 +217,7 @@ export default function NeighborhoodsPage() {
             <div className="bg-slate-50 rounded-lg p-8">
               <blockquote className="text-lg text-slate-700 italic mb-4">
                 "Every Las Vegas neighborhood has its own personality. Whether you want the
-                family-friendly parks of Summerlin, the established charm of Green Valley, or the
+                neighborhood parks of Summerlin, the established charm of Green Valley, or the
                 luxury of The Ridges, I'll help you find the community that matches your lifestyle.
                 That's the Berkshire Hathaway HomeServices difference—personalized guidance backed
                 by local expertise."
@@ -260,11 +266,11 @@ export default function NeighborhoodsPage() {
               neighborhood recommendations.
             </p>
             <a
-              href="tel:+17025001942"
+              href="tel:+17022221964"
               className="inline-flex items-center bg-white text-blue-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-50 transition-colors"
             >
               <Phone className="h-5 w-5 mr-2" />
-              Call (702) 500-1942
+              Call (702) 222-1964
             </a>
             <p className="mt-4 text-blue-200 text-sm">
               Berkshire Hathaway HomeServices Nevada Properties

@@ -1,7 +1,8 @@
 import { headers } from "next/headers";
 
-/** Production host for this repo when the request host is missing (preview, local). */
+/** This repo's production origin. Never infer from Vercel/preview Host headers. */
 export const PROJECT_PRODUCTION_HOST = "newbridgehomesforsale.com";
+export const SITE_ORIGIN = "https://www.newbridgehomesforsale.com";
 
 export function normalizeHostname(raw: string | null | undefined): string {
   if (!raw) return "";
@@ -14,45 +15,38 @@ export function normalizeHostname(raw: string | null | undefined): string {
     .replace(/:\d+$/, "");
 }
 
-function isEphemeralHost(host: string): boolean {
+function isUntrustedHost(host: string): boolean {
+  const clean = host.replace(/^www\./, "");
   return (
-    !host ||
-    host === "localhost" ||
-    host.startsWith("127.") ||
-    host.startsWith("0.0.0.0") ||
-    host.endsWith(".vercel.app")
+    !clean ||
+    clean === "localhost" ||
+    clean.startsWith("127.") ||
+    clean.startsWith("0.0.0.0") ||
+    clean === "vercel.com" ||
+    clean.endsWith(".vercel.com") ||
+    clean.endsWith(".vercel.app") ||
+    clean === "heyberkshire.com"
   );
 }
 
-/**
- * Canonical origin for metadata, sitemap, and JSON-LD.
- * Uses the request host in production; does not force www on Vercel preview URLs.
- */
-export function getCanonicalSiteUrl(hostname: string): string {
-  const host = normalizeHostname(hostname);
-
-  if (isEphemeralHost(host)) {
-    const prod = normalizeHostname(
-      process.env.VERCEL_PROJECT_PRODUCTION_URL || PROJECT_PRODUCTION_HOST
-    );
-    if (isEphemeralHost(prod)) {
-      return `https://${prod || PROJECT_PRODUCTION_HOST}`;
-    }
-    return `https://www.${prod.replace(/^www\./, "")}`;
-  }
-
-  return `https://www.${host.replace(/^www\./, "")}`;
+export function getCanonicalSiteUrl(_hostname?: string): string {
+  return SITE_ORIGIN;
 }
 
 export function getRequestHostname(): string {
-  const headerList = headers();
-  return (
-    normalizeHostname(headerList.get("x-domain")) ||
-    normalizeHostname(headerList.get("x-forwarded-host")) ||
-    normalizeHostname(headerList.get("host"))
-  );
+  try {
+    const headerList = headers();
+    const host =
+      normalizeHostname(headerList.get("x-domain")) ||
+      normalizeHostname(headerList.get("host")) ||
+      normalizeHostname(headerList.get("x-forwarded-host"));
+    if (isUntrustedHost(host)) return PROJECT_PRODUCTION_HOST;
+    return host || PROJECT_PRODUCTION_HOST;
+  } catch {
+    return PROJECT_PRODUCTION_HOST;
+  }
 }
 
 export function getRequestSiteUrl(): string {
-  return getCanonicalSiteUrl(getRequestHostname());
+  return SITE_ORIGIN;
 }

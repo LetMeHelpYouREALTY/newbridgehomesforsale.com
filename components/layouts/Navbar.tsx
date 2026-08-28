@@ -21,13 +21,14 @@ export default function Navbar() {
   const mainNavLinks = [
     { href: "/", label: "Home", external: false },
     { href: "http://drjanduffy.realscout.com/", label: "Properties", external: true },
-    { href: "/neighborhoods", label: "Neighborhoods", external: false },
+    { href: "/neighborhoods/newbridge", label: "Newbridge", external: false },
     { href: "/about", label: "About", external: false },
     { href: "/contact", label: "Contact", external: false },
   ];
 
   const serviceLinks = [
-    { href: "/buyers", label: "Home Buying" },
+    { href: "/neighborhoods", label: "All Neighborhoods" },
+    { href: "/neighborhoods/newbridge", label: "Newbridge 89139" },
     { href: "/sellers", label: "Home Selling" },
     { href: "/listings", label: "MLS Search" },
     { href: "/luxury-homes", label: "Luxury Homes" },
@@ -54,7 +55,9 @@ export default function Navbar() {
               Berkshire Hathaway
               <span className="text-blue-600"> HomeServices</span>
             </span>
-            <span className="text-xs text-slate-500 hidden sm:block">Nevada Properties</span>
+            <span className="text-xs text-slate-500 hidden sm:block">
+              Newbridge · Las Vegas 89139
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -126,9 +129,9 @@ export default function Navbar() {
             </div>
 
             <Button asChild className="bg-blue-600 hover:bg-blue-700">
-              <Link href="tel:+17025001942" className="flex items-center gap-2">
+              <Link href="tel:+17022221964" className="flex items-center gap-2">
                 <Phone className="h-4 w-4" />
-                <span className="hidden xl:inline">(702) 500-1942</span>
+                <span className="hidden xl:inline">(702) 222-1964</span>
                 <span className="xl:hidden">Call</span>
               </Link>
             </Button>
@@ -137,7 +140,7 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <div className="lg:hidden flex items-center gap-3">
             <Button asChild size="sm" className="bg-blue-600 hover:bg-blue-700">
-              <Link href="tel:+17025001942">
+              <Link href="tel:+17022221964">
                 <Phone className="h-4 w-4" />
               </Link>
             </Button>
@@ -200,11 +203,11 @@ export default function Navbar() {
               <div className="pt-4">
                 <Button asChild className="bg-blue-600 hover:bg-blue-700 w-full">
                   <Link
-                    href="tel:+17025001942"
+                    href="tel:+17022221964"
                     className="flex items-center justify-center gap-2"
                   >
                     <Phone className="h-4 w-4" />
-                    Call Dr. Jan: (702) 500-1942
+                    Call Dr. Jan: (702) 222-1964
                   </Link>
                 </Button>
               </div>

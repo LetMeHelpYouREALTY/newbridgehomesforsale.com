@@ -28,7 +28,7 @@ export const DOMAIN_CONFIGS: Record<string, DomainConfig> = {
   "californiaforeverbroker.com": { domain: "californiaforeverbroker.com", neighborhood: "Las Vegas", tagline: "Relocating from California to Las Vegas", description: "California to Las Vegas relocation specialist. Find your Nevada dream home with Dr. Jan Duffy.", heroHeadline: "Leaving California for Las Vegas?", heroSubheadline: "No state income tax, lower cost of living, and year-round sunshine. Let me help you make the move.", keywords: ["California to Las Vegas move", "relocation Las Vegas", "Nevada real estate for Californians"], pageType: "lifestyle", realscoutAgentId: REALSCOUT_AGENT_ID, ctaBadge: "Relocation Expert", ctaHeadline: "Your Nevada Fresh Start Awaits", ctaSubheadline: "I've helped hundreds of California families make the move. Let's talk." },
   "centennialhillshomesforsale.com": { domain: "centennialhillshomesforsale.com", neighborhood: "Centennial Hills", tagline: "Centennial Hills Homes for Sale", description: "Search Centennial Hills homes for sale in Northwest Las Vegas. Expert guidance from Dr. Jan Duffy.", heroHeadline: "Centennial Hills Homes for Sale", heroSubheadline: "Premier Northwest Las Vegas community with stunning mountain views.", keywords: ["Centennial Hills homes", "Centennial Hills Las Vegas", "Northwest Las Vegas real estate"], pageType: "community", realscoutAgentId: REALSCOUT_AGENT_ID, ctaBadge: "Centennial Hills Expert", ctaHeadline: "Find Your Centennial Hills Home", ctaSubheadline: "I know every street, every floor plan, and every value in Centennial Hills." },
   "drjanduffyreviews.com": { domain: "drjanduffyreviews.com", neighborhood: "Las Vegas", tagline: "Dr. Jan Duffy — Client Reviews", description: "Read what clients say about Dr. Jan Duffy, Las Vegas top real estate agent at BHHS Nevada Properties.", heroHeadline: "What Clients Say About Dr. Jan", heroSubheadline: "500+ families helped. 30+ years of experience. Real results, real reviews.", keywords: ["Dr Jan Duffy reviews", "BHHS Nevada Properties reviews", "Las Vegas realtor reviews"], pageType: "search", realscoutAgentId: REALSCOUT_AGENT_ID, ctaBadge: "Top-Rated Agent", ctaHeadline: "Join 500+ Happy Families", ctaSubheadline: "Let's talk about your real estate goals — no pressure, just expertise." },
-  "drjanetduffy.com": { domain: "drjanetduffy.com", neighborhood: "Las Vegas", tagline: "Dr. Janet Duffy — Las Vegas REALTOR®", description: "Dr. Janet Duffy, top Las Vegas REALTOR® at Berkshire Hathaway HomeServices Nevada Properties.", heroHeadline: "Dr. Janet Duffy | Las Vegas Real Estate Expert", heroSubheadline: "30+ years, 500+ families, $127M+ in career sales. Your trusted Las Vegas REALTOR®.", keywords: ["Dr Janet Duffy", "Janet Duffy Las Vegas realtor", "BHHS Nevada Properties"], pageType: "search", realscoutAgentId: REALSCOUT_AGENT_ID, ctaBadge: "Las Vegas Expert", ctaHeadline: "Ready to Buy or Sell?", ctaSubheadline: "Call or text Dr. Jan — I answer my own phone." },
+  "drjanetduffy.com": { domain: "drjanetduffy.com", neighborhood: "Las Vegas", tagline: "Dr. Jan Duffy — Las Vegas REALTOR®", description: "Dr. Jan Duffy, Las Vegas REALTOR® at Berkshire Hathaway HomeServices Nevada Properties.", heroHeadline: "Dr. Jan Duffy | Las Vegas Real Estate Expert", heroSubheadline: "30+ years, 500+ families, $127M+ in career sales. Your trusted Las Vegas REALTOR®.", keywords: ["Dr Jan Duffy", "Jan Duffy Las Vegas realtor", "BHHS Nevada Properties"], pageType: "search", realscoutAgentId: REALSCOUT_AGENT_ID, ctaBadge: "Las Vegas Expert", ctaHeadline: "Ready to Buy or Sell?", ctaSubheadline: "Call or text Dr. Jan — I answer my own phone." },
   "eaglehillshomes.com": { domain: "eaglehillshomes.com", neighborhood: "Eagle Hills", tagline: "Eagle Hills Homes for Sale", description: "Search Eagle Hills homes for sale in Las Vegas. Expert real estate guidance from Dr. Jan Duffy.", heroHeadline: "Eagle Hills Homes for Sale", heroSubheadline: "Discover this beautiful Las Vegas neighborhood.", keywords: ["Eagle Hills homes", "Eagle Hills Las Vegas", "Las Vegas real estate"], pageType: "community", realscoutAgentId: REALSCOUT_AGENT_ID, ctaBadge: "Eagle Hills Specialist", ctaHeadline: "Find Your Eagle Hills Home", ctaSubheadline: "I know every listing in Eagle Hills. Let me help you find the right one." },
   "goodtoknowrealtor.com": { domain: "goodtoknowrealtor.com", neighborhood: "Las Vegas", tagline: "Las Vegas Real Estate — Good to Know", description: "Las Vegas real estate tips, market data, and insider knowledge from Dr. Jan Duffy.", heroHeadline: "Good to Know — Las Vegas Real Estate", heroSubheadline: "Market data, neighborhood guides, and insider tips from 30+ years in Las Vegas real estate.", keywords: ["Las Vegas real estate tips", "Las Vegas market data", "Las Vegas realtor advice"], pageType: "search", realscoutAgentId: REALSCOUT_AGENT_ID, ctaBadge: "Market Expert", ctaHeadline: "Get the Insider Knowledge", ctaSubheadline: "30 years of Las Vegas real estate data at your fingertips." },
   "heritageatstonebridgehomes.com": { domain: "heritageatstonebridgehomes.com", neighborhood: "Heritage at Stonebridge", tagline: "Heritage at Stonebridge Homes for Sale", description: "Heritage at Stonebridge 55+ active adult community homes. Expert guidance from Dr. Jan Duffy.", heroHeadline: "Heritage at Stonebridge Homes", heroSubheadline: "Award-winning 55+ active adult community with resort-style amenities in Summerlin.", keywords: ["Heritage Stonebridge homes", "55 plus Summerlin", "active adult Las Vegas"], pageType: "55plus", realscoutAgentId: REALSCOUT_AGENT_ID, ctaBadge: "55+ Community Expert", ctaHeadline: "Heritage at Stonebridge Awaits", ctaSubheadline: "I specialize in 55+ communities. Let me show you everything Heritage has to offer." },
@@ -44,7 +44,7 @@ export const DOMAIN_CONFIGS: Record<string, DomainConfig> = {
   "openhouseupdate.com": { domain: "openhouseupdate.com", neighborhood: "Las Vegas", tagline: "Las Vegas Open House Schedule", description: "Las Vegas open houses this weekend. Find open homes near you with Dr. Jan Duffy.", heroHeadline: "Las Vegas Open Houses", heroSubheadline: "This weekend's open houses across the Las Vegas Valley — updated in real time.", keywords: ["Las Vegas open houses", "open house Las Vegas", "homes open this weekend Las Vegas"], pageType: "search", realscoutAgentId: REALSCOUT_AGENT_ID, ctaBadge: "Open House Expert", ctaHeadline: "Schedule a Private Showing", ctaSubheadline: "Can't make the open house? I'll get you a private tour on your schedule." },
   "openhouseupdates.com": { domain: "openhouseupdates.com", neighborhood: "Las Vegas", tagline: "Las Vegas Open House Updates", description: "Current Las Vegas open house listings and schedule. Find your next home this weekend.", heroHeadline: "Las Vegas Open House Updates", heroSubheadline: "Real-time open house schedule for Las Vegas, Henderson, and Summerlin.", keywords: ["Las Vegas open house updates", "Henderson open houses", "Summerlin open houses"], pageType: "search", realscoutAgentId: REALSCOUT_AGENT_ID, ctaBadge: "Weekend Open Houses", ctaHeadline: "Never Miss an Open House", ctaSubheadline: "I'll alert you to new open houses matching your criteria before they're announced." },
   "samaritanpharma.com": { domain: "samaritanpharma.com", neighborhood: "Las Vegas", tagline: "Las Vegas Real Estate", description: "Las Vegas real estate services from Dr. Jan Duffy, BHHS Nevada Properties.", heroHeadline: "Las Vegas Homes for Sale", heroSubheadline: "Expert Las Vegas real estate guidance from Dr. Jan Duffy.", keywords: ["Las Vegas homes for sale", "Las Vegas real estate", "Dr Jan Duffy"], pageType: "search", realscoutAgentId: REALSCOUT_AGENT_ID, ctaBadge: "Las Vegas Expert", ctaHeadline: "Find Your Las Vegas Home", ctaSubheadline: "30+ years of experience working for you." },
-  "searchforhomesinhenderson.com": { domain: "searchforhomesinhenderson.com", neighborhood: "Henderson", tagline: "Search Homes in Henderson NV", description: "Search Henderson NV homes for sale. Expert Henderson real estate guidance from Dr. Jan Duffy.", heroHeadline: "Search Homes in Henderson, NV", heroSubheadline: "One of America's safest cities with award-winning master-planned communities.", keywords: ["Henderson NV homes for sale", "Henderson real estate", "search Henderson homes"], pageType: "search", realscoutAgentId: REALSCOUT_AGENT_ID, ctaBadge: "Henderson Specialist", ctaHeadline: "Find Your Henderson Home", ctaSubheadline: "Green Valley, MacDonald Highlands, Anthem — I know every Henderson neighborhood." },
+  "searchforhomesinhenderson.com": { domain: "searchforhomesinhenderson.com", neighborhood: "Henderson", tagline: "Search Homes in Henderson NV", description: "Search Henderson NV homes for sale. Expert Henderson real estate guidance from Dr. Jan Duffy.", heroHeadline: "Search Homes in Henderson, NV", heroSubheadline: "One of America's cities with published municipal services with award-winning master-planned communities.", keywords: ["Henderson NV homes for sale", "Henderson real estate", "search Henderson homes"], pageType: "search", realscoutAgentId: REALSCOUT_AGENT_ID, ctaBadge: "Henderson Specialist", ctaHeadline: "Find Your Henderson Home", ctaSubheadline: "Green Valley, MacDonald Highlands, Anthem — I know every Henderson neighborhood." },
   "searchforlasvegashomes.com": { domain: "searchforlasvegashomes.com", neighborhood: "Las Vegas", tagline: "Search Las Vegas Homes for Sale", description: "Search all Las Vegas homes for sale. MLS listings updated daily. Dr. Jan Duffy, BHHS.", heroHeadline: "Search Las Vegas Homes for Sale", heroSubheadline: "Every MLS listing in the Las Vegas Valley — updated daily.", keywords: ["search Las Vegas homes", "Las Vegas MLS", "homes for sale Las Vegas NV"], pageType: "search", realscoutAgentId: REALSCOUT_AGENT_ID, ctaBadge: "MLS Search Expert", ctaHeadline: "Start Your Home Search", ctaSubheadline: "Tell me what you're looking for and I'll send you matches before they hit the market." },
   "skyecanyonhomeexpert.com": { domain: "skyecanyonhomeexpert.com", neighborhood: "Skye Canyon", tagline: "Skye Canyon Home Expert", description: "Skye Canyon homes for sale in Northwest Las Vegas. Dr. Jan Duffy, Skye Canyon specialist.", heroHeadline: "Skye Canyon Home Expert", heroSubheadline: "Northwest Las Vegas' most exciting master-planned community.", keywords: ["Skye Canyon homes", "Skye Canyon Las Vegas", "Northwest Las Vegas new construction"], pageType: "community", realscoutAgentId: REALSCOUT_AGENT_ID, ctaBadge: "Skye Canyon Expert", ctaHeadline: "Your Skye Canyon Expert", ctaSubheadline: "New construction lots, resales, builder incentives — I know Skye Canyon inside and out." },
   "skyecanyonrealestateexpert.com": { domain: "skyecanyonrealestateexpert.com", neighborhood: "Skye Canyon", tagline: "Skye Canyon Real Estate Expert", description: "Expert Skye Canyon real estate guidance. Find new and resale homes in Skye Canyon Las Vegas.", heroHeadline: "Skye Canyon Real Estate Expert", heroSubheadline: "Get insider access to every lot, every floor plan, and every builder incentive in Skye Canyon.", keywords: ["Skye Canyon real estate", "Skye Canyon NW Las Vegas", "Skye Canyon new homes"], pageType: "community", realscoutAgentId: REALSCOUT_AGENT_ID, ctaBadge: "Skye Canyon Specialist", ctaHeadline: "Work With the Skye Canyon Expert", ctaSubheadline: "No one knows Skye Canyon better. Let me find you the best deal available." },
@@ -57,20 +57,27 @@ export const DOMAIN_CONFIGS: Record<string, DomainConfig> = {
   "yourdivorcerealtor.com": { domain: "yourdivorcerealtor.com", neighborhood: "Las Vegas", tagline: "Divorce Real Estate Specialist Las Vegas", description: "Confidential Las Vegas divorce real estate specialist. Dr. Jan Duffy handles court-ordered sales with discretion.", heroHeadline: "Your Divorce Real Estate Specialist", heroSubheadline: "Confidential, compassionate real estate guidance during life's most challenging transitions.", keywords: ["divorce realtor Las Vegas", "divorce real estate Las Vegas", "court ordered sale Las Vegas"], pageType: "lifestyle", realscoutAgentId: REALSCOUT_AGENT_ID, ctaBadge: "Confidential Support", ctaHeadline: "Private Consultation Available", ctaSubheadline: "I handle divorce sales with complete discretion. Let's discuss your options privately." },
 };
 
-// Default config for any domain not specifically listed
+// Default config for this repo: Newbridge, not generic Las Vegas
 export const DEFAULT_CONFIG: DomainConfig = {
-  domain: "default",
-  neighborhood: "Las Vegas",
-  tagline: "Las Vegas Homes for Sale",
-  description: "Search Las Vegas homes for sale. Expert real estate guidance from Dr. Jan Duffy, BHHS Nevada Properties.",
-  heroHeadline: "Las Vegas Homes for Sale",
-  heroSubheadline: "Expert real estate guidance from Dr. Jan Duffy — 30+ years, 500+ families helped.",
-  keywords: ["Las Vegas homes for sale", "Las Vegas real estate", "Dr Jan Duffy"],
-  pageType: "search",
+  domain: "newbridgehomesforsale.com",
+  neighborhood: "Newbridge",
+  tagline: "Newbridge Homes for Sale",
+  description:
+    "Search Newbridge homes for sale in Southwest Las Vegas near Blue Diamond Road (ZIP 89139). Independent buyer representation from Dr. Jan Duffy, BHHS Nevada Properties.",
+  heroHeadline: "Newbridge Homes for Sale",
+  heroSubheadline:
+    "Richmond American ranch plans near Blue Diamond Road. An independent BHHS buyer’s agent — not the builder desk.",
+  keywords: [
+    "Newbridge homes for sale",
+    "Newbridge Las Vegas 89139",
+    "Richmond American Newbridge",
+    "Blue Diamond Road homes Las Vegas",
+  ],
+  pageType: "community",
   realscoutAgentId: REALSCOUT_AGENT_ID,
-  ctaBadge: "Las Vegas Expert",
-  ctaHeadline: "Find Your Las Vegas Home",
-  ctaSubheadline: "Call or text Dr. Jan at 702-222-1964 — I answer my own phone.",
+  ctaBadge: "Newbridge Buyer Agent",
+  ctaHeadline: "Tour Newbridge With Your Own Agent",
+  ctaSubheadline: "Call 702-222-1964. I represent you, not the builder.",
 };
 
 export function getDomainConfig(hostname: string): DomainConfig {
@@ -85,20 +92,7 @@ export function getDomainConfig(hostname: string): DomainConfig {
 
   if (DOMAIN_CONFIGS[clean]) return DOMAIN_CONFIGS[clean];
 
-  const isPreview =
-    !clean ||
-    clean === "localhost" ||
-    clean.startsWith("127.") ||
-    clean.endsWith(".vercel.app");
-
-  if (isPreview) {
-    const prod = (process.env.VERCEL_PROJECT_PRODUCTION_URL || PROJECT_PRODUCTION_HOST)
-      .replace(/^https?:\/\//, "")
-      .replace(/^www\./, "")
-      .split("/")[0]
-      .toLowerCase();
-    return DOMAIN_CONFIGS[prod] ?? DOMAIN_CONFIGS[PROJECT_PRODUCTION_HOST] ?? DEFAULT_CONFIG;
-  }
-
-  return DEFAULT_CONFIG;
+  // This repo ships newbridgehomesforsale.com. Unknown hosts (vercel.com,
+  // preview URLs, empty headers) must not fall back to generic Las Vegas copy.
+  return DOMAIN_CONFIGS[PROJECT_PRODUCTION_HOST] ?? DEFAULT_CONFIG;
 }

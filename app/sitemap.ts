@@ -1,10 +1,8 @@
 import { MetadataRoute } from "next";
-import { getCanonicalSiteUrl, PROJECT_PRODUCTION_HOST } from "@/lib/canonical-url";
+import { SITE_ORIGIN } from "@/lib/canonical-url";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = getCanonicalSiteUrl(
-    process.env.VERCEL_PROJECT_PRODUCTION_URL || PROJECT_PRODUCTION_HOST
-  );
+  const baseUrl = SITE_ORIGIN;
   const lastModified = new Date();
 
   // Core pages
@@ -21,11 +19,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/privacy`, priority: 0.3, changeFrequency: "yearly" as const },
     { url: `${baseUrl}/terms`, priority: 0.3, changeFrequency: "yearly" as const },
     { url: `${baseUrl}/equal-housing`, priority: 0.4, changeFrequency: "yearly" as const },
-    { url: `${baseUrl}/open-houses`, priority: 0.8, changeFrequency: "daily" as const },
-    { url: `${baseUrl}/sold`, priority: 0.8, changeFrequency: "weekly" as const },
-    { url: `${baseUrl}/reviews`, priority: 0.8, changeFrequency: "monthly" as const },
-    { url: `${baseUrl}/resources`, priority: 0.8, changeFrequency: "monthly" as const },
-    { url: `${baseUrl}/condos`, priority: 0.8, changeFrequency: "weekly" as const },
     { url: `${baseUrl}/why-berkshire-hathaway`, priority: 0.9, changeFrequency: "monthly" as const },
     { url: `${baseUrl}/market-report`, priority: 0.9, changeFrequency: "weekly" as const },
     { url: `${baseUrl}/market-update`, priority: 0.9, changeFrequency: "weekly" as const },
@@ -76,6 +69,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Neighborhood pages
   const neighborhoodPages = [
     { url: `${baseUrl}/neighborhoods`, priority: 0.8, changeFrequency: "weekly" as const },
+    { url: `${baseUrl}/neighborhoods/newbridge`, priority: 0.9, changeFrequency: "weekly" as const },
     { url: `${baseUrl}/neighborhoods/summerlin`, priority: 0.8, changeFrequency: "weekly" as const },
     { url: `${baseUrl}/neighborhoods/henderson`, priority: 0.8, changeFrequency: "weekly" as const },
     { url: `${baseUrl}/neighborhoods/green-valley`, priority: 0.7, changeFrequency: "weekly" as const },

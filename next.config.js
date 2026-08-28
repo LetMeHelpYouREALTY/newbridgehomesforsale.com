@@ -47,7 +47,7 @@ const nextConfig = {
             value: 'heyberkshire.com',
           },
         ],
-        destination: 'https://www.heyberkshire.com/:path*',
+        destination: 'https://www.newbridgehomesforsale.com/:path*',
         permanent: true,
       },
       {

@@ -3,9 +3,9 @@ import SeoHero from "@/components/seo/SeoHero";
 import { images, NAP } from "@/lib/site-images";
 
 export const metadata: Metadata = {
-  title: "Terms of Use | HeyBerkshire | Dr. Jan Duffy",
+  title: "Terms of Use | Newbridge Homes | Dr. Jan Duffy",
   description:
-    "Website terms for heyberkshire.com. Listings, market stats, and third-party widgets are informational. Nevada real estate is provided by Dr. Jan Duffy, License S.0197614.LLC.",
+    "Website terms for newbridgehomesforsale.com. Listings, market stats, and third-party widgets are informational. Nevada real estate is provided by Dr. Jan Duffy, License S.0197614.LLC.",
 };
 
 export default function TermsPage() {
@@ -14,7 +14,7 @@ export default function TermsPage() {
       <div className="container mx-auto px-4 max-w-3xl">
         <SeoHero
           h1="Terms of Use"
-          lede="heyberkshire.com is an information site for Dr. Jan Duffy, Berkshire Hathaway HomeServices Nevada Properties. It is not a substitute for a signed brokerage agreement or legal advice."
+          lede="newbridgehomesforsale.com is an information site for Newbridge Las Vegas buyers working with Dr. Jan Duffy, Berkshire Hathaway HomeServices Nevada Properties. It is not a substitute for a signed brokerage agreement or legal advice."
           image={images.office.src}
           imageAlt={images.office.alt}
         />

@@ -8,7 +8,7 @@ export default function NotFound() {
         Page not found
       </h1>
       <p className="mt-3 max-w-md text-slate-600">
-        That URL is not on heyberkshire.com. Browse homes, neighborhoods, or contact Dr. Jan Duffy.
+        That URL is not on newbridgehomesforsale.com. Browse Newbridge homes, neighborhoods, or contact Dr. Jan Duffy.
       </p>
       <div className="mt-8 flex flex-col gap-3 sm:flex-row">
         <Link
