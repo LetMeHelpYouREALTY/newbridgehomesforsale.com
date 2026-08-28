@@ -46,11 +46,20 @@ export async function generateMetadata(): Promise<Metadata> {
       locale: "en_US",
       url: siteUrl,
       siteName: "Berkshire Hathaway HomeServices Nevada Properties",
+      images: [
+        {
+          url: `${siteUrl}/opengraph-image`,
+          width: 1200,
+          height: 630,
+          alt: `${config.heroHeadline} | Dr. Jan Duffy, BHHS Nevada Properties`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: config.heroHeadline,
       description: config.description,
+      images: [`${siteUrl}/twitter-image`],
     },
     robots: {
       index: true,
