@@ -7,6 +7,7 @@ import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
 import { Phone, Home as HomeIcon, TrendingUp, Shield, Users } from "lucide-react";
 import { getPageDomainConfig } from "@/lib/get-domain-config";
+import CommunityAmenitiesSlot from "@/components/amenities/CommunityAmenitiesSlot";
 
 export default async function Home() {
   const config = await getPageDomainConfig();
@@ -147,6 +148,7 @@ export default async function Home() {
         </section>
 
         <RealScoutListings />
+        <CommunityAmenitiesSlot variant="home" />
         <WhyChooseUs />
         <ReviewsSection />
         <FAQSection />
