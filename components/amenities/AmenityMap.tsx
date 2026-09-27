@@ -4,62 +4,20 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 import type { CommunityAmenityConfig } from "@/lib/amenities/types";
 import { getOrderedCategories } from "@/lib/amenities/categories";
 import type { AmenityCategoryId } from "@/lib/amenities/types";
+import { loadGoogleMaps, mapsAuthFailed } from "@/lib/google-maps-loader";
+import { searchCategory, type NearbyPlaceResult } from "@/lib/amenities/search-category";
+import {
+  buildCommunityInfoContent,
+  buildPlaceInfoContent,
+} from "@/lib/amenities/info-window-content";
 import AmenityMapFallback from "./AmenityMapFallback";
 
 const MAP_HEIGHT = 420;
-
-type PlaceResult = {
-  id: string;
-  name: string;
-  address: string;
-  rating?: number;
-  mapsUrl: string;
-  lat: number;
-  lng: number;
-};
 
 type AmenityMapProps = {
   config: CommunityAmenityConfig;
   compact?: boolean;
 };
-
-function loadGoogleMaps(apiKey: string): Promise<void> {
-  if (typeof window === "undefined") {
-    return Promise.reject(new Error("No window"));
-  }
-
-  const w = window as Window & {
-    google?: { maps?: { importLibrary: (name: string) => Promise<unknown> } };
-    __amenityMapInit?: Promise<void>;
-  };
-
-  if (w.__amenityMapInit) {
-    return w.__amenityMapInit;
-  }
-
-  w.__amenityMapInit = new Promise<void>((resolve, reject) => {
-    const existing = document.querySelector<HTMLScriptElement>(
-      'script[data-amenity-map="google-maps"]'
-    );
-    if (existing) {
-      existing.addEventListener("load", () => resolve());
-      existing.addEventListener("error", () => reject(new Error("Maps script failed")));
-      if (w.google?.maps) resolve();
-      return;
-    }
-
-    const script = document.createElement("script");
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(apiKey)}&loading=async&libraries=places`;
-    script.async = true;
-    script.defer = true;
-    script.dataset.amenityMap = "google-maps";
-    script.onload = () => resolve();
-    script.onerror = () => reject(new Error("Maps script failed"));
-    document.head.appendChild(script);
-  });
-
-  return w.__amenityMapInit;
-}
 
 export default function AmenityMap({ config, compact = false }: AmenityMapProps) {
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
@@ -70,16 +28,45 @@ export default function AmenityMap({ config, compact = false }: AmenityMapProps)
   );
   const [isVisible, setIsVisible] = useState(false);
   const [loadState, setLoadState] = useState<"idle" | "loading" | "ready" | "error">("idle");
-  const [places, setPlaces] = useState<PlaceResult[]>([]);
-  const [placesError, setPlacesError] = useState<string | null>(null);
+  const [useIframeFallback, setUseIframeFallback] = useState(!apiKey);
+  const [places, setPlaces] = useState<NearbyPlaceResult[]>([]);
+  const [placesFromCurated, setPlacesFromCurated] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<google.maps.Map | null>(null);
   const markersRef = useRef<google.maps.Marker[]>([]);
-  const communityMarkerRef = useRef<{ setMap?: (map: google.maps.Map | null) => void; map?: google.maps.Map | null } | google.maps.Marker | null>(null);
+  const communityMarkerRef = useRef<
+    | { setMap?: (map: google.maps.Map | null) => void; map?: google.maps.Map | null }
+    | google.maps.Marker
+    | null
+  >(null);
   const infoWindowRef = useRef<google.maps.InfoWindow | null>(null);
   const listId = useId();
+  const mapInitializedRef = useRef(false);
+
+  const height = compact ? 320 : MAP_HEIGHT;
+
+  const clearMarkers = useCallback(() => {
+    markersRef.current.forEach((m) => m.setMap(null));
+    markersRef.current = [];
+  }, []);
+
+  const enterFallback = useCallback(() => {
+    setUseIframeFallback(true);
+    if (mapInstanceRef.current) {
+      mapInstanceRef.current = null;
+      mapInitializedRef.current = false;
+    }
+    clearMarkers();
+  }, [clearMarkers]);
+
+  useEffect(() => {
+    if (mapsAuthFailed) enterFallback();
+    const onAuthFailure = () => enterFallback();
+    window.addEventListener("gmaps:auth-failure", onAuthFailure);
+    return () => window.removeEventListener("gmaps:auth-failure", onAuthFailure);
+  }, [enterFallback]);
 
   useEffect(() => {
     const el = containerRef.current;
@@ -96,11 +83,6 @@ export default function AmenityMap({ config, compact = false }: AmenityMapProps)
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
-
-  const clearMarkers = useCallback(() => {
-    markersRef.current.forEach((m) => m.setMap(null));
-    markersRef.current = [];
   }, []);
 
   const showCommunityMarker = useCallback(
@@ -134,7 +116,13 @@ export default function AmenityMap({ config, compact = false }: AmenityMapProps)
 
       marker.addListener("click", () => {
         infoWindowRef.current?.setContent(
-          `<div style="max-width:240px"><strong>${config.communityName}</strong><br/>${config.center.streetAddress}<br/>${config.city}, ${config.state} ${config.center.postalCode}</div>`
+          buildCommunityInfoContent(
+            config.communityName,
+            config.center.streetAddress,
+            config.city,
+            config.state,
+            config.center.postalCode
+          )
         );
         infoWindowRef.current?.open({ map, anchor: marker });
       });
@@ -166,7 +154,13 @@ export default function AmenityMap({ config, compact = false }: AmenityMapProps)
       }
       marker.addListener("click", () => {
         infoWindowRef.current?.setContent(
-          `<div style="max-width:240px"><strong>${config.communityName}</strong><br/>${config.center.streetAddress}</div>`
+          buildCommunityInfoContent(
+            config.communityName,
+            config.center.streetAddress,
+            config.city,
+            config.state,
+            config.center.postalCode
+          )
         );
         infoWindowRef.current?.open(map, marker);
       });
@@ -175,7 +169,7 @@ export default function AmenityMap({ config, compact = false }: AmenityMapProps)
   );
 
   const renderPlaceMarkers = useCallback(
-    (map: google.maps.Map, results: PlaceResult[]) => {
+    (map: google.maps.Map, results: NearbyPlaceResult[]) => {
       clearMarkers();
       if (!infoWindowRef.current) {
         infoWindowRef.current = new google.maps.InfoWindow();
@@ -188,11 +182,7 @@ export default function AmenityMap({ config, compact = false }: AmenityMapProps)
           title: place.name,
         });
         marker.addListener("click", () => {
-          const ratingLine =
-            place.rating !== undefined ? `<br/>Rating: ${place.rating.toFixed(1)}` : "";
-          infoWindowRef.current?.setContent(
-            `<div style="max-width:260px"><strong>${place.name}</strong>${ratingLine}<br/>${place.address}<br/><a href="${place.mapsUrl}" target="_blank" rel="noopener noreferrer">Directions</a></div>`
-          );
+          infoWindowRef.current?.setContent(buildPlaceInfoContent(place));
           infoWindowRef.current?.open(map, marker);
         });
         markersRef.current.push(marker);
@@ -201,110 +191,52 @@ export default function AmenityMap({ config, compact = false }: AmenityMapProps)
     [clearMarkers]
   );
 
-  const fetchNearby = useCallback(
-    async (categoryId: AmenityCategoryId) => {
-      setPlacesError(null);
-      const category = categories.find((c) => c.id === categoryId);
-      if (!category || !mapInstanceRef.current) return;
-
-      try {
-        const placesLib = (await google.maps.importLibrary("places")) as google.maps.PlacesLibrary;
-        const Place = placesLib.Place;
-        if (Place?.searchNearby) {
-          const { places: nearby } = await Place.searchNearby({
-            fields: [
-              "displayName",
-              "formattedAddress",
-              "location",
-              "googleMapsURI",
-              "rating",
-              "id",
-            ],
-            locationRestriction: {
-              center: config.center,
-              radius: 8000,
-            },
-            includedPrimaryTypes: category.primaryTypes,
-            maxResultCount: 15,
-            rankPreference: "POPULARITY" as google.maps.places.SearchNearbyRankPreference,
-          });
-
-          const parsed: PlaceResult[] = [];
-          for (const p of nearby) {
-            const loc = p.location;
-            if (!loc) continue;
-            parsed.push({
-              id: p.id ?? p.displayName ?? "",
-              name: p.displayName ?? "Place",
-              address: p.formattedAddress ?? "",
-              rating: p.rating,
-              mapsUrl:
-                p.googleMapsURI ??
-                `https://www.google.com/maps/search/?api=1&query=${loc.lat()},${loc.lng()}`,
-              lat: loc.lat(),
-              lng: loc.lng(),
-            });
-          }
-
-          setPlaces(parsed);
-          renderPlaceMarkers(mapInstanceRef.current, parsed);
-          return;
-        }
-      } catch {
-        // fall through to legacy
-      }
-
-      try {
-        const service = new google.maps.places.PlacesService(mapInstanceRef.current);
-        const type = category.primaryTypes[0];
-        await new Promise<void>((resolve, reject) => {
-          service.nearbySearch(
-            {
-              location: config.center,
-              radius: 8000,
-              type: type as string,
-            },
-            (results, status) => {
-              if (status !== google.maps.places.PlacesServiceStatus.OK || !results) {
-                reject(new Error(String(status)));
-                return;
-              }
-              const parsed: PlaceResult[] = results.slice(0, 15).map((r) => ({
-                id: r.place_id ?? r.name ?? "",
-                name: r.name ?? "Place",
-                address: r.vicinity ?? "",
-                rating: r.rating,
-                mapsUrl: `https://www.google.com/maps/place/?q=place_id:${r.place_id}`,
-                lat: r.geometry?.location?.lat() ?? config.center.lat,
-                lng: r.geometry?.location?.lng() ?? config.center.lng,
-              }));
-              setPlaces(parsed);
-              renderPlaceMarkers(mapInstanceRef.current!, parsed);
-              resolve();
-            }
-          );
-        });
-      } catch {
-        setPlacesError("Unable to load places for this category. See the curated list below.");
-        setPlaces([]);
-        clearMarkers();
-      }
+  const showCuratedForCategory = useCallback(
+    (categoryId: AmenityCategoryId) => {
+      setPlacesFromCurated(true);
+      setPlaces([]);
+      clearMarkers();
     },
-    [categories, config.center, clearMarkers, renderPlaceMarkers]
+    [clearMarkers]
   );
 
-  const mapInitializedRef = useRef(false);
+  const fetchNearby = useCallback(
+    async (categoryId: AmenityCategoryId) => {
+      if (useIframeFallback || !mapInstanceRef.current) {
+        showCuratedForCategory(categoryId);
+        return;
+      }
+
+      setPlacesFromCurated(false);
+      try {
+        const parsed = await searchCategory(config.center, categoryId);
+        setPlaces(parsed);
+        renderPlaceMarkers(mapInstanceRef.current, parsed);
+      } catch {
+        showCuratedForCategory(categoryId);
+      }
+    },
+    [config.center, renderPlaceMarkers, showCuratedForCategory, useIframeFallback]
+  );
 
   useEffect(() => {
-    if (!isVisible || !apiKey || mapInitializedRef.current) return;
+    if (!isVisible || !apiKey || useIframeFallback || mapInitializedRef.current) return;
 
     let cancelled = false;
 
     async function initMap() {
+      if (mapsAuthFailed) {
+        enterFallback();
+        return;
+      }
       setLoadState("loading");
       try {
         await loadGoogleMaps(apiKey!);
-        if (cancelled || !mapRef.current) return;
+        if (cancelled || mapsAuthFailed) {
+          enterFallback();
+          return;
+        }
+        if (!mapRef.current) return;
 
         const { Map } = (await google.maps.importLibrary("maps")) as google.maps.MapsLibrary;
         const map = new Map(mapRef.current, {
@@ -331,7 +263,10 @@ export default function AmenityMap({ config, compact = false }: AmenityMapProps)
 
         setLoadState("ready");
       } catch {
-        if (!cancelled) setLoadState("error");
+        if (!cancelled) {
+          enterFallback();
+          setLoadState("error");
+        }
       }
     }
 
@@ -346,52 +281,68 @@ export default function AmenityMap({ config, compact = false }: AmenityMapProps)
     config.center,
     showCommunityMarker,
     showLegacyCommunityMarker,
+    useIframeFallback,
+    enterFallback,
   ]);
 
   useEffect(() => {
+    if (useIframeFallback) {
+      showCuratedForCategory(activeCategory);
+      return;
+    }
     if (loadState !== "ready") return;
     void fetchNearby(activeCategory);
-  }, [activeCategory, fetchNearby, loadState]);
+  }, [activeCategory, fetchNearby, loadState, useIframeFallback, showCuratedForCategory]);
 
-  if (!apiKey) {
-    return <AmenityMapFallback config={config} compact={compact} />;
+  const curatedForCategory = config.curatedPlaces.filter((p) => p.category === activeCategory);
+
+  const categoryChips = (
+    <div
+      role="tablist"
+      aria-label={`Filter nearby amenities around ${config.communityName}`}
+      className="flex flex-wrap gap-2"
+    >
+      {categories.map((cat) => {
+        const selected = cat.id === activeCategory;
+        return (
+          <button
+            key={cat.id}
+            type="button"
+            role="tab"
+            aria-selected={selected}
+            aria-controls={`${listId}-panel`}
+            id={`${listId}-${cat.id}`}
+            onClick={() => setActiveCategory(cat.id)}
+            className={`rounded-full px-3 py-1.5 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 ${
+              selected
+                ? "bg-blue-600 text-white"
+                : "bg-slate-100 text-slate-800 hover:bg-slate-200"
+            }`}
+          >
+            {cat.label}
+          </button>
+        );
+      })}
+    </div>
+  );
+
+  if (useIframeFallback) {
+    return (
+      <div ref={containerRef} className="space-y-4">
+        {categoryChips}
+        <AmenityMapFallback
+          config={config}
+          compact={compact}
+          activeCategory={activeCategory}
+          showDeveloperNote={!apiKey}
+        />
+      </div>
+    );
   }
-
-  if (loadState === "error") {
-    return <AmenityMapFallback config={config} compact={compact} />;
-  }
-
-  const height = compact ? 320 : MAP_HEIGHT;
 
   return (
     <div ref={containerRef} className="space-y-4">
-      <div
-        role="tablist"
-        aria-label={`Filter nearby amenities around ${config.communityName}`}
-        className="flex flex-wrap gap-2"
-      >
-        {categories.map((cat) => {
-          const selected = cat.id === activeCategory;
-          return (
-            <button
-              key={cat.id}
-              type="button"
-              role="tab"
-              aria-selected={selected}
-              aria-controls={`${listId}-panel`}
-              id={`${listId}-${cat.id}`}
-              onClick={() => setActiveCategory(cat.id)}
-              className={`rounded-full px-3 py-1.5 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 ${
-                selected
-                  ? "bg-blue-600 text-white"
-                  : "bg-slate-100 text-slate-800 hover:bg-slate-200"
-              }`}
-            >
-              {cat.label}
-            </button>
-          );
-        })}
-      </div>
+      {categoryChips}
 
       <div
         className="w-full rounded-lg overflow-hidden border border-slate-200 bg-slate-100"
@@ -407,11 +358,15 @@ export default function AmenityMap({ config, compact = false }: AmenityMapProps)
           </div>
         )}
         {isVisible && (
-          <div ref={mapRef} className="w-full" style={{ height }} role="application" aria-label={`Interactive map of amenities near ${config.communityName}`} />
+          <div
+            ref={mapRef}
+            className="w-full"
+            style={{ height }}
+            role="application"
+            aria-label={`Interactive map of amenities near ${config.communityName}`}
+          />
         )}
       </div>
-
-      {placesError && <p className="text-sm text-amber-800">{placesError}</p>}
 
       <div
         id={`${listId}-panel`}
@@ -422,14 +377,11 @@ export default function AmenityMap({ config, compact = false }: AmenityMapProps)
         {places.length} places loaded for {activeCategory}
       </div>
 
-      {places.length > 0 && (
+      {places.length > 0 && !placesFromCurated && (
         <ul className="grid sm:grid-cols-2 gap-3 text-sm text-slate-700">
           {places.map((place) => (
             <li key={place.id} className="rounded-md border border-slate-200 p-3">
               <p className="font-medium text-slate-900">{place.name}</p>
-              {place.rating !== undefined && (
-                <p className="text-slate-500">Rating: {place.rating.toFixed(1)}</p>
-              )}
               <p>{place.address}</p>
               <a
                 href={place.mapsUrl}
@@ -439,6 +391,18 @@ export default function AmenityMap({ config, compact = false }: AmenityMapProps)
               >
                 Directions
               </a>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {(placesFromCurated || places.length === 0) && curatedForCategory.length > 0 && (
+        <ul className="grid sm:grid-cols-2 gap-3 text-sm text-slate-700">
+          {curatedForCategory.map((place) => (
+            <li key={`${place.name}-${place.address}`} className="rounded-md border border-slate-200 p-3">
+              <p className="font-medium text-slate-900">{place.name}</p>
+              <p>{place.address}</p>
+              {place.note && <p className="text-slate-500 text-xs mt-1">{place.note}</p>}
             </li>
           ))}
         </ul>
