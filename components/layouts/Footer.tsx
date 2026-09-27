@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
+import { headers } from "next/headers";
+import { getCommunityAmenityConfig } from "@/lib/amenities/get-community-amenity-config";
 
-export default function Footer() {
+export default async function Footer() {
+  const host = headers().get("x-domain") || headers().get("host") || "";
+  const amenityConfig = getCommunityAmenityConfig(host);
   const currentYear = new Date().getFullYear();
 
   return (
@@ -68,6 +72,16 @@ export default function Footer() {
                   Neighborhoods
                 </Link>
               </li>
+              {amenityConfig && (
+                <li>
+                  <Link
+                    href={amenityConfig.pagePath}
+                    className="text-slate-300 hover:text-white transition-colors text-sm"
+                  >
+                    Nearby Amenities
+                  </Link>
+                </li>
+              )}
               <li>
                 <Link
                   href="/why-berkshire-hathaway"

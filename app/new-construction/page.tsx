@@ -18,6 +18,7 @@ import {
   HelpCircle,
 } from "lucide-react";
 import type { Metadata } from "next";
+import CommunityAmenitiesSlot from "@/components/amenities/CommunityAmenitiesSlot";
 
 export const metadata: Metadata = {
   title: "Berkshire Hathaway HomeServices New Construction Las Vegas | Buyer's Guide",
@@ -693,6 +694,7 @@ export default function NewConstructionPage() {
           Last Updated: January 2026 | Incentives subject to change
         </div>
       </main>
+      <CommunityAmenitiesSlot variant="home" />
       <RealScoutListings />
       <Footer />
     </>
