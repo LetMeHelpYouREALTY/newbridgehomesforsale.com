@@ -3,10 +3,15 @@ import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
   const hostname = request.headers.get("host") || "";
-  const response = NextResponse.next();
-  // Pass hostname to pages via header so server components can read it
-  response.headers.set("x-domain", hostname);
-  return response;
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-domain", hostname);
+  requestHeaders.set("x-pathname", request.nextUrl.pathname);
+
+  return NextResponse.next({
+    request: {
+      headers: requestHeaders,
+    },
+  });
 }
 
 export const config = {
