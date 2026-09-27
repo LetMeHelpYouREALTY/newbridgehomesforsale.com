@@ -3,7 +3,7 @@ import Footer from "@/components/layouts/Footer";
 import NearbyAmenitiesSection from "@/components/amenities/NearbyAmenitiesSection";
 import { getCommunityAmenityConfig } from "@/lib/amenities/get-community-amenity-config";
 import { buildAmenitiesPageSchema } from "@/lib/amenities/schema";
-import { siteUrlFromHost } from "@/lib/get-site-url";
+import { getProductionSiteUrl } from "@/lib/amenities/get-production-site-url";
 import { AMENITY_CATEGORIES } from "@/lib/amenities/categories";
 import { agentInfo } from "@/lib/site-config";
 import type { Metadata } from "next";
@@ -25,8 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
     };
   }
 
-  const siteUrl = siteUrlFromHost(getHost());
-  const canonical = `${siteUrl}${config.pagePath}`;
+  const canonical = `${getProductionSiteUrl(config)}${config.pagePath}`;
   const title = `Nearby Amenities in ${config.communityName}, ${config.city} | Dr. Jan Duffy`;
   const description = `Interactive map and local guide to restaurants, grocery, parks, golf, healthcare, and schools near ${config.communityName} in ${config.city}, ${config.state}. Hyperlocal expertise from Dr. Jan Duffy, REALTOR®.`;
 
@@ -50,7 +49,7 @@ export default function AmenitiesPage() {
     notFound();
   }
 
-  const siteUrl = siteUrlFromHost(host);
+  const siteUrl = getProductionSiteUrl(config);
   const schemas = buildAmenitiesPageSchema(config, siteUrl);
 
   return (

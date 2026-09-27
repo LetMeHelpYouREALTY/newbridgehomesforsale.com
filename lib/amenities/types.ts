@@ -22,10 +22,15 @@ export type AmenityCategory = {
 
 export type CuratedPlace = {
   name: string;
+  /** Full mailing-style address; omit from JSON-LD when includeAddressInSchema is false */
   address: string;
   category: AmenityCategoryId;
   /** schema.org @type */
   schemaType: string;
+  /** Official page used to verify name and address */
+  sourceUrl: string;
+  /** When false, ItemList schema omits street address */
+  includeAddressInSchema?: boolean;
   note?: string;
 };
 

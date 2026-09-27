@@ -1,5 +1,24 @@
 import { agentInfo } from "@/lib/site-config";
-import type { CommunityAmenityConfig } from "./types";
+import type { CommunityAmenityConfig, CuratedPlace } from "./types";
+
+function parseVerifiedAddress(place: CuratedPlace) {
+  if (place.includeAddressInSchema === false) return undefined;
+  const parts = place.address.split(",").map((s) => s.trim());
+  if (parts.length < 3) return undefined;
+  const streetAddress = parts[0];
+  const addressLocality = parts[1];
+  const regionZip = parts[2];
+  const match = regionZip.match(/^([A-Z]{2})\s+(\d{5}(?:-\d{4})?)$/);
+  if (!match) return undefined;
+  return {
+    "@type": "PostalAddress",
+    streetAddress,
+    addressLocality,
+    addressRegion: match[1],
+    postalCode: match[2],
+    addressCountry: "US",
+  };
+}
 
 export function buildAmenitiesPageSchema(
   config: CommunityAmenityConfig,
@@ -24,21 +43,22 @@ export function buildAmenitiesPageSchema(
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: `Featured places near ${config.communityName}`,
-    itemListElement: config.curatedPlaces.map((place, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      item: {
+    itemListElement: config.curatedPlaces.map((place, index) => {
+      const address = parseVerifiedAddress(place);
+      const item: Record<string, unknown> = {
         "@type": place.schemaType,
         name: place.name,
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: place.address,
-          addressLocality: config.city,
-          addressRegion: config.state,
-          addressCountry: "US",
-        },
-      },
-    })),
+        url: place.sourceUrl,
+      };
+      if (address) {
+        item.address = address;
+      }
+      return {
+        "@type": "ListItem",
+        position: index + 1,
+        item,
+      };
+    }),
   };
 
   const breadcrumbSchema = {

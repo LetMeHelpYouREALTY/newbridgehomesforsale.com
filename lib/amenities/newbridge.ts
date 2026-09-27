@@ -3,8 +3,6 @@ import type { CommunityAmenityConfig } from "./types";
 /**
  * Newbridge — Richmond American Homes community, southwest Las Vegas (89139).
  * Center: sales office at 5509 Middleton Falls Ave (builder marketing address per MLS/listing data).
- * Coordinates: approximate geocode for 5509 Middleton Falls Ave, Las Vegas, NV 89139
- * (verify in Google Maps before production map pin adjustments).
  */
 export const NEWBRIDGE_AMENITY_CONFIG: CommunityAmenityConfig = {
   communityName: "Newbridge",
@@ -19,7 +17,7 @@ export const NEWBRIDGE_AMENITY_CONFIG: CommunityAmenityConfig = {
     postalCode: "89139",
   },
   coordinatesSource:
-    "Sales office address 5509 Middleton Falls Ave, Las Vegas, NV 89139 (Richmond American / MLS listings); lat/lng approximated via mapping services for that address.",
+    "Sales office at 5509 Middleton Falls Ave, Las Vegas, NV 89139 per Richmond American Homes community page.",
   categoryOrder: [
     "grocery",
     "parks",
@@ -39,6 +37,8 @@ export const NEWBRIDGE_AMENITY_CONFIG: CommunityAmenityConfig = {
       address: "5509 Middleton Falls Ave, Las Vegas, NV 89139",
       category: "community",
       schemaType: "Place",
+      sourceUrl:
+        "https://www.richmondamerican.com/nevada/las-vegas-new-homes/las-vegas/newbridge/",
       note: "Builder sales office for the Newbridge community.",
     },
     {
@@ -46,55 +46,53 @@ export const NEWBRIDGE_AMENITY_CONFIG: CommunityAmenityConfig = {
       address: "4800 Blue Diamond Rd, Las Vegas, NV 89139",
       category: "grocery",
       schemaType: "GroceryStore",
+      sourceUrl: "https://local.albertsons.com/nv/las-vegas/4800-blue-diamond-rd.html",
     },
     {
       name: "Albertsons",
       address: "7975 Blue Diamond Rd, Las Vegas, NV 89178",
       category: "grocery",
       schemaType: "GroceryStore",
+      sourceUrl: "https://local.albertsons.com/nv/las-vegas/7975-blue-diamond-rd.html",
     },
     {
-      name: "Famous Dave's",
-      address: "4390 Blue Diamond Rd, Las Vegas, NV 89139",
-      category: "restaurants",
-      schemaType: "Restaurant",
-    },
-    {
-      name: "Southern Hills Hospital",
+      name: "Southern Hills Hospital & Medical Center",
       address: "9300 W Sunset Rd, Las Vegas, NV 89148",
       category: "healthcare",
       schemaType: "Hospital",
+      sourceUrl:
+        "https://www.sunrisehealthinfo.com/locations/southern-hills-hospital",
     },
     {
       name: "Dignity Health-St. Rose Dominican, San Martín Campus",
       address: "8280 W Warm Springs Rd, Las Vegas, NV 89113",
       category: "healthcare",
       schemaType: "Hospital",
+      sourceUrl:
+        "https://www.dignityhealth.org/las-vegas/st-rose-dominican-san-martin-general-hospital",
     },
     {
       name: "Rhodes Ranch Golf Club",
       address: "20 E Rhodes Ranch Pkwy, Las Vegas, NV 89148",
       category: "golf",
       schemaType: "GolfCourse",
+      sourceUrl: "https://rhodesranchgolf.com/the-course/",
     },
     {
       name: "Exploration Peak Park",
-      address: "9600 S Buffalo Dr, Las Vegas, NV 89178",
+      address: "9700 S Buffalo Dr, Las Vegas, NV 89178",
       category: "parks",
       schemaType: "Park",
-      note: "Large regional park in the southwest valley.",
+      sourceUrl:
+        "https://parkslocator.clarkcountynv.gov/Search/ParkDetail?parkId=62",
+      note: "Clark County regional park (about 80 acres developed).",
     },
     {
       name: "Evelyn Stuckey Elementary School",
-      address: "4905 Ravenwood Dr, Las Vegas, NV 89139",
+      address: "4905 Chartan Ave, Las Vegas, NV 89141",
       category: "schools",
       schemaType: "School",
-    },
-    {
-      name: "Frank Lamping Elementary School",
-      address: "2551 Summit Grove Dr, Henderson, NV 89052",
-      category: "schools",
-      schemaType: "School",
+      sourceUrl: "https://www.stuckeyelementary.org/apps/contact/",
     },
   ],
   writtenSections: [
@@ -102,7 +100,7 @@ export const NEWBRIDGE_AMENITY_CONFIG: CommunityAmenityConfig = {
       id: "dining",
       title: "Dining near Newbridge",
       paragraphs: [
-        "Newbridge sits along the Blue Diamond Road corridor in southwest Las Vegas, where national and local restaurants cluster within a short drive of the community. Famous Dave's on Blue Diamond Road is a well-known option along the corridor. For everyday meals, many residents also head toward the Town Square Las Vegas and Silverado Ranch retail areas, which add additional chain and local choices without crossing the entire valley.",
+        "Newbridge sits along the Blue Diamond Road corridor in southwest Las Vegas, where national and local restaurants cluster within a short drive of the community. For everyday meals, many residents also head toward the Town Square Las Vegas and Silverado Ranch retail areas, which add additional chain and local choices without crossing the entire valley.",
         "When you tour Newbridge, plan a meal on Blue Diamond or nearby Jones Boulevard so you can see how quick the run is from Middleton Falls Avenue back to dinner — it is part of the lifestyle check buyers often want before they write an offer on new construction.",
       ],
     },
@@ -117,7 +115,7 @@ export const NEWBRIDGE_AMENITY_CONFIG: CommunityAmenityConfig = {
       id: "parks",
       title: "Parks & outdoor recreation",
       paragraphs: [
-        "Exploration Peak Park at 9600 S Buffalo Dr is one of the largest public parks in the Las Vegas Valley and draws hikers and families from across the southwest. Newbridge marketing also highlights on-site community park space and golf-course adjacency within the Richmond American plan — confirm current HOA and builder amenities on your tour.",
+        "Exploration Peak Park at 9700 S Buffalo Dr is an 80-acre Clark County regional park in the southwest valley, with trails, picnic areas, and a playground. Newbridge marketing also highlights on-site community park space and golf-course adjacency within the Richmond American plan — confirm current HOA and builder amenities on your tour.",
         "Red Rock Canyon National Conservation Area is reached via Charleston Boulevard and the 215 Beltway from this part of the valley, making weekend hiking and scenic drives a realistic part of southwest Las Vegas living.",
       ],
     },
@@ -125,7 +123,7 @@ export const NEWBRIDGE_AMENITY_CONFIG: CommunityAmenityConfig = {
       id: "golf",
       title: "Golf",
       paragraphs: [
-        "Rhodes Ranch Golf Club on Rhodes Ranch Parkway is a established public course a few miles south of the Blue Diamond corridor. Siena Golf Club and other southwest courses are within a typical 15–25 minute drive depending on traffic. Golf-forward buyers often compare Newbridge with other Richmond American and master-planned communities along the 215.",
+        "Rhodes Ranch Golf Club on Rhodes Ranch Parkway is a public course a few miles south of the Blue Diamond corridor. Siena Golf Club and other southwest courses are within a typical 15–25 minute drive depending on traffic. Golf-forward buyers often compare Newbridge with other Richmond American and master-planned communities along the 215.",
       ],
     },
     {
@@ -146,7 +144,7 @@ export const NEWBRIDGE_AMENITY_CONFIG: CommunityAmenityConfig = {
       id: "schools",
       title: "Schools",
       paragraphs: [
-        "Clark County School District serves the 89139 area. Evelyn Stuckey Elementary School on Ravenwood Drive is among the public schools associated with the southwest Enterprise area. Frank Lamping Elementary in Henderson serves families in the southern valley. Always confirm current zoning, magnet programs, and attendance boundaries with CCSD before you close — boundaries can change with new construction.",
+        "Clark County School District serves the 89139 area. Which CCSD schools are assigned to Newbridge addresses? Verify with the CCSD Zoning Search before you close — boundaries can change with new construction.",
       ],
     },
     {
@@ -176,7 +174,7 @@ export const NEWBRIDGE_AMENITY_CONFIG: CommunityAmenityConfig = {
     {
       question: "What parks are close to Newbridge?",
       answer:
-        "Exploration Peak Park at 9600 S Buffalo Dr is a large regional park in the southwest valley; the Newbridge community also advertises neighborhood park and recreation amenities within the Richmond American development.",
+        "Exploration Peak Park at 9700 S Buffalo Dr is an 80-acre Clark County regional park in the southwest valley; the Newbridge community also advertises neighborhood park and recreation amenities within the Richmond American development.",
     },
     {
       question: "Is Newbridge close to the airport?",
@@ -186,7 +184,7 @@ export const NEWBRIDGE_AMENITY_CONFIG: CommunityAmenityConfig = {
     {
       question: "What schools serve the Newbridge area?",
       answer:
-        "The area is in Clark County School District; Evelyn Stuckey Elementary (4905 Ravenwood Dr) is a public elementary school in the southwest 89139 corridor — confirm current attendance zones with CCSD before you buy.",
+        "Which CCSD schools are assigned to Newbridge addresses? Verify with the CCSD Zoning Search. Evelyn Stuckey Elementary (4905 Chartan Ave, Las Vegas) is a CCSD elementary in the broader southwest valley — confirm your assigned schools before you buy.",
     },
     {
       question: "Who builds homes in Newbridge?",
