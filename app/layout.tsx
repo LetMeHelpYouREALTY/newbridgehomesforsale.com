@@ -5,6 +5,7 @@ import { headers } from "next/headers";
 import { getDomainConfig } from "@/lib/domain-config";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
+import AutoBreadcrumbSchema from "@/components/layouts/AutoBreadcrumbSchema";
 
 export async function generateMetadata(): Promise<Metadata> {
   const domain = headers().get("x-domain") || "";
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         `}</Script>
       </head>
       <body>
+        <AutoBreadcrumbSchema />
         {children}
         <Analytics />
       </body>
