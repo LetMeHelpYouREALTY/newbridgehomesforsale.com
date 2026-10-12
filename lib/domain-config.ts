@@ -92,7 +92,7 @@ export const DEFAULT_CONFIG: DomainConfig = {
   neighborhood: "Newbridge",
   tagline: "Newbridge Homes for Sale",
   description:
-    "Search Newbridge homes for sale in Southwest Las Vegas near Blue Diamond Road (ZIP 89139). Independent buyer representation from Dr. Jan Duffy, BHHS Nevada Properties.",
+    "Search Newbridge homes in Las Vegas 89139 near Blue Diamond Road. Independent buyer agent Dr. Jan Duffy, BHHS Nevada Properties.",
   seoTitle: "Newbridge Homes for Sale | Las Vegas",
   pageH1: "Newbridge Homes for Sale in Las Vegas",
   postalCode: "89139",
