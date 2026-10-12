@@ -54,7 +54,7 @@ export const DOMAIN_CONFIGS: Record<string, DomainConfig> = {
     pageH1: "Newbridge Homes for Sale in Las Vegas",
     postalCode: "89139",
     description:
-      "Search Newbridge homes for sale in Southwest Las Vegas near Blue Diamond Road (ZIP 89139). Independent buyer representation from Dr. Jan Duffy, BHHS Nevada Properties.",
+      "Search Newbridge homes in Las Vegas 89139 near Blue Diamond Road. Independent buyer agent Dr. Jan Duffy, BHHS Nevada Properties.",
     heroHeadline: "Newbridge Homes for Sale in Las Vegas",
     heroSubheadline:
       "Richmond American ranch plans near Blue Diamond Road. An independent BHHS buyer’s agent — not the builder desk.",

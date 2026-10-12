@@ -37,7 +37,7 @@ export async function generateMetadata(): Promise<Metadata> {
       ? "Free Newbridge Home Valuation | ZIP 89139 CMA"
       : "Free Home Valuation Las Vegas | What's Your Home Worth?",
     description: isNewbridge
-      ? "Free Newbridge (89139) home valuation from Dr. Jan Duffy, BHHS Nevada Properties. MLS-backed CMA for Southwest Las Vegas near Blue Diamond Road. Call (702) 222-1964."
+      ? "Free Newbridge home valuation in Las Vegas 89139 from Dr. Jan Duffy, BHHS Nevada Properties. MLS-backed CMA. Call (702) 222-1964."
       : "Get a free, accurate home valuation in Las Vegas from Dr. Jan Duffy at Berkshire Hathaway HomeServices. Expert CMA analysis. Call (702) 222-1964.",
     keywords: isNewbridge
       ? [

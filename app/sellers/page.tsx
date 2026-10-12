@@ -29,7 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
       ? "Sell Your Newbridge Home | Dr. Jan Duffy, BHHS"
       : "Sell Your Las Vegas Home | Berkshire Hathaway HomeServices",
     description: isNewbridge
-      ? "Sell your Newbridge home in Las Vegas ZIP 89139 with Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. Free CMA, MLS marketing, skilled negotiation. Call (702) 222-1964."
+      ? "Sell your Newbridge home in Las Vegas 89139 with Dr. Jan Duffy, BHHS Nevada Properties. Free CMA and MLS marketing. Call (702) 222-1964."
       : "Sell your Las Vegas home for top dollar with Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. Free home valuation. World-class marketing. Call (702) 222-1964.",
     keywords: isNewbridge
       ? [
