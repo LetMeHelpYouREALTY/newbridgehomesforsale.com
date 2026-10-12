@@ -9,9 +9,9 @@ export default function HeroSection() {
   const prefersReducedMotion = useReducedMotion();
   
   const images = [
-    "/Image/hero_bg_1.jpg",
-    "/Image/hero_bg_2.jpg",
-    "/Image/hero_bg_3.jpg",
+    "/images/hero/las-vegas-homes.jpg",
+    "/images/neighborhoods/summerlin.jpg",
+    "/images/sections/luxury-homes.jpg",
   ];
 
   useEffect(() => {
@@ -41,8 +41,9 @@ export default function HeroSection() {
           >
             <Image
               src={src}
-              alt={`Hero image ${index + 1}`}
+              alt={`Las Vegas and Henderson homes, photo ${index + 1}`}
               fill
+              sizes="100vw"
               className="object-cover"
               priority={index === 0}
             />

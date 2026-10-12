@@ -1,6 +1,5 @@
-import Navbar from "@/components/layouts/Navbar";
-import Footer from "@/components/layouts/Footer";
 import RealScoutListings from "@/components/realscout/RealScoutListings";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Phone,
@@ -18,34 +17,37 @@ import {
   Award,
 } from "lucide-react";
 import type { Metadata } from "next";
+import { getPageDomainConfig } from "@/lib/get-domain-config";
+import { buildCommunityAreaServed } from "@/lib/area-served";
+import { getRequestSiteUrl } from "@/lib/canonical-url";
 
-export const metadata: Metadata = {
-  title: "Sell Your Las Vegas Home | Berkshire Hathaway HomeServices",
-  description:
-    "Sell your Las Vegas or Henderson home for top dollar with Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. Free home valuation. World-class marketing. Call (702) 500-1942.",
-  keywords: [
-    "sell home Las Vegas",
-    "Las Vegas listing agent",
-    "Berkshire Hathaway sell house",
-    "Henderson home selling",
-    "what is my home worth Las Vegas",
-    "Las Vegas real estate agent",
-    "Summerlin home selling",
-  ],
-};
-
-const sellerSchema = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  name: "Home Selling Services Las Vegas",
-  provider: {
-    "@type": "RealEstateAgent",
-    name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
-    telephone: "+17025001942",
-  },
-  areaServed: "Las Vegas, Henderson, Summerlin, Clark County NV",
-  serviceType: "Seller Representation",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const config = await getPageDomainConfig();
+  const isNewbridge = config.neighborhood === "Newbridge";
+  return {
+    title: isNewbridge
+      ? "Sell Your Newbridge Home | Dr. Jan Duffy, BHHS"
+      : "Sell Your Las Vegas Home | Berkshire Hathaway HomeServices",
+    description: isNewbridge
+      ? "Sell your Newbridge home in Las Vegas ZIP 89139 with Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. Free CMA, MLS marketing, skilled negotiation. Call (702) 222-1964."
+      : "Sell your Las Vegas home for top dollar with Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. Free home valuation. World-class marketing. Call (702) 222-1964.",
+    keywords: isNewbridge
+      ? [
+          "sell Newbridge home",
+          "Newbridge listing agent",
+          "89139 home seller",
+          "Blue Diamond Road listing agent",
+          "Dr. Jan Duffy seller",
+        ]
+      : [
+          "sell home Las Vegas",
+          "Las Vegas listing agent",
+          "Berkshire Hathaway sell house",
+          "what is my home worth Las Vegas",
+          "Las Vegas real estate agent",
+        ],
+  };
+}
 
 const sellingBenefits = [
   {
@@ -70,7 +72,7 @@ const sellingBenefits = [
     icon: DollarSign,
     title: "Skilled Negotiation",
     description:
-      "From offer review to closing negotiations, Dr. Jan protects your interests and maximizes your net proceeds. $127M+ in closed transactions means she knows how to handle any situation and close deals successfully.",
+      "From offer review to closing negotiations, Dr. Jan protects your interests and maximizes your net proceeds. 500+ closed transactions since 2008 means she knows how to handle any situation and close deals successfully.",
   },
 ];
 
@@ -122,29 +124,63 @@ const includedServices = [
   "Staging consultation with recommendations",
 ];
 
-export default function SellersPage() {
+export default async function SellersPage() {
+  const config = await getPageDomainConfig();
+  const siteUrl = getRequestSiteUrl();
+  const isNewbridge = config.neighborhood === "Newbridge";
+
+  const sellerSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: isNewbridge
+      ? "Home Selling Services — Newbridge Las Vegas"
+      : "Home Selling Services Las Vegas",
+    provider: {
+      "@type": "RealEstateAgent",
+      "@id": `${siteUrl}#dr-jan-duffy`,
+      name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
+      telephone: "+17022221964",
+    },
+    areaServed: buildCommunityAreaServed(config),
+    serviceType: "Seller Representation",
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(sellerSchema) }}
       />
-      <Navbar />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">
           {/* Hero */}
+          <div className="relative mb-10 h-56 overflow-hidden rounded-2xl md:h-80 max-w-6xl mx-auto">
+            <Image
+              src="/images/sections/selling-a-home.jpg"
+              alt="Staged Las Vegas home exterior prepared for listing"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+
           <div className="max-w-4xl mx-auto text-center mb-16">
             <div className="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
               Berkshire Hathaway HomeServices Nevada Properties
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
-              Sell Your Las Vegas Home for Top Dollar
+              {isNewbridge
+                ? "Sell Your Newbridge Home in Las Vegas"
+                : "Sell Your Las Vegas Home | Listing Agent Dr. Jan Duffy"}
             </h1>
             <p className="text-xl text-slate-600 mb-8">
               When you list with <strong>Berkshire Hathaway HomeServices</strong>, you get
-              world-class marketing, expert pricing, and a name that buyers trust. Dr. Jan Duffy 
-              has been serving Las Vegas since 2008—helping sellers achieve top-dollar results 
-              with proven marketing strategies and skilled negotiation.
+              world-class marketing, expert pricing, and a name that buyers trust. Dr. Jan Duffy
+              has served Las Vegas since 2008
+              {isNewbridge
+                ? "—including resale and new-build listings near Newbridge and ZIP 89139 along Blue Diamond Road."
+                : "—helping sellers achieve strong results with proven marketing strategies and skilled negotiation."}
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm text-slate-500">
               <span className="flex items-center"><CheckCircle className="h-4 w-4 text-green-500 mr-1" /> Free Home Valuation</span>
@@ -156,12 +192,14 @@ export default function SellersPage() {
           {/* Market Stats */}
           <section className="mb-16 bg-slate-900 text-white rounded-2xl p-8 md:p-12 max-w-5xl mx-auto">
             <h2 className="text-2xl font-bold mb-4 text-center">
-              Las Vegas Seller Market Statistics | January 2026
+              {isNewbridge
+                ? "Newbridge & Southwest Las Vegas Seller Snapshot | January 2026"
+                : "Las Vegas Seller Market Statistics | January 2026"}
             </h2>
             <p className="text-slate-300 text-center max-w-3xl mx-auto mb-8">
-              The Las Vegas housing market remains favorable for sellers with low inventory and 
-              steady demand. Well-priced homes are selling quickly, and appreciation continues 
-              to outpace national averages. Here's what sellers need to know about current conditions.
+              {isNewbridge
+                ? "Southwest Las Vegas—including Newbridge (ZIP 89139)—continues to see steady resale demand near Blue Diamond Road. Well-priced homes with accurate CMA pricing draw qualified buyers; Dr. Jan Duffy tracks weekly MLS movement for this pocket."
+                : "The Las Vegas housing market remains favorable for sellers with low inventory and steady demand. Well-priced homes are selling quickly. Here's what sellers need to know about current conditions."}
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               <div className="text-center">
@@ -426,11 +464,11 @@ export default function SellersPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+17025001942"
+                href="tel:+17022221964"
                 className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-md font-bold text-lg transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Call (702) 500-1942
+                Call (702) 222-1964
               </a>
               <Link
                 href="/contact"
@@ -449,7 +487,6 @@ export default function SellersPage() {
         <div className="text-center text-sm text-slate-500 mt-8">Last Updated: January 2026</div>
       </main>
       <RealScoutListings />
-      <Footer />
     </>
   );
 }

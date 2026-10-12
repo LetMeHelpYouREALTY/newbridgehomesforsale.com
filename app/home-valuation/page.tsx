@@ -1,74 +1,80 @@
-import Navbar from "@/components/layouts/Navbar";
-import Footer from "@/components/layouts/Footer";
 import RealScoutListings from "@/components/realscout/RealScoutListings";
-import CalendlyWidget from "@/components/calendly/CalendlyWidget";
+import Image from "next/image";
+import CalendlyWidget from "@/components/calendly/CalendlyEmbed";
 import Link from "next/link";
 import { Phone, CheckCircle, Home, TrendingUp, MapPin, Calculator, Clock, DollarSign } from "lucide-react";
 import type { Metadata } from "next";
+import { getPageDomainConfig } from "@/lib/get-domain-config";
 
-export const metadata: Metadata = {
-  title: "Free Home Valuation Las Vegas | What's Your Home Worth? | Berkshire Hathaway HomeServices",
-  description:
-    "Get a free, accurate home valuation in Las Vegas from Dr. Jan Duffy at Berkshire Hathaway HomeServices. Expert CMA analysis for Summerlin, Henderson, Green Valley & all Las Vegas neighborhoods. Call (702) 500-1942.",
-  keywords: [
-    "home valuation Las Vegas",
-    "what is my home worth Las Vegas",
-    "free home value estimate",
-    "CMA Las Vegas",
-    "Berkshire Hathaway home valuation",
-    "Summerlin home value",
-    "Henderson home value",
-  ],
-};
+const valuationFaqs = [
+  {
+    q: "How accurate are online home value estimates like Zillow's Zestimate?",
+    a: "Online estimates like Zillow's Zestimate can be off by 5-15% or more, especially in markets like Las Vegas where home features vary significantly. They cannot account for upgrades, condition, views, or lot characteristics. A professional CMA from Dr. Jan Duffy provides far more accurate pricing.",
+  },
+  {
+    q: "What factors affect my Newbridge home's value?",
+    a: "Key factors include location within Newbridge and ZIP 89139, proximity to Blue Diamond Road, square footage, lot size, bedrooms and bathrooms, plan type, upgrades, pool or patio coverage, HOA fees, and current MLS competition in Southwest Las Vegas.",
+  },
+  {
+    q: "How long does a home valuation take?",
+    a: "Dr. Jan Duffy typically provides a comprehensive market analysis within 24-48 hours of receiving your property information. The analysis includes recent comparable sales, current competition, and a recommended price range.",
+  },
+  {
+    q: "Is a home valuation the same as an appraisal?",
+    a: "No. A home valuation or CMA (Comparative Market Analysis) is a real estate agent's estimate based on market data. An appraisal is a formal valuation by a licensed appraiser, typically required by lenders. CMAs are free and useful for listing decisions; appraisals cost $400-600 and are required for financing.",
+  },
+  {
+    q: "Do I need to have my home ready to show for a valuation?",
+    a: "Not necessarily. Dr. Jan Duffy can provide an initial valuation based on property records, MLS data, and information you provide. A brief walk-through helps identify features and upgrades that add value. There's no need to stage or prepare extensively.",
+  },
+];
 
-// FAQ Schema for SEO
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "How accurate are online home value estimates like Zillow's Zestimate?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Online estimates like Zillow's Zestimate can be off by 5-15% or more, especially in markets like Las Vegas where home features vary significantly. They cannot account for upgrades, condition, views, or lot characteristics. A professional CMA from a local expert provides far more accurate pricing.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What factors affect my Las Vegas home's value?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Key factors include location (neighborhood, school zone, proximity to amenities), square footage, lot size, number of bedrooms and bathrooms, age of the home, upgrades (kitchen, bathrooms, flooring), pool, views, HOA fees, and current market conditions. In Las Vegas, features like solar panels, energy efficiency, and covered patios also significantly impact value.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How long does a home valuation take?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Dr. Jan Duffy typically provides a comprehensive market analysis within 24-48 hours of receiving your property information. The analysis includes recent comparable sales, current competition, and a recommended price range.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Is a home valuation the same as an appraisal?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "No. A home valuation or CMA (Comparative Market Analysis) is a real estate agent's estimate based on market data. An appraisal is a formal valuation by a licensed appraiser, typically required by lenders. CMAs are free and useful for listing decisions; appraisals cost $400-600 and are required for financing.",
-      },
-    },
-  ],
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const config = await getPageDomainConfig();
+  const isNewbridge = config.neighborhood === "Newbridge";
+  return {
+    title: isNewbridge
+      ? "Free Newbridge Home Valuation | ZIP 89139 CMA"
+      : "Free Home Valuation Las Vegas | What's Your Home Worth?",
+    description: isNewbridge
+      ? "Free Newbridge (89139) home valuation from Dr. Jan Duffy, BHHS Nevada Properties. MLS-backed CMA for Southwest Las Vegas near Blue Diamond Road. Call (702) 222-1964."
+      : "Get a free, accurate home valuation in Las Vegas from Dr. Jan Duffy at Berkshire Hathaway HomeServices. Expert CMA analysis. Call (702) 222-1964.",
+    keywords: isNewbridge
+      ? [
+          "Newbridge home value",
+          "89139 CMA",
+          "home valuation Newbridge Las Vegas",
+          "Blue Diamond Road home worth",
+        ]
+      : [
+          "home valuation Las Vegas",
+          "what is my home worth Las Vegas",
+          "free home value estimate",
+          "CMA Las Vegas",
+        ],
+  };
+}
 
-export default function HomeValuationPage() {
+export default async function HomeValuationPage() {
+  const config = await getPageDomainConfig();
+  const isNewbridge = config.neighborhood === "Newbridge";
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: valuationFaqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: { "@type": "Answer", text: faq.a },
+    })),
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <Navbar />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">
           {/* Breadcrumb */}
@@ -83,17 +89,31 @@ export default function HomeValuationPage() {
           </div>
 
           {/* Hero */}
+          <div className="relative mb-10 h-56 overflow-hidden rounded-2xl md:h-80 max-w-6xl mx-auto">
+            <Image
+              src="/images/sections/home-valuation.jpg"
+              alt="Newbridge Las Vegas home exterior for a comparative market analysis"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+
           <div className="max-w-4xl mx-auto text-center mb-16">
             <div className="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
               Berkshire Hathaway HomeServices Nevada Properties
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
-              What's Your Las Vegas Home Worth?
+              {isNewbridge
+                ? "What's Your Newbridge Home Worth? | Free CMA"
+                : "What Is My Las Vegas Home Worth? | Free CMA"}
             </h1>
             <p className="text-xl text-slate-600">
               Get a free, no-obligation home valuation from Dr. Jan Duffy at{" "}
-              <strong>Berkshire Hathaway HomeServices</strong>. Accurate pricing backed by 17+ years
-              of Las Vegas market expertise and $127M+ in closed transactions.
+              <strong>Berkshire Hathaway HomeServices</strong>. Accurate pricing backed by Las Vegas
+              market expertise since 2008
+              {isNewbridge ? " for Newbridge and ZIP 89139." : "."}
             </p>
           </div>
 
@@ -106,7 +126,11 @@ export default function HomeValuationPage() {
                   Book a consultation with Dr. Jan Duffy
                 </p>
               </div>
-              <CalendlyWidget url="showing" height="650px" />
+              <CalendlyWidget
+                url="listing-consultation"
+                placement="home-valuation-scheduler"
+                height="650px"
+              />
               <p className="text-xs text-slate-500 text-center p-4 border-t border-slate-200">
                 No obligation. No pressure. Just accurate information from Berkshire Hathaway
                 HomeServices.
@@ -142,7 +166,9 @@ export default function HomeValuationPage() {
 
               {/* Market Stats */}
               <div className="bg-blue-50 rounded-lg p-8">
-                <h3 className="font-bold text-slate-900 mb-4">Las Vegas Market | January 2026</h3>
+                <h3 className="font-bold text-slate-900 mb-4">
+                  {isNewbridge ? "Newbridge / Southwest Las Vegas | January 2026" : "Las Vegas Market | January 2026"}
+                </h3>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="text-center">
                     <div className="text-2xl font-bold text-blue-600">$450K</div>
@@ -179,11 +205,11 @@ export default function HomeValuationPage() {
               <div className="text-center">
                 <p className="text-slate-600 mb-4">Prefer to talk? Call Dr. Jan directly:</p>
                 <a
-                  href="tel:+17025001942"
+                  href="tel:+17022221964"
                   className="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-bold transition-colors"
                 >
                   <Phone className="h-5 w-5 mr-2" />
-                  (702) 500-1942
+                  (702) 222-1964
                 </a>
               </div>
             </div>
@@ -426,28 +452,7 @@ export default function HomeValuationPage() {
               Frequently Asked Questions About Home Valuations
             </h2>
             <div className="space-y-4">
-              {[
-                {
-                  q: "How accurate are online home value estimates like Zillow's Zestimate?",
-                  a: "Online estimates like Zillow's Zestimate can be off by 5-15% or more, especially in markets like Las Vegas where home features vary significantly. They cannot account for upgrades, condition, views, or lot characteristics. A professional CMA from a local expert provides far more accurate pricing.",
-                },
-                {
-                  q: "What factors affect my Las Vegas home's value?",
-                  a: "Key factors include location (neighborhood, school zone, proximity to amenities), square footage, lot size, number of bedrooms and bathrooms, age of the home, upgrades (kitchen, bathrooms, flooring), pool, views, HOA fees, and current market conditions. In Las Vegas, features like solar panels, energy efficiency, and covered patios also significantly impact value.",
-                },
-                {
-                  q: "How long does a home valuation take?",
-                  a: "Dr. Jan Duffy typically provides a comprehensive market analysis within 24-48 hours of receiving your property information. The analysis includes recent comparable sales, current competition, and a recommended price range.",
-                },
-                {
-                  q: "Is a home valuation the same as an appraisal?",
-                  a: "No. A home valuation or CMA (Comparative Market Analysis) is a real estate agent's estimate based on market data. An appraisal is a formal valuation by a licensed appraiser, typically required by lenders. CMAs are free and useful for listing decisions; appraisals cost $400-600 and are required for financing.",
-                },
-                {
-                  q: "Do I need to have my home ready to show for a valuation?",
-                  a: "Not necessarily. Dr. Jan can provide an initial valuation based on property records, MLS data, and information you provide. However, a brief walk-through helps identify features and upgrades that add value. There's no need to stage or prepare extensively.",
-                },
-              ].map((faq, index) => (
+              {valuationFaqs.map((faq, index) => (
                 <div key={index} className="bg-white border border-slate-200 rounded-lg p-6">
                   <h3 className="font-bold text-slate-900 mb-2">{faq.q}</h3>
                   <p className="text-slate-600">{faq.a}</p>
@@ -467,11 +472,11 @@ export default function HomeValuationPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+17025001942"
+                href="tel:+17022221964"
                 className="inline-flex items-center justify-center bg-white text-blue-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-50 transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Call (702) 500-1942
+                Call (702) 222-1964
               </a>
               <Link
                 href="/sellers"
@@ -490,7 +495,6 @@ export default function HomeValuationPage() {
         <div className="text-center text-sm text-slate-500 mt-8">Last Updated: January 2026</div>
       </main>
       <RealScoutListings />
-      <Footer />
     </>
   );
 }

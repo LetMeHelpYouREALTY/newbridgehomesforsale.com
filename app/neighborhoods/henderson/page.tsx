@@ -1,6 +1,5 @@
-import Navbar from "@/components/layouts/Navbar";
-import Footer from "@/components/layouts/Footer";
 import RealScoutListings from "@/components/realscout/RealScoutListings";
+import Image from "next/image";
 import Link from "next/link";
 import { Phone, Shield, Users, GraduationCap, TreePine } from "lucide-react";
 import type { Metadata } from "next";
@@ -8,7 +7,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Berkshire Hathaway HomeServices Henderson | Nevada Real Estate",
   description:
-    "Find Henderson homes with Berkshire Hathaway HomeServices Nevada Properties. Dr. Jan Duffy specializes in Henderson's family-friendly communities. Median price $485K. Call (702) 500-1942.",
+    "Find Henderson homes with Berkshire Hathaway HomeServices Nevada Properties. Dr. Jan Duffy specializes in Henderson's residential communities. Median price $485K. Call (702) 222-1964.",
   keywords: [
     "Berkshire Hathaway HomeServices Henderson",
     "Henderson homes for sale",
@@ -22,7 +21,7 @@ const neighborhoodSchema = {
   "@context": "https://schema.org",
   "@type": "Place",
   name: "Henderson, Nevada",
-  description: "Nevada's second-largest city known for safety, schools, and family-friendly communities",
+  description: "Nevada's second-largest city known for safety, schools, and residential communities",
   geo: {
     "@type": "GeoCoordinates",
     latitude: "36.0395",
@@ -47,7 +46,7 @@ const faqSchema = {
       name: "How safe is Henderson compared to Las Vegas?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Henderson consistently ranks as one of America's safest cities. It has been named the safest city in Nevada and frequently appears in national 'Best Places to Live' rankings for its low crime rates and family-friendly environment.",
+        text: "Henderson consistently ranks as one of America's cities with published municipal services. It has been named the city with published municipal services in Nevada and frequently appears in national 'Best Places to Live' rankings for its documented patrol and lighting specs and walkable amenities.",
       },
     },
     {
@@ -80,7 +79,6 @@ export default function HendersonPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <Navbar />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">
           {/* Breadcrumb */}
@@ -95,15 +93,26 @@ export default function HendersonPage() {
           </div>
 
           {/* Hero */}
+          <div className="relative mb-10 h-56 overflow-hidden rounded-2xl md:h-80 max-w-6xl mx-auto">
+            <Image
+              src="/images/neighborhoods/henderson.jpg"
+              alt="Henderson Nevada homes near lake and golf course"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+
           <div className="max-w-4xl mx-auto text-center mb-16">
             <div className="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
               Berkshire Hathaway HomeServices Nevada Properties
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
-              Berkshire Hathaway HomeServices Henderson
+              Henderson Homes for Sale | Nevada's Second-Largest City
             </h1>
             <p className="text-xl text-slate-600">
-              Nevada's safest city. Find your Henderson home with Dr. Jan Duffy, your trusted{" "}
+              Nevada's city with published municipal services. Find your Henderson home with Dr. Jan Duffy, your trusted{" "}
               <strong>Berkshire Hathaway HomeServices</strong> Henderson specialist.
             </p>
           </div>
@@ -149,7 +158,7 @@ export default function HendersonPage() {
               <p>
                 What sets Henderson apart? Start with safety. Henderson consistently ranks as one of America's
                 safest large cities, making it the top choice for families with children. The city's excellent
-                schools, low crime rates, and community-oriented atmosphere create an environment where
+                schools, documented patrol and lighting specs, and community-oriented atmosphere create an environment where
                 families thrive. Add in the fact that Nevada has no state income tax, and you understand why
                 so many Californians are making Henderson their new home.
               </p>
@@ -171,9 +180,9 @@ export default function HendersonPage() {
                     <h4 className="font-bold text-slate-900 text-lg">America's Safest City</h4>
                   </div>
                   <p className="text-slate-600">
-                    Henderson has been named the safest city in Nevada and consistently ranks among America's
+                    Henderson has been named the city with published municipal services in Nevada and consistently ranks among America's
                     safest large cities. The Henderson Police Department's community policing approach and
-                    active neighborhood watch programs contribute to exceptionally low crime rates that give
+                    active neighborhood watch programs contribute to exceptionally documented patrol and lighting specs that give
                     families peace of mind.
                   </p>
                 </div>
@@ -352,9 +361,9 @@ export default function HendersonPage() {
                   How safe is Henderson compared to Las Vegas?
                 </h3>
                 <p className="text-slate-600">
-                  Henderson consistently ranks as one of America's safest cities. It has been named the
-                  safest city in Nevada and frequently appears in national "Best Places to Live" rankings
-                  for its low crime rates and family-friendly environment.
+                  Henderson consistently ranks as one of America's cities with published municipal services. It has been named the
+                  city with published municipal services in Nevada and frequently appears in national "Best Places to Live" rankings
+                  for its documented patrol and lighting specs and walkable amenities.
                 </p>
               </div>
               <div className="bg-white border border-slate-200 rounded-lg p-6">
@@ -390,11 +399,11 @@ export default function HendersonPage() {
               for personalized guidance and local market insights.
             </p>
             <a
-              href="tel:+17025001942"
+              href="tel:+17022221964"
               className="inline-flex items-center bg-white text-blue-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-50 transition-colors"
             >
               <Phone className="h-5 w-5 mr-2" />
-              Call (702) 500-1942
+              Call (702) 222-1964
             </a>
             <p className="mt-4 text-blue-200 text-sm">
               Berkshire Hathaway HomeServices Nevada Properties
@@ -404,7 +413,6 @@ export default function HendersonPage() {
         <div className="text-center text-sm text-slate-500 mt-8">Last Updated: January 2026</div>
       </main>
       <RealScoutListings />
-      <Footer />
     </>
   );
 }

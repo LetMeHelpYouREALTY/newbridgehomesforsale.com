@@ -1,4 +1,5 @@
 import { MetadataRoute } from "next";
+import { SITE_ORIGIN } from "@/lib/canonical-url";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -7,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/"],
     },
-    sitemap: "https://heyberkshire.com/sitemap.xml",
+    sitemap: `${SITE_ORIGIN}/sitemap.xml`,
   };
 }
