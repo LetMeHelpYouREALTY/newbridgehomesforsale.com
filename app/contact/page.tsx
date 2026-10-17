@@ -15,9 +15,11 @@ export async function generateMetadata(): Promise<Metadata> {
   const config = await getPageDomainConfig();
   const isNewbridge = config.neighborhood === "Newbridge";
   return {
-    title: isNewbridge
-      ? "Contact Dr. Jan Duffy | Newbridge Buyer Agent"
-      : "Contact Dr. Jan Duffy | Berkshire Hathaway HomeServices Las Vegas",
+    title: {
+      absolute: isNewbridge
+        ? "Contact Dr. Jan Duffy | Newbridge Buyer Agent"
+        : "Contact Dr. Jan Duffy | Berkshire Hathaway HomeServices Las Vegas",
+    },
     description: isNewbridge
       ? "Contact Dr. Jan Duffy for Newbridge and 89139 real estate. Schedule a consult or call (702) 222-1964. BHHS Nevada Properties."
       : "Contact Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. Schedule an appointment, get directions, or call (702) 222-1964.",

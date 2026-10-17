@@ -3,9 +3,9 @@ import SeoHero from "@/components/seo/SeoHero";
 import { images, NAP } from "@/lib/site-images";
 
 export const metadata: Metadata = {
-  title: "Terms of Use | Newbridge Homes | Dr. Jan Duffy",
+  title: { absolute: "Terms of Use | Newbridge Homes | Dr. Jan Duffy" },
   description:
-    "Website terms for newbridgehomesforsale.com. Listings, market stats, and third-party widgets are informational. Nevada real estate is provided by Dr. Jan Duffy, License S.0197614.LLC.",
+    "Website terms for newbridgehomesforsale.com. Listings, market stats, and third-party widgets are informational. Dr. Jan Duffy, License S.0197614.LLC.",
 };
 
 export default function TermsPage() {

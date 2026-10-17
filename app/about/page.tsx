@@ -17,16 +17,16 @@ import {
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Dr. Jan Duffy | Berkshire Hathaway HomeServices Las Vegas",
+  title: { absolute: "About Dr. Jan Duffy | BHHS Nevada Properties" },
   description:
-    "Meet Dr. Jan Duffy, your trusted Berkshire Hathaway HomeServices Nevada Properties agent. Serving Las Vegas since 2008, 500+ closed transactions since 2008, Henderson & Summerlin specialist. Call (702) 222-1964.",
+    "Meet Dr. Jan Duffy, REALTOR® with Berkshire Hathaway HomeServices Nevada Properties, serving Las Vegas since 2008. License S.0197614.LLC. Call (702) 222-1964.",
   keywords: [
     "Dr. Jan Duffy",
     "Berkshire Hathaway HomeServices agent",
     "Las Vegas realtor",
     "BHHS Nevada Properties",
-    "Henderson real estate agent",
-    "Summerlin realtor",
+    "Newbridge Las Vegas real estate agent",
+    "89139 realtor",
   ],
 };
 

@@ -3,9 +3,9 @@ import SeoHero from "@/components/seo/SeoHero";
 import { images, NAP } from "@/lib/site-images";
 
 export const metadata: Metadata = {
-  title: "Equal Housing Opportunity | Dr. Jan Duffy | BHHS Nevada Properties",
+  title: { absolute: "Equal Housing Opportunity | Dr. Jan Duffy, BHHS" },
   description:
-    "Dr. Jan Duffy and Berkshire Hathaway HomeServices Nevada Properties support Equal Housing Opportunity. We do not discriminate on protected classes under federal or Nevada law.",
+    "Dr. Jan Duffy and BHHS Nevada Properties support Equal Housing Opportunity. We do not discriminate on protected classes under federal or Nevada law.",
 };
 
 export default function EqualHousingPage() {

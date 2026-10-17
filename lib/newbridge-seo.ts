@@ -56,7 +56,7 @@ export function newbridgeMetadata({
 }): Metadata {
   const url = path === "/" ? SITE_ORIGIN : `${SITE_ORIGIN}${path}`;
   return {
-    title,
+    title: { absolute: title },
     description,
     keywords: [...NEWBRIDGE_KEYWORDS, ...keywords],
     alternates: { canonical: url },
