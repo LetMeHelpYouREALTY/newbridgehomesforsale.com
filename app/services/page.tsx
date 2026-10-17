@@ -381,7 +381,7 @@ export default function ServicesPage() {
               that built Warren Buffett's empire. This isn't just a logo; it's a commitment to 
               putting your interests first.
             </p>
-            <div className="grid md:grid-cols-4 gap-6 text-center mb-8">
+            <div className="grid md:grid-cols-3 gap-6 text-center mb-8">
               <div>
                 <div className="text-3xl font-bold text-blue-400 mb-2">50,000+</div>
                 <div className="text-slate-300 text-sm">Agents Worldwide</div>
@@ -392,11 +392,7 @@ export default function ServicesPage() {
               </div>
               <div>
                 <div className="text-3xl font-bold text-blue-400 mb-2">500+ closings</div>
-                <div className="text-slate-300 text-sm">Volume Closed</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-blue-400 mb-2">4.9★</div>
-                <div className="text-slate-300 text-sm">Client Rating</div>
+                <div className="text-slate-300 text-sm">Closed transactions since 2008</div>
               </div>
             </div>
             <div className="grid md:grid-cols-3 gap-6">
