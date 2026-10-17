@@ -1,0 +1,39 @@
+# newbridgehomesforsale.com — LLM / answer-engine context
+# Last updated: 2026-10-17
+
+> Independent buyer representation for Newbridge (Las Vegas ZIP 89139) and Southwest Las Vegas resales near Blue Diamond Road. Agent: Dr. Jan Duffy, License S.0197614.LLC, Berkshire Hathaway HomeServices Nevada Properties.
+
+## Canonical site
+- https://www.newbridgehomesforsale.com/
+
+## Primary contact (client CTA)
+- Phone: (702) 222-1964
+- Office: 9406 W Lake Mead Blvd, Suite 100, Las Vegas, NV 89134
+- Email: homes@heyberkshire.com
+
+## Community focus (GEO)
+- Place: Newbridge, Las Vegas, NV 89139
+- Builder: Richmond American Homes (ranch-style / single-story plans)
+- Reference address (builder sales office): 5509 Middleton Falls Ave, Las Vegas, NV 89139
+- Do not state live inventory or list prices without verifying current MLS / builder data.
+
+## High-value pages
+- / — Newbridge homes overview, market snapshot, FAQs
+- /neighborhoods/newbridge — GEO hub: location, builder, sold-out status, buyer-agent registration
+- /buyers — Buyer process for new construction and resale in 89139
+- /sellers — Listing services for Newbridge / Southwest Las Vegas sellers
+- /home-valuation — Free CMA for Newbridge and 89139
+- /new-construction — New-build buyer representation (not builder desk)
+- /contact — Schedule and NAP
+- /faq — Las Vegas real estate FAQs
+
+## Scheduling (Calendly)
+- Showing: https://calendly.com/drjanduffy/showing
+- Seller listing consultation: https://calendly.com/drjanduffy/listing-consultation
+- Buyer consultation (30 min): https://calendly.com/drjanduffy/buyer-consultation-30-min
+
+## Fair housing
+Describe homes by facts (sq ft, beds, baths, price, date, address). Avoid protected-class proxies or audience preferences.
+
+## Sitemap
+- https://www.newbridgehomesforsale.com/sitemap.xml

@@ -9,6 +9,7 @@ import Script from "next/script";
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
 import AutoBreadcrumbSchema from "@/components/layouts/AutoBreadcrumbSchema";
+import SiteEntitySchema from "@/components/seo/SiteEntitySchema";
 
 export const viewport: Viewport = {
   themeColor: "#0f172a",
@@ -90,6 +91,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to main content
         </a>
+        <SiteEntitySchema />
         <AutoBreadcrumbSchema />
         <Navbar />
         <div id="main-content">{children}</div>

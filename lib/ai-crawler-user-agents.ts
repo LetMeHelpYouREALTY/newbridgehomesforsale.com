@@ -1,0 +1,21 @@
+/** AI / answer-engine crawlers explicitly allowed (AEO allowlist, 2026). */
+export const AI_CRAWLER_USER_AGENTS = [
+  "GPTBot",
+  "ChatGPT-User",
+  "OAI-SearchBot",
+  "ClaudeBot",
+  "Claude-User",
+  "Claude-SearchBot",
+  "anthropic-ai",
+  "PerplexityBot",
+  "Google-Extended",
+  "cohere-ai",
+  "Applebot-Extended",
+  "Amazonbot",
+  "meta-externalagent",
+  "meta-externalfetcher",
+  "YouBot",
+  "Diffbot",
+  "CCBot",
+  "Bytespider",
+] as const;

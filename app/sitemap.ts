@@ -1,9 +1,9 @@
 import { MetadataRoute } from "next";
 import { SITE_ORIGIN } from "@/lib/canonical-url";
+import { lastModifiedForChangeFrequency } from "@/lib/sitemap-lastmod";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_ORIGIN;
-  const lastModified = new Date();
 
   // Core pages
   const corePages = [
@@ -87,7 +87,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return allPages.map((page) => ({
     url: page.url,
-    lastModified,
+    lastModified: lastModifiedForChangeFrequency(page.changeFrequency),
     changeFrequency: page.changeFrequency,
     priority: page.priority,
   }));

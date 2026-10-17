@@ -17,7 +17,7 @@ import { NEWBRIDGE_FAQS, newbridgeMetadata } from "@/lib/newbridge-seo";
 export const metadata: Metadata = newbridgeMetadata({
   title: "Newbridge Homes for Sale | Las Vegas 89139 | Dr. Jan Duffy",
   description:
-    "Search Newbridge homes for sale in Southwest Las Vegas near Blue Diamond Road (ZIP 89139). Richmond American ranch plans. Independent buyer representation from Dr. Jan Duffy, BHHS Nevada Properties. Call 702-222-1964.",
+    "Newbridge homes for sale in Las Vegas 89139 near Blue Diamond Road. Richmond American ranch plans. Buyer agent Dr. Jan Duffy, BHHS. Call 702-222-1964.",
   path: "/neighborhoods/newbridge",
   keywords: ["Newbridge ranch homes", "Richmond American Las Vegas 89139", "Middleton Falls Ave"],
 });
@@ -36,6 +36,7 @@ const schemas = combineSchemas(
     latitude: 36.021,
     longitude: -115.246,
     containedIn: "Las Vegas",
+    postalCode: "89139",
   }),
   generateFAQSchema(NEWBRIDGE_FAQS)
 );

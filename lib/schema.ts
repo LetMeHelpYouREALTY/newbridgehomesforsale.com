@@ -34,6 +34,7 @@ export interface NeighborhoodData {
   slug: string;
   description: string;
   medianPrice?: string;
+  postalCode?: string;
   latitude?: number;
   longitude?: number;
   containedIn?: string;
@@ -359,8 +360,13 @@ export function generateNeighborhoodSchema(neighborhood: NeighborhoodData) {
       addressLocality: neighborhood.containedIn || "Las Vegas",
       addressRegion: "NV",
       addressCountry: "US",
+      ...(neighborhood.postalCode ? { postalCode: neighborhood.postalCode } : {}),
     },
   };
+
+  if (neighborhood.postalCode) {
+    schema.postalCode = neighborhood.postalCode;
+  }
 
   if (neighborhood.latitude && neighborhood.longitude) {
     schema.geo = {

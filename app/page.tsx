@@ -7,44 +7,16 @@ import SeoSection from "@/components/seo/SeoSection";
 import FaqAeo from "@/components/seo/FaqAeo";
 import CtaBanner from "@/components/seo/CtaBanner";
 import { images, NAP } from "@/lib/site-images";
-import { getRequestSiteUrl } from "@/lib/canonical-url";
 import { NEWBRIDGE_FAQS } from "@/lib/newbridge-seo";
-import { buildCommunityAreaServed } from "@/lib/area-served";
 
 const homeFaqs = NEWBRIDGE_FAQS;
 
 export default async function Home() {
   const config = await getPageDomainConfig();
-  const siteUrl = getRequestSiteUrl();
-
   const pageH1 = config.pageH1 ?? config.heroHeadline;
-
-  const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "RealEstateAgent",
-    "@id": `${siteUrl}#dr-jan-duffy`,
-    name: "Dr. Jan Duffy",
-    url: siteUrl,
-    telephone: "+17022221964",
-    email: NAP.email,
-    image: `${siteUrl}${images.office.src}`,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: NAP.street,
-      addressLocality: NAP.city,
-      addressRegion: NAP.state,
-      postalCode: NAP.zip,
-    },
-    geo: { "@type": "GeoCoordinates", latitude: 36.1941, longitude: -115.2678 },
-    areaServed: buildCommunityAreaServed(config),
-  };
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">
           <SeoHero
