@@ -3,10 +3,6 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Security Policy',
   description: 'Security policy and responsible disclosure information for newbridgehomesforsale.com',
-  robots: {
-    index: true,
-    follow: true,
-  },
 }
 
 export default function SecurityPolicyPage() {

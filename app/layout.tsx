@@ -4,6 +4,7 @@ import "./globals.css";
 import { headers } from "next/headers";
 import { getDomainConfig } from "@/lib/domain-config";
 import { SITE_ORIGIN } from "@/lib/canonical-url";
+import { robotsForPath } from "@/lib/seo-index-scope";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 import Navbar from "@/components/layouts/Navbar";
@@ -20,7 +21,8 @@ export const viewport: Viewport = {
 export const revalidate = 3600;
 
 export async function generateMetadata(): Promise<Metadata> {
-  const domain = headers().get("x-domain") || "";
+  const headersList = headers();
+  const domain = headersList.get("x-domain") || "";
   const config = getDomainConfig(domain);
   const defaultTitle =
     config.seoTitle ?? `${config.tagline} | Las Vegas`;
@@ -42,15 +44,16 @@ export async function generateMetadata(): Promise<Metadata> {
       email: true,
       address: true,
     },
+    // "./" resolves against each request's pathname (query string dropped), so
+    // every page is self-canonical. og/twitter title and description are left
+    // unset so Next fills them from each page's own title and description.
     alternates: {
-      canonical: "/",
+      canonical: "./",
     },
     openGraph: {
-      title: config.pageH1 ?? config.heroHeadline,
-      description: config.description,
       type: "website",
       locale: "en_US",
-      url: SITE_ORIGIN,
+      url: "./",
       siteName: "Berkshire Hathaway HomeServices Nevada Properties",
       images: [
         {
@@ -63,21 +66,9 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: config.pageH1 ?? config.heroHeadline,
-      description: config.description,
       images: [`${SITE_ORIGIN}/og.jpg`],
     },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-        "max-video-preview": -1,
-      },
-    },
+    robots: robotsForPath(headersList.get("x-pathname")),
   };
 }
 
