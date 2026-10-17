@@ -6,11 +6,7 @@ import FaqAeo from "@/components/seo/FaqAeo";
 import CtaBanner from "@/components/seo/CtaBanner";
 import { images } from "@/lib/site-images";
 import SchemaScript from "@/components/SchemaScript";
-import {
-  generateBreadcrumbSchema,
-  generateNeighborhoodSchema,
-  combineSchemas,
-} from "@/lib/schema";
+import { generateNeighborhoodSchema, combineSchemas } from "@/lib/schema";
 import { NEWBRIDGE_FAQS, newbridgeMetadata } from "@/lib/newbridge-seo";
 import { NEWBRIDGE_PRIMARY_H1 } from "@/lib/newbridge-h1";
 
@@ -23,11 +19,6 @@ export const metadata: Metadata = newbridgeMetadata({
 });
 
 const schemas = combineSchemas(
-  generateBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Neighborhoods", url: "/neighborhoods" },
-    { name: "Newbridge", url: "/neighborhoods/newbridge" },
-  ]),
   generateNeighborhoodSchema({
     name: "Newbridge",
     slug: "newbridge",

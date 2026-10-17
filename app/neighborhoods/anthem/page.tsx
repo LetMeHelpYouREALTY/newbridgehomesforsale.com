@@ -7,7 +7,6 @@ import CtaBanner from "@/components/seo/CtaBanner";
 import { images } from "@/lib/site-images";
 import SchemaScript from "@/components/SchemaScript";
 import {
-  generateBreadcrumbSchema,
   generateFAQSchema,
   generateNeighborhoodSchema,
   combineSchemas,
@@ -33,11 +32,6 @@ const faqs = [
 ];
 
 const schemas = combineSchemas(
-  generateBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Neighborhoods", url: "/neighborhoods" },
-    { name: "Anthem", url: "/neighborhoods/anthem" },
-  ]),
   generateNeighborhoodSchema({
     name: "Anthem",
     slug: "anthem",
