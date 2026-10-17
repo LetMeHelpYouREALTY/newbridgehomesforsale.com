@@ -118,13 +118,13 @@ export default async function Home() {
           >
             <div className="flex flex-wrap gap-3">
               <Link href="/buyers" className="font-semibold text-blue-600">
-                Las Vegas buyer guide →
+                {`Buying in ${config.neighborhood} →`}
               </Link>
               <Link href="/sellers" className="font-semibold text-blue-600">
-                Sell your Las Vegas home →
+                {`Sell your ${config.neighborhood} home →`}
               </Link>
               <Link href="/home-valuation" className="font-semibold text-blue-600">
-                Free home valuation →
+                {`Free ${config.neighborhood} home valuation →`}
               </Link>
             </div>
           </SeoSection>
