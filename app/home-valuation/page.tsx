@@ -116,11 +116,11 @@ export default async function HomeValuationPage() {
               <div className="bg-slate-900 text-white rounded-lg p-8">
                 <h2 className="text-2xl font-bold mb-4">Why Request a BHHS Valuation?</h2>
                 <p className="text-slate-300 mb-6">
-                  Online estimators like Zillow's "Zestimate" can be off by 10% or more—that's
-                  $45,000+ on a typical Las Vegas home. Dr. Jan Duffy provides a comprehensive
-                  market analysis using current MLS data, recent comparable sales, and her expertise
-                  serving Las Vegas since 2008. The result? Accurate pricing that helps you sell
-                  faster and for more money.
+                  Online estimators like Zillow's "Zestimate" can't see your home's upgrades,
+                  condition, or lot. Dr. Jan Duffy provides a comprehensive market analysis using
+                  current MLS data, recent comparable sales, and her expertise serving Las Vegas
+                  since 2008, so your list price is grounded in what comparable homes actually
+                  sold for.
                 </p>
                 <div className="space-y-3">
                   {[
@@ -186,7 +186,7 @@ export default async function HomeValuationPage() {
             <div className="prose prose-lg max-w-none text-slate-700">
               <p>
                 If you've checked Zillow, Redfin, or other online home value tools, you've likely
-                noticed the estimates can vary wildly—sometimes by $50,000 or more. That's because
+                noticed the estimates don't always agree. That's because
                 these automated valuation models (AVMs) rely on algorithms that can't see inside
                 your home or understand the nuances of the Las Vegas market.
               </p>
@@ -270,8 +270,8 @@ export default async function HomeValuationPage() {
                 <MapPin className="h-8 w-8 text-blue-600 mb-4" />
                 <h3 className="font-bold text-slate-900 mb-2">Location & Neighborhood</h3>
                 <p className="text-slate-600 text-sm">
-                  Summerlin commands 20-40% premiums over comparable homes in other areas. School
-                  zones, HOA quality, and proximity to amenities significantly impact value.
+                  Location within Newbridge and ZIP 89139, proximity to Blue Diamond Road, HOA
+                  dues, and nearby amenities all affect value.
                 </p>
               </div>
               <div className="bg-white rounded-lg p-6 shadow-sm">
@@ -286,8 +286,8 @@ export default async function HomeValuationPage() {
                 <TrendingUp className="h-8 w-8 text-blue-600 mb-4" />
                 <h3 className="font-bold text-slate-900 mb-2">Upgrades & Condition</h3>
                 <p className="text-slate-600 text-sm">
-                  Updated kitchens and bathrooms return 60-80% of investment. Flooring, paint,
-                  fixtures, and overall maintenance affect buyer perception and offers.
+                  Kitchen and bath updates, flooring, paint, fixtures, and overall maintenance
+                  affect buyer perception and offers.
                 </p>
               </div>
               <div className="bg-white rounded-lg p-6 shadow-sm">
@@ -302,8 +302,8 @@ export default async function HomeValuationPage() {
                 <Calculator className="h-8 w-8 text-blue-600 mb-4" />
                 <h3 className="font-bold text-slate-900 mb-2">Lot Characteristics</h3>
                 <p className="text-slate-600 text-sm">
-                  Lot size, views, privacy, and outdoor features like pools add 5-15% to value.
-                  Corner lots, cul-de-sacs, and premium positions command higher prices.
+                  Lot size, views, privacy, and outdoor features like pools affect value. Corner
+                  lots, cul-de-sacs, and premium positions can command higher prices.
                 </p>
               </div>
               <div className="bg-white rounded-lg p-6 shadow-sm">

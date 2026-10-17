@@ -3,7 +3,7 @@ import type { FaqItem } from "./newbridge-seller-faqs";
 export const NEWBRIDGE_VALUATION_FAQS: FaqItem[] = [
   {
     q: "How accurate are online home value estimates like Zillow's Zestimate?",
-    a: "Online estimates like Zillow's Zestimate can be off by 5-15% or more, especially in markets like Las Vegas where home features vary significantly. They cannot account for upgrades, condition, views, or lot characteristics. A professional CMA from Dr. Jan Duffy provides far more accurate pricing.",
+    a: "Online estimates like Zillow's Zestimate can miss upgrades, condition, views, and lot characteristics, especially in Las Vegas where home features vary. A CMA from Dr. Jan Duffy prices your home from recent comparable MLS sales.",
   },
   {
     q: "What factors affect my Newbridge home's value?",
@@ -15,7 +15,7 @@ export const NEWBRIDGE_VALUATION_FAQS: FaqItem[] = [
   },
   {
     q: "Is a home valuation the same as an appraisal?",
-    a: "No. A home valuation or CMA (Comparative Market Analysis) is a real estate agent's estimate based on market data. An appraisal is a formal valuation by a licensed appraiser, typically required by lenders. CMAs are free and useful for listing decisions; appraisals cost $400-600 and are required for financing.",
+    a: "No. A home valuation or CMA (Comparative Market Analysis) is a real estate agent's estimate based on market data. An appraisal is a formal valuation by a licensed appraiser, typically required by lenders. CMAs are free and useful for listing decisions.",
   },
   {
     q: "Do I need to have my home ready to show for a valuation?",
