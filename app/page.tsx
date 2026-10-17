@@ -112,7 +112,7 @@ export default async function Home() {
 
           <SeoSection
             h2="How do you buy or sell a home in Clark County?"
-            answer="Buyers: pre-approval, MLS search, offer, inspection, close in about 30–45 days. Sellers: CMA, prep, professional media, MLS + BHHS syndication, negotiation, then escrow. Dr. Jan Duffy runs both sides from the Lake Mead Boulevard office."
+            answer="Buyers: pre-approval, MLS search, offer, inspection, then closing. Sellers: CMA, prep, professional media, MLS + BHHS syndication, negotiation, then escrow. Dr. Jan Duffy runs both sides from the Lake Mead Boulevard office."
             image={images.buying.src}
             imageAlt={images.buying.alt}
           >

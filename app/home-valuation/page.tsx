@@ -280,8 +280,8 @@ export default async function HomeValuationPage() {
                 <Home className="h-8 w-8 text-blue-600 mb-4" />
                 <h3 className="font-bold text-slate-900 mb-2">Size & Layout</h3>
                 <p className="text-slate-600 text-sm">
-                  Square footage, bedroom/bathroom count, and functional floor plans matter. Open
-                  concepts and first-floor master suites command premiums in today's market.
+                  Square footage, bedroom and bathroom count, and how well the floor plan works
+                  all affect value.
                 </p>
               </div>
               <div className="bg-white rounded-lg p-6 shadow-sm">
@@ -312,8 +312,8 @@ export default async function HomeValuationPage() {
                 <Clock className="h-8 w-8 text-blue-600 mb-4" />
                 <h3 className="font-bold text-slate-900 mb-2">Age & Systems</h3>
                 <p className="text-slate-600 text-sm">
-                  Newer homes (built 2015+) often sell for more per square foot. However, older
-                  homes with updated HVAC, roof, and electrical can compete effectively.
+                  The age of the home and the condition of its HVAC, roof, and electrical systems
+                  affect value.
                 </p>
               </div>
             </div>
