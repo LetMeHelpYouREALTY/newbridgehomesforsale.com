@@ -8,7 +8,6 @@ import { images } from "@/lib/site-images";
 import SchemaScript from "@/components/SchemaScript";
 import {
   generateBreadcrumbSchema,
-  generateFAQSchema,
   generateNeighborhoodSchema,
   combineSchemas,
 } from "@/lib/schema";
@@ -38,8 +37,7 @@ const schemas = combineSchemas(
     longitude: -115.246,
     containedIn: "Las Vegas",
     postalCode: "89139",
-  }),
-  generateFAQSchema(NEWBRIDGE_FAQS)
+  })
 );
 
 export default function NewbridgePage() {
