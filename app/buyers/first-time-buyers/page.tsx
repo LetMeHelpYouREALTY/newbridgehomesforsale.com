@@ -31,52 +31,9 @@ export const metadata: Metadata = {
   ],
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "How much down payment do I need for my first home in Las Vegas?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Down payment requirements vary by loan type: FHA loans require 3.5% down, conventional loans can be as low as 3%, VA loans require 0% down for eligible veterans, and Nevada down payment assistance programs can provide up to $15,000 for qualified buyers.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What is the FHA loan limit in Las Vegas for 2026?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "The 2026 FHA loan limit for Las Vegas (Clark County) is $498,257 for a single-family home. This allows first-time buyers to purchase homes up to approximately $515,000 with 3.5% down.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What neighborhoods are best for first-time buyers in Las Vegas?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Top neighborhoods for first-time buyers include North Las Vegas ($350K-$450K), Mountains Edge ($380K-$480K), and Centennial Hills ($398K median). These areas offer new construction options, named campuses by address, and strong appreciation potential.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Are there builder incentives for first-time buyers?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes! Las Vegas builders currently offer significant incentives: closing cost credits up to 6%, rate buydowns as low as 4.99%, and upgrade packages worth $15K-$50K. These incentives can make new construction more affordable than resale homes.",
-      },
-    },
-  ],
-};
-
 export default function FirstTimeBuyersPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">
           {/* Breadcrumb */}

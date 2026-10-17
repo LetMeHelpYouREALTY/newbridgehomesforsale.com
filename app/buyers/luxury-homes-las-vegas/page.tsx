@@ -30,44 +30,9 @@ export const metadata: Metadata = {
   ],
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "What is the luxury home market like in Las Vegas?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Las Vegas luxury ($1M+) has appreciated 161% since 2015, making it #4 nationally for luxury growth. The December 2025 luxury median is $1.45M. Cash buyers represent approximately 60% of luxury transactions.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What are the most exclusive luxury communities in Las Vegas?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "The Ridges in Summerlin ($1.5M-$10M+) is the valley's most prestigious address. MacDonald Highlands and Ascaya in Henderson ($2M-$15M) offer Strip views. For high-rise luxury, Waldorf Astoria, Veer Towers, and Panorama Towers dominate the Strip corridor.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Do luxury buyers need representation?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Absolutely. Luxury transactions involve complex negotiations, privacy concerns, and significant financial exposure. One wrong move can cost hundreds of thousands. Berkshire Hathaway HomeServices provides discrete, sophisticated representation for discerning buyers.",
-      },
-    },
-  ],
-};
-
 export default function LuxuryHomesPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">
           {/* Breadcrumb */}
