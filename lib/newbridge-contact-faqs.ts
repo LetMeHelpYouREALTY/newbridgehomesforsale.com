@@ -3,7 +3,7 @@ import type { FaqItem } from "./newbridge-seller-faqs";
 export const NEWBRIDGE_CONTACT_FAQS: FaqItem[] = [
   {
     q: "What should I expect during a Newbridge buyer consultation?",
-    a: "A no-pressure call about your timeline, budget, and whether you are pursuing Richmond American new construction, 89139 resale, or both. Dr. Jan Duffy explains builder registration rules and how seller-paid representation works in Nevada.",
+    a: "A no-pressure call about your timeline, budget, and whether you want a Newbridge resale, another 89139 home, or new construction. Dr. Jan Duffy explains how builder agent-registration policies and buyer-representation agreements work.",
   },
   {
     q: "Do I need to register Dr. Jan before touring Newbridge models?",

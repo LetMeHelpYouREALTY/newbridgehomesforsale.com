@@ -79,7 +79,7 @@ const specializations = [
   },
   {
     title: "New Construction",
-    description: "Free buyer representation with Toll Brothers, Lennar, Century Communities, and more",
+    description: "Buyer representation on new-construction purchases",
   },
   {
     title: "Investment Properties",
@@ -90,8 +90,8 @@ const specializations = [
     description: "Sun City Summerlin, Sun City Anthem, Del Webb Lake Las Vegas expertise",
   },
   {
-    title: "California Relocation",
-    description: "Helping CA families transition to Nevada's tax advantages and lower costs",
+    title: "Relocation to Las Vegas",
+    description: "Guidance for clients relocating to Las Vegas from out of state",
   },
 ];
 
@@ -162,11 +162,10 @@ export default function AboutPage() {
                     world-class resources and local expertise to every client I serve.
                   </p>
                   <p>
-                    Since 2008, I've closed $127 million in transactions and
-                    helped hundreds of families find their perfect home in Las Vegas, Henderson,
-                    Summerlin, and throughout Southern Nevada. My expertise spans luxury properties,
-                    new construction, investment real estate, 55+ active adult communities, and 
-                    relocations—particularly for California families seeking Nevada's tax advantages.
+                    Since 2008, I've closed $127 million in transactions for buyers and sellers
+                    in Las Vegas, Henderson, Summerlin, and throughout Southern Nevada. My
+                    expertise spans luxury properties, new construction, investment real estate,
+                    55+ active adult communities, and out-of-state relocations.
                   </p>
                   <p>
                     What sets <strong>Berkshire Hathaway HomeServices Nevada Properties</strong>{" "}
