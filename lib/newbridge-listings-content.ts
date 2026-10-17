@@ -12,7 +12,7 @@ export const LAS_VEGAS_POPULAR_SEARCHES: PopularSearch[] = [
 export const NEWBRIDGE_POPULAR_SEARCHES: PopularSearch[] = [
   { name: "Newbridge GEO hub", href: "/neighborhoods/newbridge", count: "Guide" },
   { name: "89139 MLS search", href: "/listings", count: "Live feed" },
-  { name: "New construction buyer guide", href: "/new-construction", count: "Richmond American" },
+  { name: "New construction buyer guide", href: "/new-construction", count: "Builder guide" },
   { name: "Buyer representation", href: "/buyers", count: "Free to you" },
   { name: "Home valuation (89139)", href: "/home-valuation", count: "Free CMA" },
   { name: "Mountain's Edge", href: "/neighborhoods/mountains-edge", count: "Compare" },
@@ -91,7 +91,7 @@ export const NEWBRIDGE_LISTING_AREAS: ListingAreaCard[] = [
   },
   {
     name: "Builder standing inventory",
-    description: "Confirm Richmond American lots separately from MLS marketing names.",
+    description: "Confirm any remaining builder lots separately from MLS marketing names.",
     medianPrice: "Builder quote",
     daysOnMarket: "Varies",
   },
@@ -124,7 +124,7 @@ export const LAS_VEGAS_PRICE_BANDS: PriceBand[] = [
 export const NEWBRIDGE_PRICE_BANDS: PriceBand[] = [
   {
     range: "Newbridge ranch plans",
-    description: "Richmond American single-story inventory—verify builder quote vs MLS resale.",
+    description: "Single-story resales and any remaining builder lots—verify builder quote vs MLS resale.",
     count: "Builder + MLS",
   },
   {

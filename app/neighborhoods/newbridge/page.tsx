@@ -51,7 +51,7 @@ export default function NewbridgePage() {
           <SeoHero
             eyebrow="Newbridge · ZIP 89139 · Southwest Las Vegas"
             h1={NEWBRIDGE_PRIMARY_H1}
-            lede="Richmond American ranch plans near Blue Diamond Road. Dr. Jan Duffy represents you—not the builder desk—on remaining inventory, resales, and nearby 89139 streets. Call 702-222-1964."
+            lede="Richmond American ranch plans near Blue Diamond Road. Dr. Jan Duffy represents you—not the builder desk—on Newbridge resales, any remaining builder inventory, and nearby 89139 streets. Call 702-222-1964."
             image={images.neighborhoods.newbridge.src}
             imageAlt={images.neighborhoods.newbridge.alt}
             priority
@@ -71,13 +71,13 @@ export default function NewbridgePage() {
           />
           <SeoSection
             h2="Is Newbridge sold out, or can you still buy?"
-            answer="Portals conflict. Livabl marked the community sold out on December 4, 2025; other sites still show standing inventory. Treat availability as UNKNOWN until Dr. Jan pulls live MLS and builder remaining-lot data. Resales on Middleton Falls and nearby 89139 streets still transact."
+            answer="As of October 17, 2026, Richmond American's Newbridge web pages redirect to its general Las Vegas new-homes page. Treat builder availability as unconfirmed until Dr. Jan Duffy checks current MLS listings and any remaining builder lots. Resales on Middleton Falls and nearby 89139 streets still transact."
             image={images.featured.src}
             imageAlt={images.featured.alt}
           />
           <SeoSection
-            h2="Why register a buyer’s agent before the first Newbridge tour?"
-            answer="Nevada does not require a REALTOR® for new construction, but the on-site agent works for Richmond American. Register Dr. Jan Duffy, License S.0197614.LLC, BHHS Nevada Properties, before you sign a guest card so contract review, options, and inspection timing stay on your side."
+            h2="Why use your own buyer's agent in Newbridge?"
+            answer="On a Newbridge resale, the listing agent represents the seller; Dr. Jan Duffy, License S.0197614.LLC, BHHS Nevada Properties, can represent you from your first showing through contract review, inspections, and closing. If you tour any builder inventory, register her before your first visit, because some builders only recognize an agent who is registered or present at that visit."
             image={images.buying.src}
             imageAlt={images.buying.alt}
             reverse

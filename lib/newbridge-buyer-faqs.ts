@@ -10,12 +10,12 @@ export const NEWBRIDGE_BUYER_FAQS: FaqItem[] = [
     a: "Yes. Pre-approval sets your budget and strengthens offers. In Southwest Las Vegas, well-priced ranch plans and resales can move quickly when MLS days-on-market are low. Pre-approval typically takes 1-3 days with complete documents.",
   },
   {
-    q: "Does Dr. Jan Duffy represent buyers on Richmond American Newbridge contracts?",
-    a: "Yes. Dr. Jan Duffy provides buyer representation on new construction—including Richmond American at Newbridge—and on MLS resales in ZIP 89139. Register her before your first builder visit so contract review and incentive negotiation stay on your side.",
+    q: "Does Dr. Jan Duffy represent buyers on Newbridge resales and new construction?",
+    a: "Yes. Dr. Jan Duffy represents buyers on MLS resales in Newbridge and ZIP 89139 and on new-construction purchases. If you tour any builder inventory, register her before your first visit so contract review and incentive negotiation stay on your side.",
   },
   {
     q: "Can I buy a Newbridge home if I am relocating from another state?",
-    a: "Yes. Dr. Jan Duffy coordinates virtual tours, video walk-throughs, and Berkshire Hathaway HomeServices referral coverage when you are out of state. You still need to register her before any builder model visit.",
+    a: "Yes. Dr. Jan Duffy coordinates virtual tours, video walk-throughs, and Berkshire Hathaway HomeServices referral coverage when you are out of state. If you tour builder inventory, register her before your first visit.",
   },
   {
     q: "How competitive is the Southwest Las Vegas housing market?",

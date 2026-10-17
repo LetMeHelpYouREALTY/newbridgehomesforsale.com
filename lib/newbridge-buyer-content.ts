@@ -40,7 +40,7 @@ export const NEWBRIDGE_BUYER_AREAS: BuyerAreaCard[] = [
   {
     name: "New construction guide",
     price: "Builder quotes",
-    description: "Richmond American contracts, incentives, and registration rules with your own agent.",
+    description: "Builder contracts, incentives, and registration rules with your own agent.",
     href: "/new-construction",
   },
   {
@@ -117,13 +117,13 @@ const newbridgeBuyingSteps: BuyingStep[] = [
     icon: DollarSign,
     title: "Get Pre-Approved for Financing",
     description:
-      "Set your budget before touring Richmond American models or 89139 resales. Dr. Jan Duffy connects you with lenders who quote FHA, VA, conventional, and Nevada assistance options for your file.",
+      "Set your budget before touring Newbridge resales or any builder inventory. Dr. Jan Duffy connects you with lenders who quote FHA, VA, conventional, and Nevada assistance options for your file.",
   },
   {
     icon: Search,
     title: "Register Your Agent & Search MLS",
     description:
-      "Register Dr. Jan Duffy before any Newbridge model visit. She sets RealScout alerts for ZIP 89139, compares builder lots with resale ranch plans, and verifies subdivision names on each listing sheet.",
+      "Register Dr. Jan Duffy before any builder model visit. She sets RealScout alerts for ZIP 89139, compares builder lots with resale ranch plans, and verifies subdivision names on each listing sheet.",
   },
   {
     icon: FileText,

@@ -19,7 +19,7 @@ export const NEWBRIDGE_FAQS = [
   {
     question: "Where is Newbridge in Las Vegas?",
     answer:
-      "Newbridge is a Richmond American community in Southwest Las Vegas, ZIP 89139, near Blue Diamond Road. The sales office address used by the builder is 5509 Middleton Falls Ave, Las Vegas, NV 89139.",
+      "Newbridge is a Richmond American community in Southwest Las Vegas, ZIP 89139, near Blue Diamond Road. Richmond American listed its Newbridge sales office at 5509 Middleton Falls Ave, Las Vegas, NV 89139.",
   },
   {
     question: "Who built Newbridge Las Vegas?",
@@ -29,12 +29,12 @@ export const NEWBRIDGE_FAQS = [
   {
     question: "Is Newbridge sold out?",
     answer:
-      "Builder portals disagree. Livabl listed Newbridge as sold out as of December 4, 2025, while other listing sites still show standing inventory. Confirm live MLS, resales, and any remaining Richmond American lots with Dr. Jan Duffy before you tour. Call 702-222-1964.",
+      "As of October 17, 2026, Richmond American's Newbridge web pages redirect to its general Las Vegas new-homes page. Portals can lag, so confirm any remaining builder lots and current MLS resales with Dr. Jan Duffy before you tour. Call 702-222-1964.",
   },
   {
     question: "Do I need my own agent to buy in Newbridge?",
     answer:
-      "Nevada law does not require a REALTOR® for new construction, but the on-site sales agent represents the builder, not you. Register Dr. Jan Duffy, License S.0197614.LLC, before your first model visit so you keep independent contract review.",
+      "No law requires you to use an agent, but on a resale the listing agent represents the seller, and at a builder sales office the on-site agent represents the builder. Dr. Jan Duffy, License S.0197614.LLC, can represent you from your first resale showing. If you tour any builder inventory, register her before your first visit, because some builders only recognize an agent who is registered or present at that visit.",
   },
   {
     question: "What is the Darius plan at Newbridge?",

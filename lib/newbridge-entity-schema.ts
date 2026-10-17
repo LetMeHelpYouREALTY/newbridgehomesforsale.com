@@ -59,7 +59,7 @@ export function buildNewbridgeEntityGraph() {
         "@id": placeId,
         name: "Newbridge",
         description:
-          "Richmond American master-planned community in Southwest Las Vegas, Nevada, ZIP 89139, near Blue Diamond Road.",
+          "Richmond American community in Southwest Las Vegas, Nevada, ZIP 89139, near Blue Diamond Road.",
         postalCode: "89139",
         geo: {
           "@type": "GeoCoordinates",

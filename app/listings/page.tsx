@@ -123,7 +123,7 @@ export default async function ListingsPage() {
             </h1>
             <p className="text-xl text-slate-600 mb-8">
               {isNewbridge
-                ? "Search live MLS resales for Newbridge, Middleton Falls, and Southwest Las Vegas near Blue Diamond Road. Dr. Jan Duffy tours with you and registers as your agent before Richmond American model visits."
+                ? "Search live MLS resales for Newbridge, Middleton Falls, and Southwest Las Vegas near Blue Diamond Road. Dr. Jan Duffy tours with you and registers as your agent before any builder model visit."
                 : "Search thousands of Las Vegas, Henderson, and Summerlin properties with live MLS listings updated frequently. Find your dream home with Dr. Jan Duffy at Berkshire Hathaway HomeServices."}
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm text-slate-500">
@@ -420,7 +420,7 @@ export default async function ListingsPage() {
             </h2>
             <p className="text-xl text-blue-100 mb-8">
               {isNewbridge
-                ? "Call Dr. Jan Duffy for MLS tours and builder registration before Richmond American model visits. Free buyer consults—seller-paid on resales."
+                ? "Call Dr. Jan Duffy for MLS tours and builder registration before any builder model visit. Free buyer consults—seller-paid on resales."
                 : "Contact Dr. Jan Duffy for personalized guidance and expert representation backed by Berkshire Hathaway HomeServices."}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
