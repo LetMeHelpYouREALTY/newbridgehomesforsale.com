@@ -4,40 +4,75 @@ import { Phone, Mail, MapPin, Clock, Calendar, CheckCircle, Star, Users, Shield 
 import CalendlyWidget from "@/components/calendly/CalendlyEmbed";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { getPageDomainConfig } from "@/lib/get-domain-config";
+import { getRequestSiteUrl } from "@/lib/canonical-url";
+import { NAP } from "@/lib/site-images";
+import FaqAeo from "@/components/seo/FaqAeo";
+import { faqItemsToAeo } from "@/lib/faq-to-aeo";
+import { contactFaqsForSite } from "@/lib/newbridge-contact-faqs";
 
-export const metadata: Metadata = {
-  title: "Contact Dr. Jan Duffy | Berkshire Hathaway HomeServices Las Vegas",
-  description:
-    "Contact Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. Schedule an appointment, get directions, or call (702) 222-1964. Las Vegas, Henderson, Summerlin real estate expert.",
-  keywords: [
-    "contact real estate agent Las Vegas",
-    "Berkshire Hathaway contact",
-    "Dr. Jan Duffy phone",
-    "Las Vegas realtor contact",
-    "schedule real estate appointment",
-  ],
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const config = await getPageDomainConfig();
+  const isNewbridge = config.neighborhood === "Newbridge";
+  return {
+    title: isNewbridge
+      ? "Contact Dr. Jan Duffy | Newbridge Buyer Agent"
+      : "Contact Dr. Jan Duffy | Berkshire Hathaway HomeServices Las Vegas",
+    description: isNewbridge
+      ? "Contact Dr. Jan Duffy for Newbridge and 89139 real estate. Schedule a consult or call (702) 222-1964. BHHS Nevada Properties."
+      : "Contact Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. Schedule an appointment, get directions, or call (702) 222-1964.",
+    keywords: isNewbridge
+      ? [
+          "contact Newbridge real estate agent",
+          "Dr. Jan Duffy Newbridge",
+          "89139 realtor contact",
+          "Richmond American buyer agent phone",
+        ]
+      : [
+          "contact real estate agent Las Vegas",
+          "Berkshire Hathaway contact",
+          "Dr. Jan Duffy phone",
+          "Las Vegas realtor contact",
+          "schedule real estate appointment",
+        ],
+  };
+}
 
-const contactSchema = {
-  "@context": "https://schema.org",
-  "@type": "ContactPage",
-  mainEntity: {
-    "@type": "RealEstateAgent",
-    name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
-    telephone: "+17022221964",
-    email: "homes@heyberkshire.com",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "9406 W Lake Mead Blvd, Suite 100",
-      addressLocality: "Las Vegas",
-      addressRegion: "NV",
-      postalCode: "89134",
-      addressCountry: "US",
+export default async function ContactPage() {
+  const config = await getPageDomainConfig();
+  const siteUrl = getRequestSiteUrl();
+  const isNewbridge = config.neighborhood === "Newbridge";
+  const contactFaqs = contactFaqsForSite(isNewbridge);
+
+  const contactSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    url: `${siteUrl}/contact`,
+    mainEntity: {
+      "@type": "RealEstateAgent",
+      "@id": `${siteUrl}#dr-jan-duffy`,
+      name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
+      telephone: "+17022221964",
+      email: NAP.email,
+      areaServed: isNewbridge
+        ? {
+            "@type": "Place",
+            name: "Newbridge",
+            postalCode: "89139",
+            containedInPlace: { "@type": "City", name: "Las Vegas", addressRegion: "NV" },
+          }
+        : { "@type": "City", name: "Las Vegas", addressRegion: "NV" },
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: NAP.street,
+        addressLocality: NAP.city,
+        addressRegion: NAP.state,
+        postalCode: NAP.zip,
+        addressCountry: "US",
+      },
     },
-  },
-};
+  };
 
-export default function ContactPage() {
   return (
     <>
       <script
@@ -63,12 +98,14 @@ export default function ContactPage() {
               Berkshire Hathaway HomeServices Nevada Properties
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
-              Contact Dr. Jan Duffy | Las Vegas Real Estate Agent
+              {isNewbridge
+                ? "Contact Dr. Jan Duffy | Newbridge & 89139 Real Estate"
+                : "Contact Dr. Jan Duffy | Las Vegas Real Estate Agent"}
             </h1>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-              Questions about Las Vegas real estate? Your{" "}
-              <strong>Berkshire Hathaway HomeServices</strong> expert is here to help. 
-              Schedule an appointment or reach out directly.
+              {isNewbridge
+                ? "Questions about Richmond American Newbridge, 89139 resale, or registering your buyer agent? Schedule a consult or call (702) 222-1964."
+                : "Questions about Las Vegas real estate? Your Berkshire Hathaway HomeServices expert is here to help. Schedule an appointment or reach out directly."}
             </p>
           </div>
 
@@ -293,37 +330,14 @@ export default function ContactPage() {
             </div>
           </section>
 
-          {/* FAQ Section */}
-          <section className="max-w-4xl mx-auto mt-16">
-            <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">
-              Frequently Asked Questions
-            </h2>
-            <div className="space-y-4">
-              {[
-                {
-                  q: "What should I expect during my first consultation?",
-                  a: "Your consultation is a no-pressure conversation about your real estate goals. We'll discuss your timeline, budget, preferences, and answer any questions you have about the Las Vegas market. Whether you're buying, selling, or exploring options, I'll provide honest guidance tailored to your situation.",
-                },
-                {
-                  q: "Do I need to be pre-approved before scheduling a showing?",
-                  a: "For buyers, having a pre-approval letter strengthens your position, but it's not required for an initial consultation. I can connect you with trusted local lenders during our first meeting if you haven't started the financing process yet.",
-                },
-                {
-                  q: "How quickly can you respond to inquiries?",
-                  a: "I typically respond to calls, texts, and emails within 2 hours during business hours (9am-6pm daily). For urgent matters, calling or texting (702) 222-1964 is the fastest way to reach me.",
-                },
-                {
-                  q: "Do you charge for consultations?",
-                  a: "No. Initial consultations are always free and without obligation. Whether you're ready to move forward or just exploring your options, there's never any pressure.",
-                },
-              ].map((faq, index) => (
-                <div key={index} className="bg-slate-50 rounded-lg p-6">
-                  <h3 className="font-bold text-slate-900 mb-2">{faq.q}</h3>
-                  <p className="text-slate-600">{faq.a}</p>
-                </div>
-              ))}
-            </div>
-          </section>
+          <FaqAeo
+            title={
+              isNewbridge
+                ? "Frequently asked questions about contacting Dr. Jan Duffy"
+                : "Frequently asked questions"
+            }
+            faqs={faqItemsToAeo(contactFaqs)}
+          />
         </div>
 
         {/* Last Updated */}

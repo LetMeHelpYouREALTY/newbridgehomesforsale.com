@@ -3,18 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   Phone,
-  Search,
-  FileText,
-  Home,
-  Key,
   CheckCircle,
-  DollarSign,
   Shield,
   MapPin,
   TrendingUp,
   Users,
   Award,
-  Clock,
   ArrowRight,
 } from "lucide-react";
 import type { Metadata } from "next";
@@ -24,6 +18,13 @@ import { getRequestSiteUrl } from "@/lib/canonical-url";
 import FaqAeo from "@/components/seo/FaqAeo";
 import { faqItemsToAeo } from "@/lib/faq-to-aeo";
 import { buyerFaqsForSite } from "@/lib/newbridge-buyer-faqs";
+import {
+  LAS_VEGAS_BUYER_AREAS,
+  LAS_VEGAS_BUYER_MARKET_STATS,
+  NEWBRIDGE_BUYER_AREAS,
+  NEWBRIDGE_BUYER_MARKET_STATS,
+  buyingStepsForSite,
+} from "@/lib/newbridge-buyer-content";
 
 export async function generateMetadata(): Promise<Metadata> {
   const config = await getPageDomainConfig();
@@ -54,53 +55,14 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-const buyingSteps = [
-  {
-    icon: DollarSign,
-    title: "Get Pre-Approved for Financing",
-    description:
-      "Know your budget before you start looking. Dr. Jan connects you with trusted local lenders who offer competitive rates and programs for every situation—FHA, VA, conventional, and down payment assistance programs.",
-  },
-  {
-    icon: Search,
-    title: "Define Your Priorities & Search",
-    description:
-      "Dr. Jan provides access to all MLS listings, off-market opportunities, and new construction. She'll help you identify which Las Vegas neighborhoods match your lifestyle while setting up automated alerts so you never miss a new listing.",
-  },
-  {
-    icon: FileText,
-    title: "Tour Properties & Make an Offer",
-    description:
-      "Dr. Jan's market expertise ensures your offer is competitive yet protects your interests. She negotiates on your behalf to get the best price and terms possible, with contingencies that protect you.",
-  },
-  {
-    icon: Home,
-    title: "Due Diligence & Inspections",
-    description:
-      "Coordinate home inspections, review disclosures, and ensure you understand exactly what you're buying. Dr. Jan helps negotiate repairs or credits if issues arise during the inspection period.",
-  },
-  {
-    icon: Key,
-    title: "Close & Get Your Keys",
-    description:
-      "Dr. Jan coordinates with lenders, title, and escrow to ensure a smooth closing. The typical closing process takes 30-45 days from offer acceptance—then you get the keys to your new Las Vegas home!",
-  },
-];
-
-const neighborhoods = [
-  { name: "Summerlin", price: "$625K", description: "Master-planned community with Red Rock views" },
-  { name: "Henderson", price: "$485K", description: "Lake Las Vegas, Green Valley, I-215 access" },
-  { name: "Green Valley", price: "$520K", description: "Established with mature landscaping" },
-  { name: "The Ridges", price: "$2.5M", description: "Ultra-luxury guard-gated estates" },
-  { name: "North Las Vegas", price: "$385K", description: "Affordable new construction" },
-  { name: "Southern Highlands", price: "$750K", description: "Golf course community" },
-];
-
 export default async function BuyersPage() {
   const config = await getPageDomainConfig();
   const siteUrl = getRequestSiteUrl();
   const isNewbridge = config.neighborhood === "Newbridge";
   const buyerFaqs = buyerFaqsForSite(isNewbridge);
+  const buyingSteps = buyingStepsForSite(isNewbridge);
+  const buyerAreas = isNewbridge ? NEWBRIDGE_BUYER_AREAS : LAS_VEGAS_BUYER_AREAS;
+  const marketStats = isNewbridge ? NEWBRIDGE_BUYER_MARKET_STATS : LAS_VEGAS_BUYER_MARKET_STATS;
 
   const buyerSchema = {
     "@context": "https://schema.org",
@@ -148,9 +110,9 @@ export default async function BuyersPage() {
                 : "Buy a Home in Las Vegas | Buyer Agent Dr. Jan Duffy"}
             </h1>
             <p className="text-xl text-slate-600 mb-8">
-              When you work with a <strong>Berkshire Hathaway HomeServices</strong> buyer's agent,
-              you're backed by the most trusted name in real estate—and it costs you nothing.
-              The seller pays the commission, but the representation is yours.
+              {isNewbridge
+                ? "Tour Richmond American Newbridge and 89139 resales with your own Berkshire Hathaway HomeServices buyer's agent. Seller-paid representation costs you nothing extra on MLS resales; register Dr. Jan Duffy before any builder model visit."
+                : "When you work with a Berkshire Hathaway HomeServices buyer's agent, you're backed by the most trusted name in real estate—and it costs you nothing. The seller pays the commission, but the representation is yours."}
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm text-slate-500">
               <span className="flex items-center"><CheckCircle className="h-4 w-4 text-green-500 mr-1" /> Free Buyer Representation</span>
@@ -168,8 +130,9 @@ export default async function BuyersPage() {
                   Here's what many buyers don't know: having your own agent costs you nothing. The
                   seller pays the commission, but the representation is yours.{" "}
                   <strong>Berkshire Hathaway HomeServices</strong> agents protect your interests,
-                  not the seller's. In a competitive market like Las Vegas, having expert 
-                  representation can mean the difference between winning your dream home and losing out.
+                  not the seller's.                   {isNewbridge
+                    ? "In Southwest Las Vegas, registering your agent before new construction and using dated 89139 comps on resale can mean the difference between a protected contract and costly surprises."
+                    : "In a competitive market like Las Vegas, having expert representation can mean the difference between winning your dream home and losing out."}
                 </p>
                 <ul className="space-y-2">
                   {[
@@ -204,13 +167,14 @@ export default async function BuyersPage() {
           {/* Buying Process */}
           <section className="mb-16 max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold text-slate-900 mb-4 text-center">
-              The Home Buying Process in Las Vegas
+              {isNewbridge
+                ? "The Home Buying Process in Newbridge & 89139"
+                : "The Home Buying Process in Las Vegas"}
             </h2>
             <p className="text-slate-600 text-center max-w-3xl mx-auto mb-8">
-              Buying a home is one of the most significant financial decisions you'll make. 
-              Understanding the process helps reduce stress and ensures you're prepared at each 
-              step. Here's what to expect when purchasing a home in Las Vegas with Dr. Jan Duffy 
-              and Berkshire Hathaway HomeServices.
+              {isNewbridge
+                ? "Whether you are buying Richmond American new construction or a resale on Middleton Falls and nearby Southwest streets, the same milestones apply—financing, registration, tours, due diligence, and closing. Dr. Jan Duffy guides each step for ZIP 89139."
+                : "Buying a home is one of the most significant financial decisions you'll make. Understanding the process helps reduce stress and ensures you're prepared at each step with Dr. Jan Duffy and Berkshire Hathaway HomeServices."}
             </p>
             <div className="space-y-6">
               {buyingSteps.map((step, index) => {
@@ -243,34 +207,42 @@ export default async function BuyersPage() {
           {/* Neighborhood Guide */}
           <section className="mb-16 bg-slate-50 rounded-2xl p-8 md:p-12 max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-slate-900 mb-4 text-center">
-              Las Vegas Neighborhoods for Home Buyers
+              {isNewbridge
+                ? "Newbridge & Southwest Las Vegas Buying Map"
+                : "Las Vegas Neighborhoods for Home Buyers"}
             </h2>
             <p className="text-slate-600 text-center max-w-3xl mx-auto mb-8">
-              Las Vegas offers diverse neighborhoods for every lifestyle and budget. Whether you're 
-              seeking luxury estates in guard-gated communities, family homes near CCSD-assigned campuses, 
-              or affordable new construction, Dr. Jan helps you find the perfect neighborhood. Here's 
-              a quick guide to median prices and what each area offers.
+              {isNewbridge
+                ? "Compare Newbridge ranch plans, nearby 89139 resale, and adjacent communities using live MLS data—not static median guesses. Dr. Jan Duffy pulls dated comps for each address you consider."
+                : "Las Vegas offers diverse neighborhoods for every lifestyle and budget. Dr. Jan helps you compare areas using current MLS snapshots."}
             </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {neighborhoods.map((neighborhood) => (
-                <div
-                  key={neighborhood.name}
-                  className="bg-white rounded-lg p-4 border border-slate-200"
-                >
-                  <div className="flex justify-between items-center mb-2">
-                    <h3 className="font-bold text-slate-900">{neighborhood.name}</h3>
-                    <span className="text-blue-600 font-semibold">{neighborhood.price}</span>
+              {buyerAreas.map((neighborhood) => {
+                const card = (
+                  <div className="bg-white rounded-lg p-4 border border-slate-200 h-full">
+                    <div className="flex justify-between items-center mb-2">
+                      <h3 className="font-bold text-slate-900">{neighborhood.name}</h3>
+                      <span className="text-blue-600 font-semibold text-sm">{neighborhood.price}</span>
+                    </div>
+                    <p className="text-slate-600 text-sm">{neighborhood.description}</p>
                   </div>
-                  <p className="text-slate-600 text-sm">{neighborhood.description}</p>
-                </div>
-              ))}
+                );
+                return neighborhood.href ? (
+                  <Link key={neighborhood.name} href={neighborhood.href} className="hover:opacity-95">
+                    {card}
+                  </Link>
+                ) : (
+                  <div key={neighborhood.name}>{card}</div>
+                );
+              })}
             </div>
             <div className="text-center mt-6">
               <Link
-                href="/neighborhoods"
+                href={isNewbridge ? "/neighborhoods/newbridge" : "/neighborhoods"}
                 className="text-blue-600 font-semibold hover:text-blue-700 inline-flex items-center"
               >
-                Explore All Neighborhoods <ArrowRight className="h-4 w-4 ml-2" />
+                {isNewbridge ? "Newbridge GEO hub" : "Explore all neighborhoods"}
+                <ArrowRight className="h-4 w-4 ml-2" />
               </Link>
             </div>
           </section>
@@ -287,48 +259,93 @@ export default async function BuyersPage() {
               tailors her approach to match your specific situation and goals.
             </p>
             <div className="grid md:grid-cols-3 gap-6">
-              <Link
-                href="/buyers/california-relocator"
-                className="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-lg transition-shadow group"
-              >
-                <div className="text-3xl mb-4">🌴</div>
-                <h3 className="font-bold text-lg text-slate-900 mb-2 group-hover:text-blue-600">
-                  California Relocators
-                </h3>
-                <p className="text-slate-600 text-sm mb-3">
-                  0% state income tax, 40-60% lower home prices. See what your CA equity buys in 
-                  Las Vegas. Dr. Jan specializes in helping California families transition to Nevada.
-                </p>
-                <span className="text-blue-600 font-semibold text-sm">Learn More →</span>
-              </Link>
-              <Link
-                href="/buyers/first-time-buyers"
-                className="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-lg transition-shadow group"
-              >
-                <div className="text-3xl mb-4">🔑</div>
-                <h3 className="font-bold text-lg text-slate-900 mb-2 group-hover:text-blue-600">
-                  First-Time Buyers
-                </h3>
-                <p className="text-slate-600 text-sm mb-3">
-                  Down payment assistance programs, FHA/VA loans, and builder incentives explained. 
-                  Step-by-step guidance through your first home purchase.
-                </p>
-                <span className="text-blue-600 font-semibold text-sm">Learn More →</span>
-              </Link>
-              <Link
-                href="/buyers/luxury-homes-las-vegas"
-                className="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-lg transition-shadow group"
-              >
-                <div className="text-3xl mb-4">💎</div>
-                <h3 className="font-bold text-lg text-slate-900 mb-2 group-hover:text-blue-600">
-                  Luxury Home Buyers
-                </h3>
-                <p className="text-slate-600 text-sm mb-3">
-                  $1M+ properties with discrete service. The Ridges, MacDonald Highlands, Southern 
-                  Highlands, and Las Vegas Strip views. Off-market opportunities available.
-                </p>
-                <span className="text-blue-600 font-semibold text-sm">Learn More →</span>
-              </Link>
+              {isNewbridge ? (
+                <>
+                  <Link
+                    href="/new-construction"
+                    className="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-lg transition-shadow group"
+                  >
+                    <div className="text-3xl mb-4">🏗️</div>
+                    <h3 className="font-bold text-lg text-slate-900 mb-2 group-hover:text-blue-600">
+                      Richmond American Newbridge
+                    </h3>
+                    <p className="text-slate-600 text-sm mb-3">
+                      Builder contracts, incentives, and registration rules—with Dr. Jan Duffy on your
+                      side of the desk, not the builder&apos;s.
+                    </p>
+                    <span className="text-blue-600 font-semibold text-sm">New construction guide →</span>
+                  </Link>
+                  <Link
+                    href="/listings"
+                    className="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-lg transition-shadow group"
+                  >
+                    <div className="text-3xl mb-4">🔍</div>
+                    <h3 className="font-bold text-lg text-slate-900 mb-2 group-hover:text-blue-600">
+                      89139 MLS search
+                    </h3>
+                    <p className="text-slate-600 text-sm mb-3">
+                      Live resale feed for Newbridge streets and Southwest Las Vegas ranch inventory.
+                    </p>
+                    <span className="text-blue-600 font-semibold text-sm">Browse listings →</span>
+                  </Link>
+                  <Link
+                    href="/buyers/first-time-buyers"
+                    className="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-lg transition-shadow group"
+                  >
+                    <div className="text-3xl mb-4">🔑</div>
+                    <h3 className="font-bold text-lg text-slate-900 mb-2 group-hover:text-blue-600">
+                      First-time buyers
+                    </h3>
+                    <p className="text-slate-600 text-sm mb-3">
+                      FHA, VA, down-payment assistance, and builder credits explained for your file.
+                    </p>
+                    <span className="text-blue-600 font-semibold text-sm">Learn more →</span>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link
+                    href="/buyers/california-relocator"
+                    className="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-lg transition-shadow group"
+                  >
+                    <div className="text-3xl mb-4">🌴</div>
+                    <h3 className="font-bold text-lg text-slate-900 mb-2 group-hover:text-blue-600">
+                      California Relocators
+                    </h3>
+                    <p className="text-slate-600 text-sm mb-3">
+                      0% state income tax, 40-60% lower home prices. See what your CA equity buys in
+                      Las Vegas.
+                    </p>
+                    <span className="text-blue-600 font-semibold text-sm">Learn More →</span>
+                  </Link>
+                  <Link
+                    href="/buyers/first-time-buyers"
+                    className="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-lg transition-shadow group"
+                  >
+                    <div className="text-3xl mb-4">🔑</div>
+                    <h3 className="font-bold text-lg text-slate-900 mb-2 group-hover:text-blue-600">
+                      First-Time Buyers
+                    </h3>
+                    <p className="text-slate-600 text-sm mb-3">
+                      Down payment assistance programs, FHA/VA loans, and builder incentives explained.
+                    </p>
+                    <span className="text-blue-600 font-semibold text-sm">Learn More →</span>
+                  </Link>
+                  <Link
+                    href="/buyers/luxury-homes-las-vegas"
+                    className="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-lg transition-shadow group"
+                  >
+                    <div className="text-3xl mb-4">💎</div>
+                    <h3 className="font-bold text-lg text-slate-900 mb-2 group-hover:text-blue-600">
+                      Luxury Home Buyers
+                    </h3>
+                    <p className="text-slate-600 text-sm mb-3">
+                      $1M+ properties with discrete service and off-market opportunities.
+                    </p>
+                    <span className="text-blue-600 font-semibold text-sm">Learn More →</span>
+                  </Link>
+                </>
+              )}
             </div>
           </section>
 
@@ -401,30 +418,23 @@ export default async function BuyersPage() {
           {/* Market Stats */}
           <section className="mb-16 bg-blue-600 text-white rounded-2xl p-8 md:p-12 max-w-5xl mx-auto">
             <h2 className="text-2xl font-bold mb-4 text-center">
-              Las Vegas Buyer Market Statistics | January 2026
+              {isNewbridge
+                ? "Southwest Las Vegas / 89139 Buyer Snapshot"
+                : "Las Vegas Buyer Market Statistics | January 2026"}
             </h2>
             <p className="text-blue-100 text-center max-w-3xl mx-auto mb-8">
-              Understanding the current market helps you make informed decisions about timing, 
-              pricing, and negotiation strategies. Here's a snapshot of what buyers are facing 
-              in the Las Vegas market right now.
+              {isNewbridge
+                ? "Newbridge resales and builder lots change week to week. Use a dated MLS pull—not blog averages—before you write an offer."
+                : "Understanding the current market helps you make informed decisions about timing, pricing, and negotiation strategies."}
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              <div className="text-center">
-                <div className="text-3xl font-bold mb-1">$450K</div>
-                <div className="text-blue-200 text-sm">Median Home Price</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold mb-1">4,850</div>
-                <div className="text-blue-200 text-sm">Active Listings</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold mb-1">28 Days</div>
-                <div className="text-blue-200 text-sm">Avg. Days on Market</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold mb-1">+4.2%</div>
-                <div className="text-blue-200 text-sm">Year-Over-Year</div>
-              </div>
+              {marketStats.map((stat) => (
+                <div key={stat.label} className="text-center">
+                  <div className="text-3xl font-bold mb-1">{stat.value}</div>
+                  <div className="text-blue-200 text-sm">{stat.label}</div>
+                  <div className="text-blue-300 text-xs mt-1">{stat.hint}</div>
+                </div>
+              ))}
             </div>
           </section>
 
@@ -439,11 +449,13 @@ export default async function BuyersPage() {
 
           {/* CTA */}
           <section className="text-center bg-slate-900 text-white rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Find Your Las Vegas Home?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              {isNewbridge ? "Ready to tour Newbridge & 89139?" : "Ready to Find Your Las Vegas Home?"}
+            </h2>
             <p className="text-xl text-slate-300 mb-8">
-              Questions about buying in Las Vegas? Call or text Dr. Jan Duffy for a free buyer
-              consultation. Get expert guidance backed by Berkshire Hathaway HomeServices—the 
-              seller pays the commission, so representation is free for you.
+              {isNewbridge
+                ? "Call or text Dr. Jan Duffy for a free buyer consult. Register before your first Richmond American visit and search live MLS resales on ZIP 89139."
+                : "Questions about buying in Las Vegas? Call or text Dr. Jan Duffy for a free buyer consultation—the seller pays the commission on MLS resales."}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a

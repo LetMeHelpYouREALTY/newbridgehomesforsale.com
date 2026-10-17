@@ -17,46 +17,45 @@ import {
   ArrowRight,
 } from "lucide-react";
 import type { Metadata } from "next";
+import { getPageDomainConfig } from "@/lib/get-domain-config";
+import { buildCommunityAreaServed } from "@/lib/area-served";
+import { getRequestSiteUrl } from "@/lib/canonical-url";
+import FaqAeo from "@/components/seo/FaqAeo";
+import { faqItemsToAeo } from "@/lib/faq-to-aeo";
+import { listingsFaqsForSite } from "@/lib/newbridge-listings-faqs";
+import {
+  listingAreasForSite,
+  popularSearchesForSite,
+} from "@/lib/newbridge-listings-content";
 
-export const metadata: Metadata = {
-  title: "Las Vegas Homes for Sale | MLS Property Search | Berkshire Hathaway HomeServices",
-  description:
-    "Browse all Las Vegas and Henderson homes for sale with live MLS listings. Search by neighborhood, price, and features. Dr. Jan Duffy, Berkshire Hathaway HomeServices. Call (702) 222-1964.",
-  keywords: [
-    "Las Vegas homes for sale",
-    "Henderson real estate",
-    "MLS listings Las Vegas",
-    "Summerlin homes",
-    "houses for sale Las Vegas",
-    "Berkshire Hathaway listings",
-  ],
-};
-
-const listingsSchema = {
-  "@context": "https://schema.org",
-  "@type": "RealEstateListing",
-  name: "Las Vegas MLS Property Listings",
-  description: "Live MLS property listings for Las Vegas, Henderson, and Summerlin homes for sale",
-  provider: {
-    "@type": "RealEstateAgent",
-    name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
-    telephone: "+17022221964",
-  },
-  areaServed: [
-    { "@type": "City", name: "Las Vegas, NV" },
-    { "@type": "City", name: "Henderson, NV" },
-    { "@type": "City", name: "Summerlin, NV" },
-  ],
-};
-
-const popularSearches = [
-  { name: "Summerlin Homes", href: "/neighborhoods/summerlin", count: "1,200+" },
-  { name: "Henderson Properties", href: "/neighborhoods/henderson", count: "980+" },
-  { name: "Green Valley", href: "/neighborhoods/green-valley", count: "450+" },
-  { name: "The Ridges Luxury", href: "/neighborhoods/the-ridges", count: "85+" },
-  { name: "55+ Communities", href: "/55-plus-communities", count: "320+" },
-  { name: "New Construction", href: "/new-construction", count: "600+" },
-];
+export async function generateMetadata(): Promise<Metadata> {
+  const config = await getPageDomainConfig();
+  const isNewbridge = config.neighborhood === "Newbridge";
+  return {
+    title: isNewbridge
+      ? "Newbridge & 89139 Homes for Sale | MLS Search"
+      : "Las Vegas Homes for Sale | MLS Property Search | Berkshire Hathaway HomeServices",
+    description: isNewbridge
+      ? "Live MLS search for Newbridge and ZIP 89139 resales near Blue Diamond Rd. Dr. Jan Duffy, BHHS Nevada Properties. Call (702) 222-1964."
+      : "Browse all Las Vegas and Henderson homes for sale with live MLS listings. Search by neighborhood, price, and features. Dr. Jan Duffy, Berkshire Hathaway HomeServices. Call (702) 222-1964.",
+    keywords: isNewbridge
+      ? [
+          "Newbridge homes for sale MLS",
+          "89139 homes for sale",
+          "Southwest Las Vegas listings",
+          "Richmond American resale",
+          "Blue Diamond Road homes",
+        ]
+      : [
+          "Las Vegas homes for sale",
+          "Henderson real estate",
+          "MLS listings Las Vegas",
+          "Summerlin homes",
+          "houses for sale Las Vegas",
+          "Berkshire Hathaway listings",
+        ],
+  };
+}
 
 const priceRanges = [
   { range: "Under $400K", description: "Starter homes, condos, townhomes", count: "1,500+" },
@@ -66,46 +65,33 @@ const priceRanges = [
   { range: "$2M+", description: "Ultra-luxury estates, custom builds", count: "180+" },
 ];
 
-const neighborhoods = [
-  {
-    name: "Summerlin",
-    description: "Master-planned community with Red Rock views, top schools, and 150+ parks",
-    medianPrice: "$625,000",
-    daysOnMarket: 22,
-  },
-  {
-    name: "Henderson",
-    description: "Nevada's second-largest city with residential communities and published municipal services",
-    medianPrice: "$485,000",
-    daysOnMarket: 24,
-  },
-  {
-    name: "Green Valley",
-    description: "Established Henderson community with mature landscaping and golf courses",
-    medianPrice: "$520,000",
-    daysOnMarket: 26,
-  },
-  {
-    name: "Southern Highlands",
-    description: "Guard-gated luxury community with championship golf and mountain views",
-    medianPrice: "$750,000",
-    daysOnMarket: 32,
-  },
-  {
-    name: "North Las Vegas",
-    description: "Affordable new construction and growing infrastructure",
-    medianPrice: "$385,000",
-    daysOnMarket: 18,
-  },
-  {
-    name: "Skye Canyon",
-    description: "Newer master-planned community with modern amenities and mountain access",
-    medianPrice: "$550,000",
-    daysOnMarket: 20,
-  },
-];
+export default async function ListingsPage() {
+  const config = await getPageDomainConfig();
+  const siteUrl = getRequestSiteUrl();
+  const isNewbridge = config.neighborhood === "Newbridge";
+  const popularSearches = popularSearchesForSite(isNewbridge);
+  const neighborhoods = listingAreasForSite(isNewbridge);
+  const listingsFaqs = listingsFaqsForSite(isNewbridge);
 
-export default function ListingsPage() {
+  const listingsSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: isNewbridge
+      ? "Newbridge & 89139 MLS Property Listings"
+      : "Las Vegas MLS Property Listings",
+    description: isNewbridge
+      ? "Live MLS property listings for Newbridge and ZIP 89139 Southwest Las Vegas"
+      : "Live MLS property listings for Las Vegas, Henderson, and Summerlin homes for sale",
+    url: `${siteUrl}/listings`,
+    about: buildCommunityAreaServed(config),
+    publisher: {
+      "@type": "RealEstateAgent",
+      "@id": `${siteUrl}#dr-jan-duffy`,
+      name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
+      telephone: "+17022221964",
+    },
+  };
+
   return (
     <>
       <script
@@ -131,12 +117,14 @@ export default function ListingsPage() {
               Berkshire Hathaway HomeServices Nevada Properties
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
-              Las Vegas Homes for Sale | Live MLS Search
+              {isNewbridge
+                ? "Newbridge & 89139 Homes for Sale | Live MLS Search"
+                : "Las Vegas Homes for Sale | Live MLS Search"}
             </h1>
             <p className="text-xl text-slate-600 mb-8">
-              Search thousands of Las Vegas, Henderson, and Summerlin properties with live MLS 
-              listings updated every 15 minutes. Find your dream home with expert guidance from 
-              Dr. Jan Duffy at <strong>Berkshire Hathaway HomeServices</strong>.
+              {isNewbridge
+                ? "Search live MLS resales for Newbridge, Middleton Falls, and Southwest Las Vegas near Blue Diamond Road. Dr. Jan Duffy tours with you and registers as your agent before Richmond American model visits."
+                : "Search thousands of Las Vegas, Henderson, and Summerlin properties with live MLS listings updated frequently. Find your dream home with Dr. Jan Duffy at Berkshire Hathaway HomeServices."}
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm text-slate-500">
               <span className="flex items-center"><CheckCircle className="h-4 w-4 text-green-500 mr-1" /> Live MLS Data</span>
@@ -164,14 +152,14 @@ export default function ListingsPage() {
           {/* Popular Searches Section */}
           <section className="mb-16 max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">
-              Popular Property Searches in Las Vegas
+              {isNewbridge
+                ? "Popular searches for Newbridge & 89139"
+                : "Popular Property Searches in Las Vegas"}
             </h2>
             <p className="text-slate-600 text-center max-w-3xl mx-auto mb-8">
-              Las Vegas offers diverse neighborhoods for every lifestyle and budget. Whether you're 
-              seeking luxury estates in guard-gated communities, family homes near CCSD-assigned campuses, 
-              or affordable new construction, our comprehensive search tools help you find exactly 
-              what you're looking for. Browse the most popular searches below or use the advanced 
-              filters to customize your home search experience.
+              {isNewbridge
+                ? "Start with the Newbridge GEO hub, new construction guide, or live MLS filters below. Inventory changes weekly—confirm status on each listing before you tour."
+                : "Browse popular Las Vegas searches below or use filters to customize your home search."}
             </p>
             <div className="grid md:grid-cols-3 gap-4">
               {popularSearches.map((search) => (
@@ -225,15 +213,14 @@ export default function ListingsPage() {
           {/* Neighborhood Overview */}
           <section className="mb-16 max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-slate-900 mb-4 text-center">
-              Las Vegas Neighborhoods & Communities
+              {isNewbridge
+                ? "Newbridge & nearby Southwest communities"
+                : "Las Vegas Neighborhoods & Communities"}
             </h2>
             <p className="text-slate-600 text-center max-w-3xl mx-auto mb-8">
-              Each Las Vegas neighborhood offers a unique lifestyle, from the resort-style living 
-              of Summerlin to the residential communities of Henderson. Understanding these 
-              differences is crucial to finding a home that fits your needs. As a Berkshire 
-              Hathaway HomeServices agent serving Las Vegas since 2008, Dr. Jan Duffy provides 
-              expert guidance on which neighborhoods match your priorities—whether that's schools, 
-              commute times, amenities, or investment potential.
+              {isNewbridge
+                ? "Compare Newbridge ranch plans with adjacent 89139 resale and Mountain's Edge using facts from each listing—HOA, lot size, and total monthly cost."
+                : "Each Las Vegas neighborhood offers a unique lifestyle. Dr. Jan Duffy provides guidance on which areas match your priorities."}
             </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {neighborhoods.map((neighborhood) => (
@@ -245,17 +232,21 @@ export default function ListingsPage() {
                   <p className="text-slate-600 text-sm mb-4">{neighborhood.description}</p>
                   <div className="flex justify-between text-sm">
                     <span className="text-slate-500">Median: <strong className="text-slate-900">{neighborhood.medianPrice}</strong></span>
-                    <span className="text-slate-500">DOM: <strong className="text-slate-900">{neighborhood.daysOnMarket} days</strong></span>
+                    <span className="text-slate-500">
+                      DOM: <strong className="text-slate-900">{neighborhood.daysOnMarket}</strong>
+                      {!isNewbridge ? " days" : ""}
+                    </span>
                   </div>
                 </div>
               ))}
             </div>
             <div className="text-center mt-8">
               <Link
-                href="/neighborhoods"
+                href={isNewbridge ? "/neighborhoods/newbridge" : "/neighborhoods"}
                 className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold"
               >
-                Explore All Neighborhoods <ArrowRight className="h-4 w-4 ml-2" />
+                {isNewbridge ? "Newbridge GEO hub" : "Explore All Neighborhoods"}
+                <ArrowRight className="h-4 w-4 ml-2" />
               </Link>
             </div>
           </section>
@@ -422,68 +413,24 @@ export default function ListingsPage() {
             </div>
           </section>
 
-          {/* FAQ Section */}
-          <section className="mb-16 max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">
-              Frequently Asked Questions About Las Vegas Real Estate
-            </h2>
-            <div className="space-y-4">
-              <div className="bg-slate-50 rounded-lg p-6">
-                <h3 className="font-bold text-slate-900 mb-2">
-                  How competitive is the Las Vegas housing market in 2026?
-                </h3>
-                <p className="text-slate-600">
-                  The Las Vegas market is moderately competitive with 2.1 months of inventory—a 
-                  slight seller's market. Well-priced homes in desirable areas like Summerlin and 
-                  Henderson often receive multiple offers within the first week. Having a 
-                  pre-approval and experienced agent gives you a significant advantage.
-                </p>
-              </div>
-              <div className="bg-slate-50 rounded-lg p-6">
-                <h3 className="font-bold text-slate-900 mb-2">
-                  What's the best time of year to buy a home in Las Vegas?
-                </h3>
-                <p className="text-slate-600">
-                  Las Vegas has a year-round real estate market, but inventory typically peaks in 
-                  spring (March-May) while competition is lowest in winter (November-January). The 
-                  best time depends on your priorities: more selection in spring, potentially better 
-                  deals in winter.
-                </p>
-              </div>
-              <div className="bg-slate-50 rounded-lg p-6">
-                <h3 className="font-bold text-slate-900 mb-2">
-                  How much do I need for a down payment in Las Vegas?
-                </h3>
-                <p className="text-slate-600">
-                  Down payment requirements vary by loan type: FHA loans require 3.5%, conventional 
-                  loans typically 3-20%, VA loans 0% for eligible veterans. Nevada also offers down 
-                  payment assistance programs for first-time buyers. Dr. Jan can connect you with 
-                  lenders who specialize in various loan programs.
-                </p>
-              </div>
-              <div className="bg-slate-50 rounded-lg p-6">
-                <h3 className="font-bold text-slate-900 mb-2">
-                  Are Las Vegas HOA fees expensive?
-                </h3>
-                <p className="text-slate-600">
-                  HOA fees in Las Vegas range from $25/month for basic community maintenance to 
-                  $400+/month for guard-gated luxury communities with extensive amenities. Most 
-                  standard neighborhoods fall between $50-$150/month. Dr. Jan always reviews HOA 
-                  documents to ensure you understand what's included and any special assessments.
-                </p>
-              </div>
-            </div>
-          </section>
+          <FaqAeo
+            title={
+              isNewbridge
+                ? "Frequently asked questions about Newbridge MLS search"
+                : "Frequently asked questions about Las Vegas real estate"
+            }
+            faqs={faqItemsToAeo(listingsFaqs)}
+          />
 
           {/* CTA */}
           <section className="text-center bg-blue-600 text-white rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to Find Your Las Vegas Home?
+              {isNewbridge ? "Ready to tour Newbridge & 89139 listings?" : "Ready to Find Your Las Vegas Home?"}
             </h2>
             <p className="text-xl text-blue-100 mb-8">
-              Contact Dr. Jan Duffy for personalized guidance, off-market listings, and expert 
-              representation backed by Berkshire Hathaway HomeServices. Free buyer consultations 
-              available—the seller pays the commission.
+              {isNewbridge
+                ? "Call Dr. Jan Duffy for MLS tours and builder registration before Richmond American model visits. Free buyer consults—seller-paid on resales."
+                : "Contact Dr. Jan Duffy for personalized guidance and expert representation backed by Berkshire Hathaway HomeServices."}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a

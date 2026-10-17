@@ -24,7 +24,8 @@
 - /sellers — Listing services + seller FAQs (FaqAeo)
 - /home-valuation — Free CMA + valuation FAQs (FaqAeo)
 - /new-construction — Richmond American / Newbridge new-build buyer representation + FAQs (FaqAeo)
-- /contact — Schedule and NAP
+- /contact — Schedule, NAP, Newbridge registration FAQs (FaqAeo)
+- /listings — Live MLS feed + Newbridge/89139 search FAQs (FaqAeo)
 - /faq — Las Vegas real estate FAQs
 
 ## Scheduling (Calendly)
