@@ -6,7 +6,13 @@ import { Phone, CheckCircle, Home, TrendingUp, MapPin, Calculator, Clock, Dollar
 import type { Metadata } from "next";
 import { getPageDomainConfig } from "@/lib/get-domain-config";
 import FaqAeo from "@/components/seo/FaqAeo";
+import MarketSnapshotSource from "@/components/seo/MarketSnapshotSource";
 import { faqItemsToAeo } from "@/lib/faq-to-aeo";
+import {
+  MARKET_SNAPSHOT_CARD_TITLE,
+  MARKET_SNAPSHOT_STATS,
+  MARKET_SUPPLY_SENTENCE,
+} from "@/lib/market-snapshot";
 import { NEWBRIDGE_VALUATION_FAQS } from "@/lib/newbridge-valuation-faqs";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -134,27 +140,16 @@ export default async function HomeValuationPage() {
 
               {/* Market Stats */}
               <div className="bg-blue-50 rounded-lg p-8">
-                <h3 className="font-bold text-slate-900 mb-4">
-                  {isNewbridge ? "Newbridge / Southwest Las Vegas | January 2026" : "Las Vegas Market | January 2026"}
-                </h3>
+                <h3 className="font-bold text-slate-900 mb-4">{MARKET_SNAPSHOT_CARD_TITLE}</h3>
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-blue-600">$450K</div>
-                    <div className="text-sm text-slate-600">Median Home Price</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-green-600">+4.2%</div>
-                    <div className="text-sm text-slate-600">YoY Appreciation</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-blue-600">28 Days</div>
-                    <div className="text-sm text-slate-600">Avg. Days on Market</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-blue-600">2.1 Mo</div>
-                    <div className="text-sm text-slate-600">Inventory</div>
-                  </div>
+                  {MARKET_SNAPSHOT_STATS.map(({ value, label }) => (
+                    <div key={label} className="text-center">
+                      <div className="text-2xl font-bold text-blue-600">{value}</div>
+                      <div className="text-sm text-slate-600">{label}</div>
+                    </div>
+                  ))}
                 </div>
+                <MarketSnapshotSource className="mt-6" />
               </div>
 
               {/* Expert Quote */}
@@ -299,8 +294,8 @@ export default async function HomeValuationPage() {
                 <DollarSign className="h-8 w-8 text-blue-600 mb-4" />
                 <h3 className="font-bold text-slate-900 mb-2">Market Conditions</h3>
                 <p className="text-slate-600 text-sm">
-                  Interest rates, inventory levels, and seasonal demand fluctuate. January 2026
-                  shows 2.1 months inventory—still a seller's market but more balanced than 2021-2022.
+                  Interest rates, inventory levels, and seasonal demand fluctuate.{" "}
+                  {MARKET_SUPPLY_SENTENCE}
                 </p>
               </div>
               <div className="bg-white rounded-lg p-6 shadow-sm">
@@ -320,45 +315,6 @@ export default async function HomeValuationPage() {
                 </p>
               </div>
             </div>
-          </section>
-
-          {/* Neighborhood Values */}
-          <section className="max-w-5xl mx-auto mb-16">
-            <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">
-              Las Vegas Neighborhood Home Values | January 2026
-            </h2>
-            <div className="overflow-x-auto">
-              <table className="w-full bg-white border border-slate-200 rounded-lg">
-                <thead className="bg-slate-50">
-                  <tr>
-                    <th className="px-6 py-3 text-left text-sm font-semibold text-slate-900">Neighborhood</th>
-                    <th className="px-6 py-3 text-left text-sm font-semibold text-slate-900">Median Price</th>
-                    <th className="px-6 py-3 text-left text-sm font-semibold text-slate-900">YoY Change</th>
-                    <th className="px-6 py-3 text-left text-sm font-semibold text-slate-900">Avg $/SqFt</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {[
-                    { area: "Summerlin", price: "$625,000", change: "+6.8%", sqft: "$285" },
-                    { area: "Henderson", price: "$485,000", change: "+5.1%", sqft: "$245" },
-                    { area: "Green Valley", price: "$520,000", change: "+4.5%", sqft: "$255" },
-                    { area: "Southern Highlands", price: "$750,000", change: "+5.5%", sqft: "$295" },
-                    { area: "North Las Vegas", price: "$385,000", change: "+3.2%", sqft: "$210" },
-                    { area: "Centennial Hills", price: "$495,000", change: "+4.8%", sqft: "$240" },
-                  ].map((row, index) => (
-                    <tr key={row.area} className={index % 2 === 0 ? "bg-white" : "bg-slate-50"}>
-                      <td className="px-6 py-4 font-medium text-slate-900">{row.area}</td>
-                      <td className="px-6 py-4 text-slate-700">{row.price}</td>
-                      <td className="px-6 py-4 text-green-600 font-medium">{row.change}</td>
-                      <td className="px-6 py-4 text-slate-700">{row.sqft}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <p className="text-center text-slate-500 text-sm mt-4">
-              Values represent single-family homes. Your specific home may vary based on features and condition.
-            </p>
           </section>
 
           {/* The Valuation Process */}
@@ -454,7 +410,7 @@ export default async function HomeValuationPage() {
         </div>
 
         {/* Last Updated */}
-        <div className="text-center text-sm text-slate-500 mt-8">Last Updated: January 2026</div>
+        <div className="text-center text-sm text-slate-500 mt-8">Last Updated: October 2026</div>
       </main>
       <RealScoutListings />
     </>

@@ -133,8 +133,8 @@ export const NEWBRIDGE_PRICE_BANDS: PriceBand[] = [
     count: "Live feed",
   },
   {
-    range: "Southwest $400s–$600s",
-    description: "Common band for ranch homes near Blue Diamond Rd—confirm per listing.",
+    range: "Southwest Las Vegas resale",
+    description: "Request a dated ZIP 89139 MLS price range before you tour.",
     count: "MLS varies",
   },
   {

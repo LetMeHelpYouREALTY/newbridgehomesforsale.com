@@ -21,7 +21,13 @@ import { getPageDomainConfig } from "@/lib/get-domain-config";
 import { buildCommunityAreaServed } from "@/lib/area-served";
 import { getRequestSiteUrl } from "@/lib/canonical-url";
 import FaqAeo from "@/components/seo/FaqAeo";
+import MarketSnapshotSource from "@/components/seo/MarketSnapshotSource";
 import { faqItemsToAeo } from "@/lib/faq-to-aeo";
+import {
+  MARKET_REPORT,
+  MARKET_SNAPSHOT_HEADING,
+  MARKET_SNAPSHOT_STATS,
+} from "@/lib/market-snapshot";
 import { listingsFaqsForSite } from "@/lib/newbridge-listings-faqs";
 import {
   listingAreasForSite,
@@ -300,32 +306,22 @@ export default async function ListingsPage() {
           {/* Market Stats */}
           <section className="mb-16 max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-slate-900 mb-4 text-center">
-              Las Vegas Real Estate Market Statistics
+              {MARKET_SNAPSHOT_HEADING}
             </h2>
             <p className="text-slate-600 text-center max-w-3xl mx-auto mb-8">
-              The Las Vegas housing market remains strong heading into 2026, with steady appreciation 
-              and healthy inventory levels. Understanding current market conditions helps buyers 
-              make informed decisions about timing, pricing, and negotiation strategies. Here's a 
-              snapshot of the current market as of January 2026.
+              {isNewbridge
+                ? `Las Vegas REALTORS® figures for existing homes sold through its MLS across Southern Nevada in ${MARKET_REPORT.period}—not just Newbridge or ZIP 89139. The MLS does not account for all newly constructed homes sold by local builders.`
+                : `Las Vegas REALTORS® figures for existing homes sold through its MLS across Southern Nevada in ${MARKET_REPORT.period}. The MLS does not account for all newly constructed homes sold by local builders.`}
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="bg-blue-50 rounded-lg p-6 text-center">
-                <div className="text-3xl font-bold text-blue-600 mb-1">$450K</div>
-                <div className="text-sm text-slate-600">Median Home Price</div>
-              </div>
-              <div className="bg-blue-50 rounded-lg p-6 text-center">
-                <div className="text-3xl font-bold text-blue-600 mb-1">28</div>
-                <div className="text-sm text-slate-600">Avg Days on Market</div>
-              </div>
-              <div className="bg-blue-50 rounded-lg p-6 text-center">
-                <div className="text-3xl font-bold text-blue-600 mb-1">4,850</div>
-                <div className="text-sm text-slate-600">Active Listings</div>
-              </div>
-              <div className="bg-blue-50 rounded-lg p-6 text-center">
-                <div className="text-3xl font-bold text-blue-600 mb-1">+4.2%</div>
-                <div className="text-sm text-slate-600">Year-Over-Year</div>
-              </div>
+              {MARKET_SNAPSHOT_STATS.map(({ value, label }) => (
+                <div key={label} className="bg-blue-50 rounded-lg p-6 text-center">
+                  <div className="text-3xl font-bold text-blue-600 mb-1">{value}</div>
+                  <div className="text-sm text-slate-600">{label}</div>
+                </div>
+              ))}
             </div>
+            <MarketSnapshotSource className="mt-6 text-center" />
           </section>
 
           {/* Home Buying Process */}
@@ -449,7 +445,7 @@ export default async function ListingsPage() {
         </div>
 
         {/* Last Updated */}
-        <div className="text-center text-sm text-slate-500 mt-8">Last Updated: January 2026</div>
+        <div className="text-center text-sm text-slate-500 mt-8">Last Updated: October 2026</div>
       </main>
     </>
   );

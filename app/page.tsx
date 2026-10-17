@@ -6,7 +6,9 @@ import SeoHero from "@/components/seo/SeoHero";
 import SeoSection from "@/components/seo/SeoSection";
 import FaqAeo from "@/components/seo/FaqAeo";
 import CtaBanner from "@/components/seo/CtaBanner";
+import MarketSnapshotSource from "@/components/seo/MarketSnapshotSource";
 import { images, NAP } from "@/lib/site-images";
+import { MARKET_MEDIAN_SUMMARY, MARKET_SNAPSHOT_STATS } from "@/lib/market-snapshot";
 import { NEWBRIDGE_FAQS } from "@/lib/newbridge-seo";
 import { getNewbridgePrimaryH1 } from "@/lib/newbridge-h1";
 
@@ -63,27 +65,20 @@ export default async function Home() {
           </section>
 
           <SeoSection
-            h2={`What is the ${config.neighborhood} housing market doing?`}
-            answer={`As of January 2026 this site’s valley snapshot showed a $450K median price, 28 average days on market, 4,850 active listings, and 2.1 months of inventory. ${config.neighborhood} numbers move weekly—request a dated CMA before you write an offer or list.`}
+            h2={`What do Southern Nevada market numbers mean for ${config.neighborhood}?`}
+            answer={`${MARKET_MEDIAN_SUMMARY} These are Southern Nevada figures, not ${config.neighborhood}-only, and the MLS does not account for all newly constructed homes sold by local builders. ${config.neighborhood} numbers move weekly—request a dated CMA before you write an offer or list.`}
             image={images.market.src}
             imageAlt={images.market.alt}
           >
             <div className="grid grid-cols-2 gap-4 text-center">
-              {[
-                { value: "$450K", label: "Median price" },
-                { value: "28", label: "Days on market" },
-                { value: "4,850", label: "Active listings" },
-                { value: "2.1", label: "Months inventory" },
-              ].map(({ value, label }) => (
+              {MARKET_SNAPSHOT_STATS.map(({ value, label }) => (
                 <div key={label} className="rounded-lg bg-slate-50 p-4">
                   <div className="text-2xl font-bold text-blue-600">{value}</div>
                   <div className="text-sm text-slate-600">{label}</div>
                 </div>
               ))}
             </div>
-            <Link href="/market-report" className="mt-4 inline-block font-semibold text-blue-600">
-              Read the full Las Vegas market report →
-            </Link>
+            <MarketSnapshotSource className="mt-4" />
           </SeoSection>
 
           <SeoSection

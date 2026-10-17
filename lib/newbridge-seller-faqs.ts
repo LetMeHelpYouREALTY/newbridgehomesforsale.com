@@ -1,9 +1,11 @@
+import { MARKET_SOLD_WITHIN_60_DAYS_SENTENCE } from "./market-snapshot";
+
 export type FaqItem = { q: string; a: string };
 
 export const NEWBRIDGE_SELLER_FAQS: FaqItem[] = [
   {
     q: "How long will it take to sell my Newbridge home?",
-    a: "Well-priced homes in Southwest Las Vegas—including ZIP 89139—often sell in about 28 days when MLS data supports the list price. Luxury or highly customized builds can take longer. Dr. Jan Duffy prices from current comps on Middleton Falls, nearby 89139 streets, and builder resales so you are not sitting over market.",
+    a: `${MARKET_SOLD_WITHIN_60_DAYS_SENTENCE} That is a Southern Nevada figure, not Newbridge-only. Luxury or highly customized builds can take longer. Dr. Jan Duffy prices from current comps on Middleton Falls, nearby 89139 streets, and builder resales so you are not sitting over market.`,
   },
   {
     q: "What should I do to prepare a Newbridge home for sale?",
@@ -19,7 +21,7 @@ export const NEWBRIDGE_SELLER_FAQS: FaqItem[] = [
   },
   {
     q: "Should I wait to list my 89139 home for higher prices?",
-    a: "Southwest Las Vegas appreciation has been gradual—verify the latest MLS trend before you delay. Most sellers do better listing when they are ready with accurate pricing than trying to time a peak. Dr. Jan Duffy can run a dated CMA before you decide.",
+    a: "Prices move month to month—check a dated MLS trend for ZIP 89139 before you delay, rather than trying to time a peak. Dr. Jan Duffy can run a dated CMA before you decide.",
   },
   {
     q: "Do I need to move out before listing in Newbridge?",
@@ -30,7 +32,7 @@ export const NEWBRIDGE_SELLER_FAQS: FaqItem[] = [
 export const GENERIC_SELLER_FAQS: FaqItem[] = [
   {
     q: "How long will it take to sell my Las Vegas home?",
-    a: "Well-priced Las Vegas homes are selling in an average of 28 days. Luxury homes ($1M+) may take 45+ days. The key is pricing correctly from day one—overpriced homes can sit for months, losing both time and money.",
+    a: `${MARKET_SOLD_WITHIN_60_DAYS_SENTENCE} The key is pricing correctly from day one—overpriced homes can sit for months, losing both time and money.`,
   },
   {
     q: "What do I need to do to prepare my home for sale?",
@@ -46,7 +48,7 @@ export const GENERIC_SELLER_FAQS: FaqItem[] = [
   },
   {
     q: "Should I wait for prices to go higher?",
-    a: "Timing the market is difficult—most sellers do better by listing when ready with accurate pricing. Dr. Jan Duffy can provide a personalized market analysis to help you decide.",
+    a: "Timing the market is difficult—check a dated MLS trend before you delay, rather than trying to time a peak. Dr. Jan Duffy can provide a personalized market analysis to help you decide.",
   },
   {
     q: "Do I need to be moved out before listing?",

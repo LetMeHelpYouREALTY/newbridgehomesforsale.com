@@ -6,7 +6,6 @@ import {
   Camera,
   Globe,
   DollarSign,
-  TrendingUp,
   CheckCircle,
   BarChart,
   Users,
@@ -21,7 +20,14 @@ import { getPageDomainConfig } from "@/lib/get-domain-config";
 import { buildCommunityAreaServed } from "@/lib/area-served";
 import { getRequestSiteUrl } from "@/lib/canonical-url";
 import FaqAeo from "@/components/seo/FaqAeo";
+import MarketSnapshotSource from "@/components/seo/MarketSnapshotSource";
 import { faqItemsToAeo } from "@/lib/faq-to-aeo";
+import {
+  MARKET_MEDIAN_CALLOUT,
+  MARKET_REPORT,
+  MARKET_SNAPSHOT_HEADING,
+  MARKET_SNAPSHOT_STATS,
+} from "@/lib/market-snapshot";
 import { sellerFaqsForSite } from "@/lib/newbridge-seller-faqs";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -195,34 +201,21 @@ export default async function SellersPage() {
 
           {/* Market Stats */}
           <section className="mb-16 bg-slate-900 text-white rounded-2xl p-8 md:p-12 max-w-5xl mx-auto">
-            <h2 className="text-2xl font-bold mb-4 text-center">
-              {isNewbridge
-                ? "Newbridge & Southwest Las Vegas Seller Snapshot | January 2026"
-                : "Las Vegas Seller Market Statistics | January 2026"}
-            </h2>
+            <h2 className="text-2xl font-bold mb-4 text-center">{MARKET_SNAPSHOT_HEADING}</h2>
             <p className="text-slate-300 text-center max-w-3xl mx-auto mb-8">
               {isNewbridge
-                ? "Southwest Las Vegas—including Newbridge (ZIP 89139)—continues to see steady resale demand near Blue Diamond Road. Well-priced homes with accurate CMA pricing draw qualified buyers; Dr. Jan Duffy tracks weekly MLS movement for this pocket."
-                : "The Las Vegas housing market remains favorable for sellers with low inventory and steady demand. Well-priced homes are selling quickly. Here's what sellers need to know about current conditions."}
+                ? `Las Vegas REALTORS® figures for existing homes sold through its MLS across Southern Nevada in ${MARKET_REPORT.period}—not Newbridge-only. The MLS does not account for all newly constructed homes sold by local builders. For a Newbridge or ZIP 89139 price, Dr. Jan Duffy prepares a dated CMA from recent comparable sales.`
+                : `Las Vegas REALTORS® figures for existing homes sold through its MLS across Southern Nevada in ${MARKET_REPORT.period}. The MLS does not account for all newly constructed homes sold by local builders. For a price on your street, Dr. Jan Duffy prepares a dated CMA from recent comparable sales.`}
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-green-400 mb-1">+4.2%</div>
-                <div className="text-slate-300 text-sm">Year-Over-Year Appreciation</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold mb-1">28 Days</div>
-                <div className="text-slate-300 text-sm">Avg. Days on Market</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold mb-1">2.1 Mo</div>
-                <div className="text-slate-300 text-sm">Inventory (Seller's Market)</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold mb-1">98.5%</div>
-                <div className="text-slate-300 text-sm">List-to-Sale Price Ratio</div>
-              </div>
+              {MARKET_SNAPSHOT_STATS.map(({ value, label }) => (
+                <div key={label} className="text-center">
+                  <div className="text-3xl font-bold mb-1">{value}</div>
+                  <div className="text-slate-300 text-sm">{label}</div>
+                </div>
+              ))}
             </div>
+            <MarketSnapshotSource tone="dark" className="mt-8 text-center" />
           </section>
 
           {/* Benefits */}
@@ -406,10 +399,10 @@ export default async function SellersPage() {
                 </Link>
               </div>
               <div className="text-center">
-                <TrendingUp className="h-24 w-24 text-blue-200 mx-auto mb-4" />
-                <p className="text-2xl font-bold">$450,000</p>
-                <p className="text-blue-200">Median Home Price (Jan 2026)</p>
-                <p className="text-blue-300 text-sm mt-2">Up 4.2% from last year</p>
+                <BarChart className="h-24 w-24 text-blue-200 mx-auto mb-4" />
+                <p className="text-2xl font-bold">{MARKET_MEDIAN_CALLOUT.value}</p>
+                <p className="text-blue-200">{MARKET_MEDIAN_CALLOUT.label}</p>
+                <p className="text-blue-100 text-sm mt-2">{MARKET_MEDIAN_CALLOUT.change}</p>
               </div>
             </div>
           </section>
@@ -453,7 +446,7 @@ export default async function SellersPage() {
         </div>
 
         {/* Last Updated */}
-        <div className="text-center text-sm text-slate-500 mt-8">Last Updated: January 2026</div>
+        <div className="text-center text-sm text-slate-500 mt-8">Last Updated: October 2026</div>
       </main>
       <RealScoutListings />
     </>
