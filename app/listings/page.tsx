@@ -26,6 +26,7 @@ import { listingsFaqsForSite } from "@/lib/newbridge-listings-faqs";
 import {
   listingAreasForSite,
   popularSearchesForSite,
+  priceBandsForSite,
 } from "@/lib/newbridge-listings-content";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -57,14 +58,6 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-const priceRanges = [
-  { range: "Under $400K", description: "Starter homes, condos, townhomes", count: "1,500+" },
-  { range: "$400K - $600K", description: "Family homes, established neighborhoods", count: "2,100+" },
-  { range: "$600K - $1M", description: "Premium locations, larger homes", count: "1,200+" },
-  { range: "$1M - $2M", description: "Luxury homes, guard-gated communities", count: "450+" },
-  { range: "$2M+", description: "Ultra-luxury estates, custom builds", count: "180+" },
-];
-
 export default async function ListingsPage() {
   const config = await getPageDomainConfig();
   const siteUrl = getRequestSiteUrl();
@@ -72,6 +65,7 @@ export default async function ListingsPage() {
   const popularSearches = popularSearchesForSite(isNewbridge);
   const neighborhoods = listingAreasForSite(isNewbridge);
   const listingsFaqs = listingsFaqsForSite(isNewbridge);
+  const priceRanges = priceBandsForSite(isNewbridge);
 
   const listingsSchema = {
     "@context": "https://schema.org",
@@ -183,13 +177,14 @@ export default async function ListingsPage() {
           {/* Price Range Guide */}
           <section className="mb-16 bg-slate-50 rounded-2xl p-8 md:p-12 max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-slate-900 mb-4 text-center">
-              Las Vegas Home Price Guide
+              {isNewbridge
+                ? "Newbridge & 89139 price bands (verify on MLS)"
+                : "Las Vegas Home Price Guide"}
             </h2>
             <p className="text-slate-600 text-center max-w-3xl mx-auto mb-8">
-              The Las Vegas real estate market offers exceptional value compared to California and 
-              other western states. With no state income tax and housing prices 40-60% lower than 
-              coastal cities, your dollar stretches further in Southern Nevada. Here's what you can 
-              expect at different price points in the current January 2026 market.
+              {isNewbridge
+                ? "Use live list prices and dated comps—not blog medians—for each address. Builder quotes and MLS resales can differ for the same square footage in ZIP 89139."
+                : "The Las Vegas real estate market offers value compared to many western metros. Here's what buyers often see at different price points—confirm on each listing."}
             </p>
             <div className="space-y-4">
               {priceRanges.map((price, index) => (

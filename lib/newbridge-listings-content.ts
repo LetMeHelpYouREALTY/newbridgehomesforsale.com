@@ -110,3 +110,45 @@ export function popularSearchesForSite(isNewbridge: boolean): PopularSearch[] {
 export function listingAreasForSite(isNewbridge: boolean): ListingAreaCard[] {
   return isNewbridge ? NEWBRIDGE_LISTING_AREAS : LAS_VEGAS_LISTING_AREAS;
 }
+
+export type PriceBand = { range: string; description: string; count: string };
+
+export const LAS_VEGAS_PRICE_BANDS: PriceBand[] = [
+  { range: "Under $400K", description: "Starter homes, condos, townhomes", count: "1,500+" },
+  { range: "$400K - $600K", description: "Family homes, established neighborhoods", count: "2,100+" },
+  { range: "$600K - $1M", description: "Premium locations, larger homes", count: "1,200+" },
+  { range: "$1M - $2M", description: "Luxury homes, guard-gated communities", count: "450+" },
+  { range: "$2M+", description: "Ultra-luxury estates, custom builds", count: "180+" },
+];
+
+export const NEWBRIDGE_PRICE_BANDS: PriceBand[] = [
+  {
+    range: "Newbridge ranch plans",
+    description: "Richmond American single-story inventory—verify builder quote vs MLS resale.",
+    count: "Builder + MLS",
+  },
+  {
+    range: "89139 resale",
+    description: "Middleton Falls and nearby Southwest streets—filter MLS by ZIP 89139.",
+    count: "Live feed",
+  },
+  {
+    range: "Southwest $400s–$600s",
+    description: "Common band for ranch homes near Blue Diamond Rd—confirm per listing.",
+    count: "MLS varies",
+  },
+  {
+    range: "HOA & lot premiums",
+    description: "Compare monthly payment with HOA, lot premium, and Mello-Roos if disclosed.",
+    count: "Per address",
+  },
+  {
+    range: "Move-up / sell + buy",
+    description: "Coordinate listing and purchase timelines in the same ZIP.",
+    count: "CMA consult",
+  },
+];
+
+export function priceBandsForSite(isNewbridge: boolean): PriceBand[] {
+  return isNewbridge ? NEWBRIDGE_PRICE_BANDS : LAS_VEGAS_PRICE_BANDS;
+}
