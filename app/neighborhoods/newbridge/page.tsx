@@ -7,7 +7,7 @@ import CtaBanner from "@/components/seo/CtaBanner";
 import { images } from "@/lib/site-images";
 import SchemaScript from "@/components/SchemaScript";
 import { generateNeighborhoodSchema, combineSchemas } from "@/lib/schema";
-import { NEWBRIDGE_FAQS, newbridgeMetadata } from "@/lib/newbridge-seo";
+import { NEWBRIDGE_GUIDE_FAQS, newbridgeMetadata } from "@/lib/newbridge-seo";
 import { NEWBRIDGE_PRIMARY_H1 } from "@/lib/newbridge-h1";
 
 export const metadata: Metadata = newbridgeMetadata({
@@ -72,7 +72,7 @@ export default function NewbridgePage() {
             reverse
           />
           <RealScoutListings />
-          <FaqAeo title="Newbridge Las Vegas questions, answered" faqs={NEWBRIDGE_FAQS} />
+          <FaqAeo title="Newbridge community: questions answered" faqs={NEWBRIDGE_GUIDE_FAQS} />
           <CtaBanner
             h2="Tour Newbridge with your own agent"
             sub="Call 702-222-1964. License S.0197614.LLC. 9406 W Lake Mead Blvd, Suite 100, Las Vegas, NV 89134."

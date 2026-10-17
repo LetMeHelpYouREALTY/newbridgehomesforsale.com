@@ -15,17 +15,8 @@ export const NEWBRIDGE_KEYWORDS = [
   "Dr. Jan Duffy Newbridge",
 ];
 
-export const NEWBRIDGE_FAQS = [
-  {
-    question: "Where is Newbridge in Las Vegas?",
-    answer:
-      "Newbridge is a Richmond American community in Southwest Las Vegas, ZIP 89139, near Blue Diamond Road. Richmond American listed its Newbridge sales office at 5509 Middleton Falls Ave, Las Vegas, NV 89139.",
-  },
-  {
-    question: "Who built Newbridge Las Vegas?",
-    answer:
-      "Richmond American Homes built Newbridge. Ranch-style (single-story) plans are the signature product, including guest-suite and three-car-garage options on some elevations.",
-  },
+/** Homepage FAQs. Never repeat a question from NEWBRIDGE_GUIDE_FAQS: each page emits its own FAQPage. */
+export const NEWBRIDGE_HOME_FAQS = [
   {
     question: "Is Newbridge sold out?",
     answer:
@@ -35,6 +26,20 @@ export const NEWBRIDGE_FAQS = [
     question: "Do I need my own agent to buy in Newbridge?",
     answer:
       "No law requires you to use an agent, but on a resale the listing agent represents the seller, and at a builder sales office the on-site agent represents the builder. Dr. Jan Duffy, License S.0197614.LLC, can represent you from your first resale showing. If you tour any builder inventory, register her before your first visit, because some builders only recognize an agent who is registered or present at that visit.",
+  },
+];
+
+/** Community-guide FAQs (/neighborhoods/newbridge). */
+export const NEWBRIDGE_GUIDE_FAQS = [
+  {
+    question: "Where is Newbridge in Las Vegas?",
+    answer:
+      "Newbridge is a Richmond American community in Southwest Las Vegas, ZIP 89139, near Blue Diamond Road. Richmond American listed its Newbridge sales office at 5509 Middleton Falls Ave, Las Vegas, NV 89139.",
+  },
+  {
+    question: "Who built Newbridge Las Vegas?",
+    answer:
+      "Richmond American Homes built Newbridge. Ranch-style (single-story) plans are the signature product, including guest-suite and three-car-garage options on some elevations.",
   },
   {
     question: "What is the Darius plan at Newbridge?",

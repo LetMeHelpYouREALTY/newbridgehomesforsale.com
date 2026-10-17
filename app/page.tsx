@@ -9,10 +9,10 @@ import CtaBanner from "@/components/seo/CtaBanner";
 import MarketSnapshotSource from "@/components/seo/MarketSnapshotSource";
 import { images, NAP } from "@/lib/site-images";
 import { MARKET_MEDIAN_SUMMARY, MARKET_SNAPSHOT_STATS } from "@/lib/market-snapshot";
-import { NEWBRIDGE_FAQS } from "@/lib/newbridge-seo";
+import { NEWBRIDGE_HOME_FAQS } from "@/lib/newbridge-seo";
 import { getNewbridgePrimaryH1 } from "@/lib/newbridge-h1";
 
-const homeFaqs = NEWBRIDGE_FAQS;
+const homeFaqs = NEWBRIDGE_HOME_FAQS;
 
 export default async function Home() {
   const config = await getPageDomainConfig();
@@ -130,7 +130,7 @@ export default async function Home() {
           </SeoSection>
 
           <FaqAeo
-            title="Newbridge Las Vegas questions, answered"
+            title="Buying a Newbridge home: questions answered"
             faqs={homeFaqs}
           />
           <CtaBanner
