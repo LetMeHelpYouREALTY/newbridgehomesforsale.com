@@ -263,7 +263,7 @@ export default async function ContactPage() {
                   <div className="flex items-start">
                     <Users className="h-5 w-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
                     <p className="text-slate-300 text-sm">
-                      <strong className="text-white">Global Network:</strong> 50,000+ agents worldwide for seamless relocations and referrals.
+                      <strong className="text-white">Global Network:</strong> Berkshire Hathaway HomeServices agents worldwide for seamless relocations and referrals.
                     </p>
                   </div>
                 </div>

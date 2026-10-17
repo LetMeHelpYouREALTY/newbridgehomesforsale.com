@@ -43,13 +43,14 @@ export default async function Home() {
               Why work with Dr. Jan Duffy at Newbridge?
             </h2>
             <p className="mx-auto mb-10 max-w-3xl text-center text-lg text-slate-600">
-              You get a BHHS Nevada Properties agent who answers her own phone, plus a 50,000-agent
-              referral network—without a second layer of assistants between you and the deal.
+              You get a BHHS Nevada Properties agent who answers her own phone, plus the Berkshire
+              Hathaway HomeServices global referral network—without a second layer of assistants
+              between you and the deal.
             </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
               {[
                 { icon: Shield, title: "BHHS brand", desc: "Berkshire Hathaway HomeServices Nevada Properties at 9406 W Lake Mead Blvd." },
-                { icon: Users, title: "50K+ network", desc: "Global referral coverage for moves into or out of Clark County." },
+                { icon: Users, title: "BHHS network", desc: "Global referral coverage for moves into or out of Clark County." },
                 { icon: TrendingUp, title: "500+ closings", desc: "Documented transactions serving Las Vegas since 2008." },
                 { icon: HomeIcon, title: "One advisor", desc: "Buy, sell, 55+, luxury, new construction, and investment in one file." },
               ].map(({ icon: Icon, title, desc }) => (

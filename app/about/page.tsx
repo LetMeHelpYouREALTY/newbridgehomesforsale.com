@@ -327,8 +327,9 @@ export default function AboutPage() {
                 </div>
                 <h3 className="font-bold text-xl mb-2">Global Network</h3>
                 <p className="text-slate-300 text-sm">
-                  50,000+ agents worldwide for seamless referrals and relocations. Whether you're 
-                  moving from California or anywhere else, our network has you covered.
+                  Berkshire Hathaway HomeServices agents worldwide for seamless referrals and
+                  relocations. Whether you're moving from California or anywhere else, our network
+                  has you covered.
                 </p>
               </div>
               <div className="text-center">

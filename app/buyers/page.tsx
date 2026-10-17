@@ -376,7 +376,7 @@ export default async function BuyersPage() {
                 </div>
                 <h3 className="font-bold text-slate-900 mb-2">Global Network</h3>
                 <p className="text-slate-600 text-sm">
-                  50,000+ agents worldwide for seamless relocations and referrals
+                  Berkshire Hathaway HomeServices agents worldwide for seamless relocations and referrals
                 </p>
               </div>
               <div className="text-center">

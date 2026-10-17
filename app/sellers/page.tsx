@@ -71,7 +71,7 @@ const sellingBenefits = [
     icon: Users,
     title: "Global Buyer Network",
     description:
-      "Berkshire Hathaway's 50,000+ agents worldwide means your listing reaches qualified buyers from across the globe—especially important for Las Vegas's strong relocation and international buyer markets.",
+      "Berkshire Hathaway HomeServices agents worldwide can refer relocating buyers to your listing.",
   },
   {
     icon: BarChart,
