@@ -20,6 +20,9 @@ import type { Metadata } from "next";
 import { getPageDomainConfig } from "@/lib/get-domain-config";
 import { buildCommunityAreaServed } from "@/lib/area-served";
 import { getRequestSiteUrl } from "@/lib/canonical-url";
+import FaqAeo from "@/components/seo/FaqAeo";
+import { faqItemsToAeo } from "@/lib/faq-to-aeo";
+import { sellerFaqsForSite } from "@/lib/newbridge-seller-faqs";
 
 export async function generateMetadata(): Promise<Metadata> {
   const config = await getPageDomainConfig();
@@ -128,6 +131,7 @@ export default async function SellersPage() {
   const config = await getPageDomainConfig();
   const siteUrl = getRequestSiteUrl();
   const isNewbridge = config.neighborhood === "Newbridge";
+  const sellerFaqs = sellerFaqsForSite(isNewbridge);
 
   const sellerSchema = {
     "@context": "https://schema.org",
@@ -410,49 +414,14 @@ export default async function SellersPage() {
             </div>
           </section>
 
-          {/* FAQ */}
-          <section className="mb-16 max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4 text-center">
-              Frequently Asked Questions About Selling in Las Vegas
-            </h2>
-            <p className="text-slate-600 text-center max-w-3xl mx-auto mb-8">
-              Selling your home raises many questions. Here are answers to the most common 
-              concerns from Las Vegas home sellers.
-            </p>
-            <div className="space-y-4">
-              {[
-                {
-                  q: "How long will it take to sell my Las Vegas home?",
-                  a: "Well-priced Las Vegas homes are selling in an average of 28 days. Luxury homes ($1M+) may take 45+ days. The key is pricing correctly from day one—overpriced homes can sit for months, losing both time and money.",
-                },
-                {
-                  q: "What do I need to do to prepare my home for sale?",
-                  a: "Dr. Jan provides a personalized preparation checklist for every listing. Generally, decluttering, minor repairs, fresh paint, and professional staging consultation yield the highest ROI. She'll walk through your home and identify exactly what improvements will generate the best return.",
-                },
-                {
-                  q: "How does Berkshire Hathaway market my home?",
-                  a: "Your home gets professional photography, virtual tours, drone video (when appropriate), MLS syndication to 100+ websites, BHHS global network exposure, social media promotion, and targeted digital advertising. It's the most comprehensive marketing available in Las Vegas real estate.",
-                },
-                {
-                  q: "What are your commission rates?",
-                  a: "Commission structures are negotiable and competitive with other full-service brokerages. Dr. Jan offers transparent pricing and will walk you through all costs during your listing consultation. The value of BHHS marketing and negotiation typically results in higher sale prices that more than offset commission.",
-                },
-                {
-                  q: "Should I wait for prices to go higher?",
-                  a: "Current appreciation of 4.2% year-over-year suggests prices are stable with gradual increases. Timing the market is difficult—most sellers do better by listing when ready rather than waiting. Dr. Jan can provide a personalized market analysis to help you decide.",
-                },
-                {
-                  q: "Do I need to be moved out before listing?",
-                  a: "Not necessarily. Many homes sell while occupied. However, vacant homes are easier to show and stage. Dr. Jan will help you develop a strategy based on your specific situation and timeline.",
-                },
-              ].map((faq, index) => (
-                <div key={index} className="bg-slate-50 rounded-lg p-6">
-                  <h3 className="font-bold text-slate-900 mb-2">{faq.q}</h3>
-                  <p className="text-slate-600">{faq.a}</p>
-                </div>
-              ))}
-            </div>
-          </section>
+          <FaqAeo
+            title={
+              isNewbridge
+                ? "Frequently asked questions about selling in Newbridge"
+                : "Frequently asked questions about selling in Las Vegas"
+            }
+            faqs={faqItemsToAeo(sellerFaqs)}
+          />
 
           {/* CTA */}
           <section className="text-center bg-slate-900 text-white rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">

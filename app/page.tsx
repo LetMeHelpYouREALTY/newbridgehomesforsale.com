@@ -8,12 +8,13 @@ import FaqAeo from "@/components/seo/FaqAeo";
 import CtaBanner from "@/components/seo/CtaBanner";
 import { images, NAP } from "@/lib/site-images";
 import { NEWBRIDGE_FAQS } from "@/lib/newbridge-seo";
+import { getNewbridgePrimaryH1 } from "@/lib/newbridge-h1";
 
 const homeFaqs = NEWBRIDGE_FAQS;
 
 export default async function Home() {
   const config = await getPageDomainConfig();
-  const pageH1 = config.pageH1 ?? config.heroHeadline;
+  const pageH1 = getNewbridgePrimaryH1(config);
 
   return (
     <>

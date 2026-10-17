@@ -5,29 +5,9 @@ import Link from "next/link";
 import { Phone, CheckCircle, Home, TrendingUp, MapPin, Calculator, Clock, DollarSign } from "lucide-react";
 import type { Metadata } from "next";
 import { getPageDomainConfig } from "@/lib/get-domain-config";
-
-const valuationFaqs = [
-  {
-    q: "How accurate are online home value estimates like Zillow's Zestimate?",
-    a: "Online estimates like Zillow's Zestimate can be off by 5-15% or more, especially in markets like Las Vegas where home features vary significantly. They cannot account for upgrades, condition, views, or lot characteristics. A professional CMA from Dr. Jan Duffy provides far more accurate pricing.",
-  },
-  {
-    q: "What factors affect my Newbridge home's value?",
-    a: "Key factors include location within Newbridge and ZIP 89139, proximity to Blue Diamond Road, square footage, lot size, bedrooms and bathrooms, plan type, upgrades, pool or patio coverage, HOA fees, and current MLS competition in Southwest Las Vegas.",
-  },
-  {
-    q: "How long does a home valuation take?",
-    a: "Dr. Jan Duffy typically provides a comprehensive market analysis within 24-48 hours of receiving your property information. The analysis includes recent comparable sales, current competition, and a recommended price range.",
-  },
-  {
-    q: "Is a home valuation the same as an appraisal?",
-    a: "No. A home valuation or CMA (Comparative Market Analysis) is a real estate agent's estimate based on market data. An appraisal is a formal valuation by a licensed appraiser, typically required by lenders. CMAs are free and useful for listing decisions; appraisals cost $400-600 and are required for financing.",
-  },
-  {
-    q: "Do I need to have my home ready to show for a valuation?",
-    a: "Not necessarily. Dr. Jan Duffy can provide an initial valuation based on property records, MLS data, and information you provide. A brief walk-through helps identify features and upgrades that add value. There's no need to stage or prepare extensively.",
-  },
-];
+import FaqAeo from "@/components/seo/FaqAeo";
+import { faqItemsToAeo } from "@/lib/faq-to-aeo";
+import { NEWBRIDGE_VALUATION_FAQS } from "@/lib/newbridge-valuation-faqs";
 
 export async function generateMetadata(): Promise<Metadata> {
   const config = await getPageDomainConfig();
@@ -59,22 +39,10 @@ export default async function HomeValuationPage() {
   const config = await getPageDomainConfig();
   const isNewbridge = config.neighborhood === "Newbridge";
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: valuationFaqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.q,
-      acceptedAnswer: { "@type": "Answer", text: faq.a },
-    })),
-  };
+  const valuationFaqs = NEWBRIDGE_VALUATION_FAQS;
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">
           {/* Breadcrumb */}
@@ -446,20 +414,14 @@ export default async function HomeValuationPage() {
             </div>
           </section>
 
-          {/* FAQ Section */}
-          <section className="max-w-4xl mx-auto mb-16">
-            <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">
-              Frequently Asked Questions About Home Valuations
-            </h2>
-            <div className="space-y-4">
-              {valuationFaqs.map((faq, index) => (
-                <div key={index} className="bg-white border border-slate-200 rounded-lg p-6">
-                  <h3 className="font-bold text-slate-900 mb-2">{faq.q}</h3>
-                  <p className="text-slate-600">{faq.a}</p>
-                </div>
-              ))}
-            </div>
-          </section>
+          <FaqAeo
+            title={
+              isNewbridge
+                ? "Frequently asked questions about Newbridge home valuations"
+                : "Frequently asked questions about home valuations"
+            }
+            faqs={faqItemsToAeo(valuationFaqs)}
+          />
 
           {/* CTA */}
           <section className="text-center bg-blue-600 text-white rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">

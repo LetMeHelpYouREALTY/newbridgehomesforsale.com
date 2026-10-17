@@ -13,6 +13,7 @@ import {
   combineSchemas,
 } from "@/lib/schema";
 import { NEWBRIDGE_FAQS, newbridgeMetadata } from "@/lib/newbridge-seo";
+import { NEWBRIDGE_PRIMARY_H1 } from "@/lib/newbridge-h1";
 
 export const metadata: Metadata = newbridgeMetadata({
   title: "Newbridge Homes for Sale | Las Vegas 89139 | Dr. Jan Duffy",
@@ -49,7 +50,7 @@ export default function NewbridgePage() {
         <div className="container mx-auto px-4">
           <SeoHero
             eyebrow="Newbridge · ZIP 89139 · Southwest Las Vegas"
-            h1="Newbridge Homes for Sale | Las Vegas, NV 89139"
+            h1={NEWBRIDGE_PRIMARY_H1}
             lede="Richmond American ranch plans near Blue Diamond Road. Dr. Jan Duffy represents you—not the builder desk—on remaining inventory, resales, and nearby 89139 streets. Call 702-222-1964."
             image={images.neighborhoods.newbridge.src}
             imageAlt={images.neighborhoods.newbridge.alt}
