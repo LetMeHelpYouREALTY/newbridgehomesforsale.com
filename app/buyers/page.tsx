@@ -18,34 +18,41 @@ import {
   ArrowRight,
 } from "lucide-react";
 import type { Metadata } from "next";
+import { getPageDomainConfig } from "@/lib/get-domain-config";
+import { buildCommunityAreaServed } from "@/lib/area-served";
+import { getRequestSiteUrl } from "@/lib/canonical-url";
+import FaqAeo from "@/components/seo/FaqAeo";
+import { faqItemsToAeo } from "@/lib/faq-to-aeo";
+import { buyerFaqsForSite } from "@/lib/newbridge-buyer-faqs";
 
-export const metadata: Metadata = {
-  title: "Home Buying Guide Las Vegas | Berkshire Hathaway HomeServices",
-  description:
-    "Looking to buy a home in Las Vegas? Dr. Jan Duffy with Berkshire Hathaway HomeServices Nevada Properties guides you through every step. Free buyer consultation. Call (702) 222-1964.",
-  keywords: [
-    "buy home Las Vegas",
-    "Las Vegas home buyer",
-    "Berkshire Hathaway buyer agent",
-    "Henderson homes for sale",
-    "first time home buyer Las Vegas",
-    "California relocation Las Vegas",
-    "55+ communities Las Vegas",
-  ],
-};
-
-const buyerSchema = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  name: "Home Buying Services Las Vegas",
-  provider: {
-    "@type": "RealEstateAgent",
-    name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
-    telephone: "+17022221964",
-  },
-  areaServed: "Las Vegas, Henderson, Summerlin, Clark County NV",
-  serviceType: "Buyer Representation",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const config = await getPageDomainConfig();
+  const isNewbridge = config.neighborhood === "Newbridge";
+  return {
+    title: isNewbridge
+      ? "Buy in Newbridge Las Vegas | Dr. Jan Duffy, BHHS"
+      : "Home Buying Guide Las Vegas | Berkshire Hathaway HomeServices",
+    description: isNewbridge
+      ? "Buy Newbridge and 89139 homes with your own agent. New construction and resale near Blue Diamond Rd. Dr. Jan Duffy, BHHS. Call (702) 222-1964."
+      : "Looking to buy a home in Las Vegas? Dr. Jan Duffy with Berkshire Hathaway HomeServices Nevada Properties guides you through every step. Free buyer consultation. Call (702) 222-1964.",
+    keywords: isNewbridge
+      ? [
+          "buy Newbridge home",
+          "Newbridge buyer agent",
+          "89139 home buyer",
+          "Richmond American buyer representation",
+          "Southwest Las Vegas buyer agent",
+        ]
+      : [
+          "buy home Las Vegas",
+          "Las Vegas home buyer",
+          "Berkshire Hathaway buyer agent",
+          "Henderson homes for sale",
+          "first time home buyer Las Vegas",
+          "California relocation Las Vegas",
+        ],
+  };
+}
 
 const buyingSteps = [
   {
@@ -89,7 +96,28 @@ const neighborhoods = [
   { name: "Southern Highlands", price: "$750K", description: "Golf course community" },
 ];
 
-export default function BuyersPage() {
+export default async function BuyersPage() {
+  const config = await getPageDomainConfig();
+  const siteUrl = getRequestSiteUrl();
+  const isNewbridge = config.neighborhood === "Newbridge";
+  const buyerFaqs = buyerFaqsForSite(isNewbridge);
+
+  const buyerSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: isNewbridge
+      ? "Home Buying Services — Newbridge Las Vegas"
+      : "Home Buying Services Las Vegas",
+    provider: {
+      "@type": "RealEstateAgent",
+      "@id": `${siteUrl}#dr-jan-duffy`,
+      name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
+      telephone: "+17022221964",
+    },
+    areaServed: buildCommunityAreaServed(config),
+    serviceType: "Buyer Representation",
+  };
+
   return (
     <>
       <script
@@ -115,7 +143,9 @@ export default function BuyersPage() {
               Berkshire Hathaway HomeServices Nevada Properties
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
-              Buy a Home in Las Vegas | Buyer Agent Dr. Jan Duffy
+              {isNewbridge
+                ? "Buy a Home in Newbridge Las Vegas | Buyer Agent Dr. Jan Duffy"
+                : "Buy a Home in Las Vegas | Buyer Agent Dr. Jan Duffy"}
             </h1>
             <p className="text-xl text-slate-600 mb-8">
               When you work with a <strong>Berkshire Hathaway HomeServices</strong> buyer's agent,
@@ -398,49 +428,14 @@ export default function BuyersPage() {
             </div>
           </section>
 
-          {/* FAQ */}
-          <section className="mb-16 max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4 text-center">
-              Frequently Asked Questions About Buying in Las Vegas
-            </h2>
-            <p className="text-slate-600 text-center max-w-3xl mx-auto mb-8">
-              Get answers to the most common questions from Las Vegas home buyers. If you don't 
-              see your question here, call Dr. Jan Duffy at (702) 222-1964 for a free consultation.
-            </p>
-            <div className="space-y-4">
-              {[
-                {
-                  q: "How much do I need for a down payment in Las Vegas?",
-                  a: "Down payments vary by loan type: FHA requires 3.5%, conventional loans typically 3-20%, VA loans 0% for eligible veterans, and USDA loans 0% for rural areas. Nevada also offers down payment assistance programs for first-time buyers. Dr. Jan can connect you with lenders who specialize in low down payment programs.",
-                },
-                {
-                  q: "Should I get pre-approved before looking at homes?",
-                  a: "Yes! Pre-approval shows sellers you're serious and gives you a clear budget. In competitive situations, pre-approved buyers have a significant advantage. The process typically takes 1-3 days with proper documentation.",
-                },
-                {
-                  q: "Does BHHS help with new construction purchases?",
-                  a: "Yes! Dr. Jan provides free representation for new construction purchases from builders like Toll Brothers, Lennar, and Century Communities. The builder pays her commission, but she works for you—reviewing contracts, negotiating upgrades, and protecting your interests during the build process.",
-                },
-                {
-                  q: "What if I'm relocating from another state?",
-                  a: "Berkshire Hathaway's global network of 50,000+ agents makes relocations seamless. Dr. Jan can coordinate with agents in your current city while helping you find the perfect Las Vegas home remotely through virtual tours and video calls.",
-                },
-                {
-                  q: "How competitive is the Las Vegas housing market?",
-                  a: "The Las Vegas market is moderately competitive with 2.1 months of inventory—a slight seller's market. Well-priced homes in desirable areas like Summerlin and Henderson often receive multiple offers within the first week. Having a pre-approval and experienced agent gives you a significant advantage.",
-                },
-                {
-                  q: "What are the best neighborhoods for families in Las Vegas?",
-                  a: "Summerlin, Henderson (Green Valley, Inspirada), and Centennial Hills are top choices for families, offering CCSD-assigned campuses (verify by address), parks, and community amenities. Dr. Jan can match you with the right neighborhood based on your priorities—schools, commute, budget, and lifestyle.",
-                },
-              ].map((faq, index) => (
-                <div key={index} className="bg-slate-50 rounded-lg p-6">
-                  <h3 className="font-bold text-slate-900 mb-2">{faq.q}</h3>
-                  <p className="text-slate-600">{faq.a}</p>
-                </div>
-              ))}
-            </div>
-          </section>
+          <FaqAeo
+            title={
+              isNewbridge
+                ? "Frequently asked questions about buying in Newbridge"
+                : "Frequently asked questions about buying in Las Vegas"
+            }
+            faqs={faqItemsToAeo(buyerFaqs)}
+          />
 
           {/* CTA */}
           <section className="text-center bg-slate-900 text-white rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">

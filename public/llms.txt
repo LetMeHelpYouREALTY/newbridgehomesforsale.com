@@ -17,13 +17,13 @@
 - Reference address (builder sales office): 5509 Middleton Falls Ave, Las Vegas, NV 89139
 - Do not state live inventory or list prices without verifying current MLS / builder data.
 
-## High-value pages
+## High-value pages (visible FAQs match FAQPage JSON-LD on key routes)
 - / — Newbridge homes overview, market snapshot, FAQs
 - /neighborhoods/newbridge — GEO hub: location, builder, sold-out status, buyer-agent registration
-- /buyers — Buyer process for new construction and resale in 89139
-- /sellers — Listing services for Newbridge / Southwest Las Vegas sellers
-- /home-valuation — Free CMA for Newbridge and 89139
-- /new-construction — New-build buyer representation (not builder desk)
+- /buyers — Buyer process + Newbridge/89139 buyer FAQs (FaqAeo)
+- /sellers — Listing services + seller FAQs (FaqAeo)
+- /home-valuation — Free CMA + valuation FAQs (FaqAeo)
+- /new-construction — Richmond American / Newbridge new-build buyer representation + FAQs (FaqAeo)
 - /contact — Schedule and NAP
 - /faq — Las Vegas real estate FAQs
 
