@@ -14,19 +14,24 @@
 ## Community focus (GEO)
 - Place: Newbridge, Las Vegas, NV 89139
 - Builder: Richmond American Homes (ranch-style / single-story plans)
-- Reference address (builder sales office): 5509 Middleton Falls Ave, Las Vegas, NV 89139
+- Richmond American listed its Newbridge sales office at 5509 Middleton Falls Ave, Las Vegas, NV 89139.
+- Builder status: As of October 17, 2026, Richmond American's Newbridge web pages redirect to its general Las Vegas new-homes page. Confirm any remaining builder lots and current MLS resales before stating availability.
 - Do not state live inventory or list prices without verifying current MLS / builder data.
 
-## High-value pages (visible FAQs match FAQPage JSON-LD on key routes)
-- / — Newbridge homes overview, market snapshot, FAQs
-- /neighborhoods/newbridge — GEO hub: location, builder, sold-out status, buyer-agent registration
-- /buyers — Buyer process + Newbridge/89139 buyer FAQs (FaqAeo)
-- /sellers — Listing services + seller FAQs (FaqAeo)
-- /home-valuation — Free CMA + valuation FAQs (FaqAeo)
-- /new-construction — Richmond American / Newbridge new-build buyer representation + FAQs (FaqAeo)
-- /contact — Schedule, NAP, Newbridge registration FAQs (FaqAeo)
-- /listings — Live MLS feed + Newbridge/89139 search FAQs (FaqAeo)
-- /faq — Las Vegas real estate FAQs
+## Market data (Southern Nevada MLS, not Newbridge-only)
+- Source: Las Vegas REALTORS® September 2026 report, released 2026-10-06: https://members.lasvegasrealtor.com/statistics/pdf/2026-09-GLVAR-Article.pdf
+- Las Vegas REALTORS® reported a $470,000 median price for existing single-family homes sold through its MLS in Southern Nevada in September 2026—the same as September 2025 and down from the all-time high of $490,000 set in May and June.
+- In September 2026, Las Vegas REALTORS® reported that 75.9% of all existing local homes sold within 60 days.
+- In September 2026, Las Vegas REALTORS® reported a five-month housing supply at September's sales pace, up from a roughly four-month supply one year earlier.
+- The MLS does not account for all newly constructed homes sold by local builders. For a Newbridge or ZIP 89139 price, request a dated CMA.
+
+## High-value pages (visible FAQs match FAQPage JSON-LD)
+- / — Newbridge homes overview, Southern Nevada market snapshot, buying FAQs
+- /neighborhoods/newbridge — Community guide: location, builder, Darius plan, builder status, buyer representation, community FAQs
+- /sellers — Listing services, Southern Nevada market snapshot, seller FAQs
+- /home-valuation — Free CMA, Southern Nevada market snapshot, valuation FAQs
+- /about — Dr. Jan Duffy: license, brokerage, experience
+- /contact — Schedule, office address and phone, buyer-consultation and builder-registration FAQs
 
 ## Scheduling (Calendly)
 - Showing: https://calendly.com/drjanduffy/showing

@@ -3,7 +3,8 @@ export type MarketStat = { value: string; label: string };
 /**
  * Las Vegas REALTORS® monthly statistics: the only source for market figures
  * on this site. They cover existing homes sold through the Southern Nevada MLS,
- * not Newbridge alone. Replace every string here together after each release.
+ * not Newbridge alone. Replace every string here together after each release;
+ * public/llms.txt quotes the report URL and the three sentences verbatim.
  */
 export const MARKET_REPORT = {
   name: "Las Vegas REALTORS® September 2026 report",
