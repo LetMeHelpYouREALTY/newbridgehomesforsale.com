@@ -12,7 +12,7 @@ export const NEWBRIDGE_NEW_CONSTRUCTION_FAQS: FaqItem[] = [
   },
   {
     q: "Do I have to register Dr. Jan Duffy as my agent on the first visit?",
-    a: "Yes. Most builders require your agent to accompany you or be registered on your first visit. If you tour alone and sign the guest registry, you may forfeit free representation. Call (702) 222-1964 to register Dr. Jan Duffy before any Newbridge model visit.",
+    a: "Yes. Most builders require your agent to accompany you or be registered on your first visit. If you tour alone and sign the guest registry, you may forfeit free representation. Call (702) 222-1964 to register Dr. Jan Duffy before any builder model visit.",
   },
   {
     q: "What builder incentives are currently available?",

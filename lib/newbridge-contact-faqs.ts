@@ -3,11 +3,11 @@ import type { FaqItem } from "./newbridge-seller-faqs";
 export const NEWBRIDGE_CONTACT_FAQS: FaqItem[] = [
   {
     q: "What should I expect during a Newbridge buyer consultation?",
-    a: "A no-pressure call about your timeline, budget, and whether you are pursuing Richmond American new construction, 89139 resale, or both. Dr. Jan Duffy explains builder registration rules and how seller-paid representation works in Nevada.",
+    a: "A no-pressure call about your timeline, budget, and whether you want a Newbridge resale, another 89139 home, or new construction. Dr. Jan Duffy explains how builder agent-registration policies and buyer-representation agreements work.",
   },
   {
-    q: "Do I need to register Dr. Jan before touring Newbridge models?",
-    a: "Yes. Most builders require your agent on the first visit or on their registry. Call (702) 222-1964 before you walk into a Richmond American sales office so you keep independent contract review.",
+    q: "Do I need to register Dr. Jan before touring new-construction models?",
+    a: "Call first. Builder policies vary, and some builders only recognize a buyer's agent who registers you or comes with you on your first visit. Call (702) 222-1964 before you walk into any builder sales office. As of October 17, 2026, Richmond American's Newbridge web pages redirect to its general Las Vegas new-homes page, so confirm what is still for sale in Newbridge first.",
   },
   {
     q: "Do I need a pre-approval before scheduling a showing?",

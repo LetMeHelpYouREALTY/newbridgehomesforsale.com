@@ -6,12 +6,7 @@ import FaqAeo from "@/components/seo/FaqAeo";
 import CtaBanner from "@/components/seo/CtaBanner";
 import { images } from "@/lib/site-images";
 import SchemaScript from "@/components/SchemaScript";
-import {
-  generateBreadcrumbSchema,
-  generateFAQSchema,
-  generateNeighborhoodSchema,
-  combineSchemas,
-} from "@/lib/schema";
+import { generateNeighborhoodSchema, combineSchemas } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Lake Las Vegas Homes for Sale | Henderson NV | Dr. Jan Duffy",
@@ -33,11 +28,6 @@ const faqs = [
 ];
 
 const schemas = combineSchemas(
-  generateBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Neighborhoods", url: "/neighborhoods" },
-    { name: "Lake Las Vegas", url: "/neighborhoods/lake-las-vegas" },
-  ]),
   generateNeighborhoodSchema({
     name: "Lake Las Vegas",
     slug: "lake-las-vegas",
@@ -46,8 +36,7 @@ const schemas = combineSchemas(
     latitude: 36.101,
     longitude: -114.929,
     containedIn: "Henderson",
-  }),
-  generateFAQSchema(faqs)
+  })
 );
 
 export default function LakeLasVegasPage() {

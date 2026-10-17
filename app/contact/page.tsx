@@ -15,9 +15,11 @@ export async function generateMetadata(): Promise<Metadata> {
   const config = await getPageDomainConfig();
   const isNewbridge = config.neighborhood === "Newbridge";
   return {
-    title: isNewbridge
-      ? "Contact Dr. Jan Duffy | Newbridge Buyer Agent"
-      : "Contact Dr. Jan Duffy | Berkshire Hathaway HomeServices Las Vegas",
+    title: {
+      absolute: isNewbridge
+        ? "Contact Dr. Jan Duffy | Newbridge Buyer Agent"
+        : "Contact Dr. Jan Duffy | Berkshire Hathaway HomeServices Las Vegas",
+    },
     description: isNewbridge
       ? "Contact Dr. Jan Duffy for Newbridge and 89139 real estate. Schedule a consult or call (702) 222-1964. BHHS Nevada Properties."
       : "Contact Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. Schedule an appointment, get directions, or call (702) 222-1964.",
@@ -261,7 +263,7 @@ export default async function ContactPage() {
                   <div className="flex items-start">
                     <Users className="h-5 w-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
                     <p className="text-slate-300 text-sm">
-                      <strong className="text-white">Global Network:</strong> 50,000+ agents worldwide for seamless relocations and referrals.
+                      <strong className="text-white">Global Network:</strong> Berkshire Hathaway HomeServices agents worldwide for seamless relocations and referrals.
                     </p>
                   </div>
                 </div>
@@ -341,7 +343,7 @@ export default async function ContactPage() {
         </div>
 
         {/* Last Updated */}
-        <div className="text-center text-sm text-slate-500 mt-8">Last Updated: January 2026</div>
+        <div className="text-center text-sm text-slate-500 mt-8">Last Updated: October 2026</div>
       </main>
       <RealScoutListings />
     </>

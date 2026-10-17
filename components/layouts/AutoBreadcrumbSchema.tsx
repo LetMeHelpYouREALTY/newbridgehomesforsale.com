@@ -1,8 +1,8 @@
 import { headers } from "next/headers";
 import SchemaScript from "@/components/SchemaScript";
 import { buildBreadcrumbTrail } from "@/lib/breadcrumb-trail";
+import { SITE_ORIGIN } from "@/lib/canonical-url";
 import { generateBreadcrumbSchema } from "@/lib/schema";
-import { getSiteBaseUrlFromHost } from "@/lib/site-base-url";
 
 /**
  * Emits BreadcrumbList JSON-LD on all non-home routes (server-rendered).
@@ -20,13 +20,9 @@ export default function AutoBreadcrumbSchema() {
     return null;
   }
 
-  const hostname =
-    headersList.get("x-domain") || headersList.get("host") || "";
-  const baseUrl = getSiteBaseUrlFromHost(hostname);
-
   return (
     <SchemaScript
-      schema={generateBreadcrumbSchema(items, baseUrl)}
+      schema={generateBreadcrumbSchema(items, SITE_ORIGIN)}
       id="breadcrumb-schema"
     />
   );

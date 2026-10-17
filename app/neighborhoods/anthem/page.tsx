@@ -6,12 +6,7 @@ import FaqAeo from "@/components/seo/FaqAeo";
 import CtaBanner from "@/components/seo/CtaBanner";
 import { images } from "@/lib/site-images";
 import SchemaScript from "@/components/SchemaScript";
-import {
-  generateBreadcrumbSchema,
-  generateFAQSchema,
-  generateNeighborhoodSchema,
-  combineSchemas,
-} from "@/lib/schema";
+import { generateNeighborhoodSchema, combineSchemas } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Anthem Homes for Sale | Henderson NV | Dr. Jan Duffy",
@@ -33,11 +28,6 @@ const faqs = [
 ];
 
 const schemas = combineSchemas(
-  generateBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Neighborhoods", url: "/neighborhoods" },
-    { name: "Anthem", url: "/neighborhoods/anthem" },
-  ]),
   generateNeighborhoodSchema({
     name: "Anthem",
     slug: "anthem",
@@ -46,8 +36,7 @@ const schemas = combineSchemas(
     latitude: 35.948,
     longitude: -115.084,
     containedIn: "Henderson",
-  }),
-  generateFAQSchema(faqs)
+  })
 );
 
 export default function AnthemPage() {

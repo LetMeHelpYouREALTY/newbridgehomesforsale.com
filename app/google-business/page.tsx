@@ -101,9 +101,9 @@ export default function GoogleBusinessPage() {
                   </div>
                 </div>
                 
-                {/* Rating & CTA */}
+                {/* Office & CTA */}
                 <div className="text-center bg-white/10 rounded-xl p-8">
-                  <div className="relative mx-auto mb-4 h-32 w-full overflow-hidden rounded-lg">
+                  <div className="relative mx-auto mb-6 h-32 w-full overflow-hidden rounded-lg">
                     <Image
                       src="/images/sections/las-vegas-office.jpg"
                       alt="Las Vegas office matching Google Business Profile NAP"
@@ -112,13 +112,6 @@ export default function GoogleBusinessPage() {
                       className="object-cover"
                     />
                   </div>
-                  <div className="flex justify-center mb-4">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <Star key={star} className="h-8 w-8 text-yellow-400 fill-yellow-400" />
-                    ))}
-                  </div>
-                  <p className="text-3xl font-bold mb-2">4.9 / 5.0</p>
-                  <p className="text-blue-200 mb-6">200+ Client Reviews</p>
                   <a
                     href={`tel:${businessInfo.phone.tel}`}
                     className="inline-block w-full bg-blue-600 hover:bg-blue-500 text-white px-6 py-4 rounded-lg font-bold text-lg transition-colors"
@@ -264,24 +257,23 @@ export default function GoogleBusinessPage() {
             </div>
           </section>
 
-          {/* Review CTA - Prominence factor */}
+          {/* Client reviews */}
           <section className="max-w-4xl mx-auto mb-16">
             <div className="bg-gradient-to-r from-yellow-50 to-amber-50 border border-yellow-200 rounded-xl p-8 text-center">
               <Star className="h-12 w-12 text-yellow-500 mx-auto mb-4" />
               <h2 className="text-2xl font-bold text-slate-900 mb-4">
-                Your Review Helps Others Find Quality Service
+                Read Client Reviews
               </h2>
               <p className="text-slate-600 mb-6 max-w-2xl mx-auto">
-                If Dr. Jan helped you buy or sell a home, please consider sharing your experience.
-                Mention your neighborhood, type of transaction, and what made the experience valuable.
+                Read what Dr. Jan Duffy&apos;s buyers and sellers say on her client review site.
               </p>
               <a
-                href="https://g.page/r/YOUR_GOOGLE_REVIEW_LINK/review"
+                href="https://www.drjanduffyreviews.com/reviews"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
               >
-                Leave a Google Review
+                Read Client Reviews
               </a>
             </div>
           </section>

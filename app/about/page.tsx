@@ -11,23 +11,22 @@ import {
   CheckCircle, 
   MapPin,
   Shield,
-  Star,
   Clock,
   ArrowRight,
 } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Dr. Jan Duffy | Berkshire Hathaway HomeServices Las Vegas",
+  title: { absolute: "About Dr. Jan Duffy | BHHS Nevada Properties" },
   description:
-    "Meet Dr. Jan Duffy, your trusted Berkshire Hathaway HomeServices Nevada Properties agent. Serving Las Vegas since 2008, 500+ closed transactions since 2008, Henderson & Summerlin specialist. Call (702) 222-1964.",
+    "Meet Dr. Jan Duffy, REALTOR® with Berkshire Hathaway HomeServices Nevada Properties, serving Las Vegas since 2008. License S.0197614.LLC. Call (702) 222-1964.",
   keywords: [
     "Dr. Jan Duffy",
     "Berkshire Hathaway HomeServices agent",
     "Las Vegas realtor",
     "BHHS Nevada Properties",
-    "Henderson real estate agent",
-    "Summerlin realtor",
+    "Newbridge Las Vegas real estate agent",
+    "89139 realtor",
   ],
 };
 
@@ -80,7 +79,7 @@ const specializations = [
   },
   {
     title: "New Construction",
-    description: "Free buyer representation with Toll Brothers, Lennar, Century Communities, and more",
+    description: "Buyer representation on new-construction purchases",
   },
   {
     title: "Investment Properties",
@@ -91,8 +90,8 @@ const specializations = [
     description: "Sun City Summerlin, Sun City Anthem, Del Webb Lake Las Vegas expertise",
   },
   {
-    title: "California Relocation",
-    description: "Helping CA families transition to Nevada's tax advantages and lower costs",
+    title: "Relocation to Las Vegas",
+    description: "Guidance for clients relocating to Las Vegas from out of state",
   },
 ];
 
@@ -163,11 +162,10 @@ export default function AboutPage() {
                     world-class resources and local expertise to every client I serve.
                   </p>
                   <p>
-                    Since 2008, I've closed $127 million in transactions and
-                    helped hundreds of families find their perfect home in Las Vegas, Henderson,
-                    Summerlin, and throughout Southern Nevada. My expertise spans luxury properties,
-                    new construction, investment real estate, 55+ active adult communities, and 
-                    relocations—particularly for California families seeking Nevada's tax advantages.
+                    Since 2008, I've closed $127 million in transactions for buyers and sellers
+                    in Las Vegas, Henderson, Summerlin, and throughout Southern Nevada. My
+                    expertise spans luxury properties, new construction, investment real estate,
+                    55+ active adult communities, and out-of-state relocations.
                   </p>
                   <p>
                     What sets <strong>Berkshire Hathaway HomeServices Nevada Properties</strong>{" "}
@@ -249,15 +247,7 @@ export default function AboutPage() {
                   </div>
                   <div className="bg-blue-50 rounded-lg p-6 text-center">
                     <div className="text-3xl font-bold text-blue-600 mb-1">500+ closings</div>
-                    <div className="text-sm text-slate-600">Volume Closed</div>
-                  </div>
-                  <div className="bg-blue-50 rounded-lg p-6 text-center">
-                    <div className="text-3xl font-bold text-blue-600 mb-1">500+</div>
-                    <div className="text-sm text-slate-600">Transactions</div>
-                  </div>
-                  <div className="bg-blue-50 rounded-lg p-6 text-center">
-                    <div className="text-3xl font-bold text-blue-600 mb-1">4.9★</div>
-                    <div className="text-sm text-slate-600">Client Rating</div>
+                    <div className="text-sm text-slate-600">Closed transactions since 2008</div>
                   </div>
                 </div>
 
@@ -337,8 +327,9 @@ export default function AboutPage() {
                 </div>
                 <h3 className="font-bold text-xl mb-2">Global Network</h3>
                 <p className="text-slate-300 text-sm">
-                  50,000+ agents worldwide for seamless referrals and relocations. Whether you're 
-                  moving from California or anywhere else, our network has you covered.
+                  Berkshire Hathaway HomeServices agents worldwide for seamless referrals and
+                  relocations. Whether you're moving from California or anywhere else, our network
+                  has you covered.
                 </p>
               </div>
               <div className="text-center">
@@ -391,47 +382,22 @@ export default function AboutPage() {
             </div>
           </section>
 
-          {/* Client Testimonials */}
-          <section className="mb-16 max-w-5xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 text-center">
-              What Clients Say About Dr. Jan Duffy
+          {/* Client Reviews */}
+          <section className="mb-16 max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Client Reviews for Dr. Jan Duffy
             </h2>
-            <p className="text-slate-600 text-center max-w-3xl mx-auto mb-8">
-              With a 4.9-star rating and hundreds of satisfied clients, Dr. Jan has built a 
-              reputation for excellence, integrity, and personalized service.
+            <p className="text-slate-600 mb-6">
+              Read what Dr. Jan Duffy&apos;s buyers and sellers say on her client review site.
             </p>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-white border border-slate-200 rounded-lg p-6">
-                <div className="flex items-center mb-3">
-                  <Star className="h-5 w-5 text-yellow-400" />
-                  <Star className="h-5 w-5 text-yellow-400" />
-                  <Star className="h-5 w-5 text-yellow-400" />
-                  <Star className="h-5 w-5 text-yellow-400" />
-                  <Star className="h-5 w-5 text-yellow-400" />
-                </div>
-                <p className="text-slate-600 italic mb-3">
-                  "Dr. Jan made our California to Las Vegas relocation seamless. She understood 
-                  exactly what we were looking for and found us the perfect home in Summerlin. 
-                  Her knowledge of the market is exceptional."
-                </p>
-                <p className="text-slate-900 font-semibold">— Michael & Sarah T., Summerlin</p>
-              </div>
-              <div className="bg-white border border-slate-200 rounded-lg p-6">
-                <div className="flex items-center mb-3">
-                  <Star className="h-5 w-5 text-yellow-400" />
-                  <Star className="h-5 w-5 text-yellow-400" />
-                  <Star className="h-5 w-5 text-yellow-400" />
-                  <Star className="h-5 w-5 text-yellow-400" />
-                  <Star className="h-5 w-5 text-yellow-400" />
-                </div>
-                <p className="text-slate-600 italic mb-3">
-                  "As first-time home buyers, we were nervous about the process. Dr. Jan walked 
-                  us through every step, explained everything clearly, and helped us get a great 
-                  deal. Highly recommend!"
-                </p>
-                <p className="text-slate-900 font-semibold">— Jennifer & David K., Henderson</p>
-              </div>
-            </div>
+            <a
+              href="https://www.drjanduffyreviews.com/reviews"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 font-semibold hover:text-blue-700 inline-flex items-center"
+            >
+              Read client reviews <ArrowRight className="h-4 w-4 ml-2" />
+            </a>
           </section>
 
           {/* CTA */}
@@ -465,7 +431,7 @@ export default function AboutPage() {
 
         {/* Last Updated */}
         <div className="text-center text-sm text-slate-500 mt-8">
-          Last Updated: January 2026
+          Last Updated: October 2026
         </div>
       </main>
       <RealScoutListings />

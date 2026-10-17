@@ -111,7 +111,7 @@ export default async function BuyersPage() {
             </h1>
             <p className="text-xl text-slate-600 mb-8">
               {isNewbridge
-                ? "Tour Richmond American Newbridge and 89139 resales with your own Berkshire Hathaway HomeServices buyer's agent. Seller-paid representation costs you nothing extra on MLS resales; register Dr. Jan Duffy before any builder model visit."
+                ? "Tour Newbridge and 89139 resales with your own Berkshire Hathaway HomeServices buyer's agent. Seller-paid representation costs you nothing extra on MLS resales; register Dr. Jan Duffy before any builder model visit."
                 : "When you work with a Berkshire Hathaway HomeServices buyer's agent, you're backed by the most trusted name in real estate—and it costs you nothing. The seller pays the commission, but the representation is yours."}
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm text-slate-500">
@@ -173,7 +173,7 @@ export default async function BuyersPage() {
             </h2>
             <p className="text-slate-600 text-center max-w-3xl mx-auto mb-8">
               {isNewbridge
-                ? "Whether you are buying Richmond American new construction or a resale on Middleton Falls and nearby Southwest streets, the same milestones apply—financing, registration, tours, due diligence, and closing. Dr. Jan Duffy guides each step for ZIP 89139."
+                ? "Whether you are buying a Newbridge resale, a home on nearby Southwest streets, or any remaining builder inventory, the same milestones apply—financing, registration, tours, due diligence, and closing. Dr. Jan Duffy guides each step for ZIP 89139."
                 : "Buying a home is one of the most significant financial decisions you'll make. Understanding the process helps reduce stress and ensures you're prepared at each step with Dr. Jan Duffy and Berkshire Hathaway HomeServices."}
             </p>
             <div className="space-y-6">
@@ -267,7 +267,7 @@ export default async function BuyersPage() {
                   >
                     <div className="text-3xl mb-4">🏗️</div>
                     <h3 className="font-bold text-lg text-slate-900 mb-2 group-hover:text-blue-600">
-                      Richmond American Newbridge
+                      New-construction purchases
                     </h3>
                     <p className="text-slate-600 text-sm mb-3">
                       Builder contracts, incentives, and registration rules—with Dr. Jan Duffy on your
@@ -376,7 +376,7 @@ export default async function BuyersPage() {
                 </div>
                 <h3 className="font-bold text-slate-900 mb-2">Global Network</h3>
                 <p className="text-slate-600 text-sm">
-                  50,000+ agents worldwide for seamless relocations and referrals
+                  Berkshire Hathaway HomeServices agents worldwide for seamless relocations and referrals
                 </p>
               </div>
               <div className="text-center">
@@ -454,7 +454,7 @@ export default async function BuyersPage() {
             </h2>
             <p className="text-xl text-slate-300 mb-8">
               {isNewbridge
-                ? "Call or text Dr. Jan Duffy for a free buyer consult. Register before your first Richmond American visit and search live MLS resales on ZIP 89139."
+                ? "Call or text Dr. Jan Duffy for a free buyer consult, and register her before your first visit to any builder sales office."
                 : "Questions about buying in Las Vegas? Call or text Dr. Jan Duffy for a free buyer consultation—the seller pays the commission on MLS resales."}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -479,7 +479,7 @@ export default async function BuyersPage() {
         </div>
 
         {/* Last Updated */}
-        <div className="text-center text-sm text-slate-500 mt-8">Last Updated: January 2026</div>
+        <div className="text-center text-sm text-slate-500 mt-8">Last Updated: October 2026</div>
       </main>
       <RealScoutListings />
     </>

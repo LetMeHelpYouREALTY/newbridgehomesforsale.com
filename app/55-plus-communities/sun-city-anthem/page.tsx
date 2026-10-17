@@ -13,11 +13,7 @@ import {
 } from "lucide-react";
 import type { Metadata } from "next";
 import SchemaScript from "@/components/SchemaScript";
-import {
-  generateSeniorCommunitySchema,
-  generateFAQSchema,
-  combineSchemas,
-} from "@/lib/schema";
+import { generateSeniorCommunitySchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Sun City Anthem Homes for Sale | Berkshire Hathaway HomeServices",
@@ -46,52 +42,24 @@ const communityAmenities = [
   { name: "Social Clubs", description: "80+ clubs and activity groups" },
 ];
 
-// FAQ data for schema
-const sunCityAnthemFaqs = [
-  {
-    question: "What is the age requirement for Sun City Anthem?",
-    answer:
-      "Sun City Anthem is a 55+ active adult community. At least one resident in each home must be 55 or older, and no residents under 19 are permitted.",
-  },
-  {
-    question: "What are the HOA fees at Sun City Anthem?",
-    answer:
-      "Monthly HOA fees at Sun City Anthem range from $180-$230 depending on the neighborhood and home type. Fees cover access to all community amenities, common area maintenance, and some utilities.",
-  },
-  {
-    question: "What is the price range for homes in Sun City Anthem?",
-    answer:
-      "Homes in Sun City Anthem range from approximately $350,000 to $1.2 million. The Liberty section offers more affordable options, while Heritage and Eagle's Landing feature premium homes with the best views.",
-  },
-  {
-    question: "Does Sun City Anthem have golf courses?",
-    answer:
-      "Yes, Sun City Anthem residents have access to two championship golf courses: Anthem Country Club (members-only) and the adjacent Revere Golf Club (public). Residents enjoy discounted rates and priority tee times.",
-  },
-];
-
-// Combined page schemas
-const pageSchemas = combineSchemas(
-  generateSeniorCommunitySchema({
-    name: "Sun City Anthem",
-    description:
-      "Premier 55+ active adult community in Henderson, Nevada. Built by Del Webb, featuring 7,100+ homes, championship golf, 64,000 sq ft clubhouse, and stunning mountain views.",
-    priceRange: "$350,000 - $1,200,000",
-    numberOfHomes: 7100,
-    yearBuilt: "1998-2008",
-    amenities: communityAmenities,
-    hoaFees: "$180-$230/month",
-    latitude: 35.9631,
-    longitude: -115.0892,
-    ageRestriction: "55+",
-  }),
-  generateFAQSchema(sunCityAnthemFaqs)
-);
+const pageSchemas = generateSeniorCommunitySchema({
+  name: "Sun City Anthem",
+  description:
+    "Premier 55+ active adult community in Henderson, Nevada. Built by Del Webb, featuring 7,100+ homes, championship golf, 64,000 sq ft clubhouse, and stunning mountain views.",
+  priceRange: "$350,000 - $1,200,000",
+  numberOfHomes: 7100,
+  yearBuilt: "1998-2008",
+  amenities: communityAmenities,
+  hoaFees: "$180-$230/month",
+  latitude: 35.9631,
+  longitude: -115.0892,
+  ageRestriction: "55+",
+});
 
 export default function SunCityAnthemPage() {
   return (
     <>
-      {/* Combined JSON-LD Schema: Breadcrumb + ResidentialComplex + FAQ */}
+      {/* ResidentialComplex JSON-LD */}
       <SchemaScript schema={pageSchemas} id="sun-city-anthem-schema" />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">

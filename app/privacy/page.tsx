@@ -3,7 +3,7 @@ import SeoHero from "@/components/seo/SeoHero";
 import { images, NAP } from "@/lib/site-images";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Newbridge Homes | Dr. Jan Duffy",
+  title: { absolute: "Privacy Policy | Newbridge Homes | Dr. Jan Duffy" },
   description:
     "Privacy practices for newbridgehomesforsale.com, the Newbridge Las Vegas website of Dr. Jan Duffy, Berkshire Hathaway HomeServices Nevada Properties.",
 };

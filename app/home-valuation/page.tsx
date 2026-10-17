@@ -6,16 +6,24 @@ import { Phone, CheckCircle, Home, TrendingUp, MapPin, Calculator, Clock, Dollar
 import type { Metadata } from "next";
 import { getPageDomainConfig } from "@/lib/get-domain-config";
 import FaqAeo from "@/components/seo/FaqAeo";
+import MarketSnapshotSource from "@/components/seo/MarketSnapshotSource";
 import { faqItemsToAeo } from "@/lib/faq-to-aeo";
+import {
+  MARKET_SNAPSHOT_CARD_TITLE,
+  MARKET_SNAPSHOT_STATS,
+  MARKET_SUPPLY_SENTENCE,
+} from "@/lib/market-snapshot";
 import { NEWBRIDGE_VALUATION_FAQS } from "@/lib/newbridge-valuation-faqs";
 
 export async function generateMetadata(): Promise<Metadata> {
   const config = await getPageDomainConfig();
   const isNewbridge = config.neighborhood === "Newbridge";
   return {
-    title: isNewbridge
-      ? "Free Newbridge Home Valuation | ZIP 89139 CMA"
-      : "Free Home Valuation Las Vegas | What's Your Home Worth?",
+    title: {
+      absolute: isNewbridge
+        ? "Free Newbridge Home Valuation | ZIP 89139 CMA"
+        : "Free Home Valuation Las Vegas | What's Your Home Worth?",
+    },
     description: isNewbridge
       ? "Free Newbridge home valuation in Las Vegas 89139 from Dr. Jan Duffy, BHHS Nevada Properties. MLS-backed CMA. Call (702) 222-1964."
       : "Get a free, accurate home valuation in Las Vegas from Dr. Jan Duffy at Berkshire Hathaway HomeServices. Expert CMA analysis. Call (702) 222-1964.",
@@ -110,11 +118,11 @@ export default async function HomeValuationPage() {
               <div className="bg-slate-900 text-white rounded-lg p-8">
                 <h2 className="text-2xl font-bold mb-4">Why Request a BHHS Valuation?</h2>
                 <p className="text-slate-300 mb-6">
-                  Online estimators like Zillow's "Zestimate" can be off by 10% or more—that's
-                  $45,000+ on a typical Las Vegas home. Dr. Jan Duffy provides a comprehensive
-                  market analysis using current MLS data, recent comparable sales, and her expertise
-                  serving Las Vegas since 2008. The result? Accurate pricing that helps you sell
-                  faster and for more money.
+                  Online estimators like Zillow's "Zestimate" can't see your home's upgrades,
+                  condition, or lot. Dr. Jan Duffy provides a comprehensive market analysis using
+                  current MLS data, recent comparable sales, and her expertise serving Las Vegas
+                  since 2008, so your list price is grounded in what comparable homes actually
+                  sold for.
                 </p>
                 <div className="space-y-3">
                   {[
@@ -134,27 +142,16 @@ export default async function HomeValuationPage() {
 
               {/* Market Stats */}
               <div className="bg-blue-50 rounded-lg p-8">
-                <h3 className="font-bold text-slate-900 mb-4">
-                  {isNewbridge ? "Newbridge / Southwest Las Vegas | January 2026" : "Las Vegas Market | January 2026"}
-                </h3>
+                <h3 className="font-bold text-slate-900 mb-4">{MARKET_SNAPSHOT_CARD_TITLE}</h3>
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-blue-600">$450K</div>
-                    <div className="text-sm text-slate-600">Median Home Price</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-green-600">+4.2%</div>
-                    <div className="text-sm text-slate-600">YoY Appreciation</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-blue-600">28 Days</div>
-                    <div className="text-sm text-slate-600">Avg. Days on Market</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-blue-600">2.1 Mo</div>
-                    <div className="text-sm text-slate-600">Inventory</div>
-                  </div>
+                  {MARKET_SNAPSHOT_STATS.map(({ value, label }) => (
+                    <div key={label} className="text-center">
+                      <div className="text-2xl font-bold text-blue-600">{value}</div>
+                      <div className="text-sm text-slate-600">{label}</div>
+                    </div>
+                  ))}
                 </div>
+                <MarketSnapshotSource className="mt-6" />
               </div>
 
               {/* Expert Quote */}
@@ -191,7 +188,7 @@ export default async function HomeValuationPage() {
             <div className="prose prose-lg max-w-none text-slate-700">
               <p>
                 If you've checked Zillow, Redfin, or other online home value tools, you've likely
-                noticed the estimates can vary wildly—sometimes by $50,000 or more. That's because
+                noticed the estimates don't always agree. That's because
                 these automated valuation models (AVMs) rely on algorithms that can't see inside
                 your home or understand the nuances of the Las Vegas market.
               </p>
@@ -275,90 +272,51 @@ export default async function HomeValuationPage() {
                 <MapPin className="h-8 w-8 text-blue-600 mb-4" />
                 <h3 className="font-bold text-slate-900 mb-2">Location & Neighborhood</h3>
                 <p className="text-slate-600 text-sm">
-                  Summerlin commands 20-40% premiums over comparable homes in other areas. School
-                  zones, HOA quality, and proximity to amenities significantly impact value.
+                  Location within Newbridge and ZIP 89139, proximity to Blue Diamond Road, HOA
+                  dues, and nearby amenities all affect value.
                 </p>
               </div>
               <div className="bg-white rounded-lg p-6 shadow-sm">
                 <Home className="h-8 w-8 text-blue-600 mb-4" />
                 <h3 className="font-bold text-slate-900 mb-2">Size & Layout</h3>
                 <p className="text-slate-600 text-sm">
-                  Square footage, bedroom/bathroom count, and functional floor plans matter. Open
-                  concepts and first-floor master suites command premiums in today's market.
+                  Square footage, bedroom and bathroom count, and how well the floor plan works
+                  all affect value.
                 </p>
               </div>
               <div className="bg-white rounded-lg p-6 shadow-sm">
                 <TrendingUp className="h-8 w-8 text-blue-600 mb-4" />
                 <h3 className="font-bold text-slate-900 mb-2">Upgrades & Condition</h3>
                 <p className="text-slate-600 text-sm">
-                  Updated kitchens and bathrooms return 60-80% of investment. Flooring, paint,
-                  fixtures, and overall maintenance affect buyer perception and offers.
+                  Kitchen and bath updates, flooring, paint, fixtures, and overall maintenance
+                  affect buyer perception and offers.
                 </p>
               </div>
               <div className="bg-white rounded-lg p-6 shadow-sm">
                 <DollarSign className="h-8 w-8 text-blue-600 mb-4" />
                 <h3 className="font-bold text-slate-900 mb-2">Market Conditions</h3>
                 <p className="text-slate-600 text-sm">
-                  Interest rates, inventory levels, and seasonal demand fluctuate. January 2026
-                  shows 2.1 months inventory—still a seller's market but more balanced than 2021-2022.
+                  Interest rates, inventory levels, and seasonal demand fluctuate.{" "}
+                  {MARKET_SUPPLY_SENTENCE}
                 </p>
               </div>
               <div className="bg-white rounded-lg p-6 shadow-sm">
                 <Calculator className="h-8 w-8 text-blue-600 mb-4" />
                 <h3 className="font-bold text-slate-900 mb-2">Lot Characteristics</h3>
                 <p className="text-slate-600 text-sm">
-                  Lot size, views, privacy, and outdoor features like pools add 5-15% to value.
-                  Corner lots, cul-de-sacs, and premium positions command higher prices.
+                  Lot size, views, privacy, and outdoor features like pools affect value. Corner
+                  lots, cul-de-sacs, and premium positions can command higher prices.
                 </p>
               </div>
               <div className="bg-white rounded-lg p-6 shadow-sm">
                 <Clock className="h-8 w-8 text-blue-600 mb-4" />
                 <h3 className="font-bold text-slate-900 mb-2">Age & Systems</h3>
                 <p className="text-slate-600 text-sm">
-                  Newer homes (built 2015+) often sell for more per square foot. However, older
-                  homes with updated HVAC, roof, and electrical can compete effectively.
+                  The age of the home and the condition of its HVAC, roof, and electrical systems
+                  affect value.
                 </p>
               </div>
             </div>
-          </section>
-
-          {/* Neighborhood Values */}
-          <section className="max-w-5xl mx-auto mb-16">
-            <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">
-              Las Vegas Neighborhood Home Values | January 2026
-            </h2>
-            <div className="overflow-x-auto">
-              <table className="w-full bg-white border border-slate-200 rounded-lg">
-                <thead className="bg-slate-50">
-                  <tr>
-                    <th className="px-6 py-3 text-left text-sm font-semibold text-slate-900">Neighborhood</th>
-                    <th className="px-6 py-3 text-left text-sm font-semibold text-slate-900">Median Price</th>
-                    <th className="px-6 py-3 text-left text-sm font-semibold text-slate-900">YoY Change</th>
-                    <th className="px-6 py-3 text-left text-sm font-semibold text-slate-900">Avg $/SqFt</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {[
-                    { area: "Summerlin", price: "$625,000", change: "+6.8%", sqft: "$285" },
-                    { area: "Henderson", price: "$485,000", change: "+5.1%", sqft: "$245" },
-                    { area: "Green Valley", price: "$520,000", change: "+4.5%", sqft: "$255" },
-                    { area: "Southern Highlands", price: "$750,000", change: "+5.5%", sqft: "$295" },
-                    { area: "North Las Vegas", price: "$385,000", change: "+3.2%", sqft: "$210" },
-                    { area: "Centennial Hills", price: "$495,000", change: "+4.8%", sqft: "$240" },
-                  ].map((row, index) => (
-                    <tr key={row.area} className={index % 2 === 0 ? "bg-white" : "bg-slate-50"}>
-                      <td className="px-6 py-4 font-medium text-slate-900">{row.area}</td>
-                      <td className="px-6 py-4 text-slate-700">{row.price}</td>
-                      <td className="px-6 py-4 text-green-600 font-medium">{row.change}</td>
-                      <td className="px-6 py-4 text-slate-700">{row.sqft}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <p className="text-center text-slate-500 text-sm mt-4">
-              Values represent single-family homes. Your specific home may vary based on features and condition.
-            </p>
           </section>
 
           {/* The Valuation Process */}
@@ -454,7 +412,7 @@ export default async function HomeValuationPage() {
         </div>
 
         {/* Last Updated */}
-        <div className="text-center text-sm text-slate-500 mt-8">Last Updated: January 2026</div>
+        <div className="text-center text-sm text-slate-500 mt-8">Last Updated: October 2026</div>
       </main>
       <RealScoutListings />
     </>

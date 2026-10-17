@@ -31,53 +31,6 @@ export const metadata: Metadata = {
   ],
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "How much can I save moving from California to Nevada?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Nevada has zero state income tax, saving Californians 9.3%-13.3% depending on income bracket. Combined with 40-60% lower home prices, a family earning $200K buying a $600K home could save $150K+ over 5 years compared to staying in California.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What neighborhoods do California relocators prefer in Las Vegas?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "California buyers typically gravitate toward Summerlin (similar to Irvine/coastal communities), Henderson (residential like San Diego suburbs), and The Ridges (comparable to Newport Coast luxury). These areas offer the quality and amenities California buyers expect.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How long does it take to establish Nevada residency?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Nevada residency can be established immediately upon moving. To benefit from no state income tax, you should update your driver's license, register your vehicles, and register to vote in Nevada. Most people complete this within 30 days of their move.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What does my California home equity buy in Las Vegas?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "A typical $1.2M California home translates to $500K-$700K in Las Vegas with similar or better features. Many California sellers can buy a larger Las Vegas home AND pocket significant equity for retirement or investment.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Are there direct flights from Las Vegas to California?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes, Las Vegas has extensive flight options to California. Southwest, United, and other carriers offer dozens of daily flights to LAX, SFO, SAN, and other California airports. Flight times are typically 1-1.5 hours.",
-      },
-    },
-  ],
-};
-
 const realEstateAgentSchema = {
   "@context": "https://schema.org",
   "@type": "RealEstateAgent",
@@ -98,10 +51,6 @@ const realEstateAgentSchema = {
 export default function CaliforniaRelocatorPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(realEstateAgentSchema) }}
