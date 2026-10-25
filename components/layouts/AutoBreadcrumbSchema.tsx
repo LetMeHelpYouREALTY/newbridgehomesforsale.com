@@ -7,8 +7,8 @@ import { generateBreadcrumbSchema } from "@/lib/schema";
 /**
  * Emits BreadcrumbList JSON-LD on all non-home routes (server-rendered).
  */
-export default function AutoBreadcrumbSchema() {
-  const headersList = headers();
+export default async function AutoBreadcrumbSchema() {
+  const headersList = await headers();
   const pathname = headersList.get("x-pathname") || "/";
 
   if (pathname === "/" || pathname === "") {
