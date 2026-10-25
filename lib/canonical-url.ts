@@ -33,9 +33,9 @@ export function getCanonicalSiteUrl(_hostname?: string): string {
   return SITE_ORIGIN;
 }
 
-export function getRequestHostname(): string {
+export async function getRequestHostname(): Promise<string> {
   try {
-    const headerList = headers();
+    const headerList = await headers();
     const host =
       normalizeHostname(headerList.get("x-domain")) ||
       normalizeHostname(headerList.get("host")) ||
