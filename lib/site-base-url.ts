@@ -3,7 +3,10 @@ import { siteConfig } from "./site-config";
 
 /** Canonical site origin for the current request (multi-domain aware). */
 export function getSiteBaseUrlFromHost(hostname: string): string {
-  const clean = hostname.replace(/^www\./i, "").split(":")[0].toLowerCase();
+  const clean = hostname
+    .replace(/^www\./i, "")
+    .split(":")[0]
+    .toLowerCase();
 
   if (!clean || clean === "localhost" || clean.endsWith(".local")) {
     const fromEnv = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
@@ -14,9 +17,8 @@ export function getSiteBaseUrlFromHost(hostname: string): string {
   return `https://${clean}`;
 }
 
-export function getSiteBaseUrl(): string {
-  const headersList = headers();
-  const hostname =
-    headersList.get("x-domain") || headersList.get("host") || "";
+export async function getSiteBaseUrl(): Promise<string> {
+  const headersList = await headers();
+  const hostname = headersList.get("x-domain") || headersList.get("host") || "";
   return getSiteBaseUrlFromHost(hostname);
 }
