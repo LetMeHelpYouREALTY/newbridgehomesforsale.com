@@ -11,7 +11,7 @@ export default function GlobalError({
       <body className="flex min-h-screen flex-col items-center justify-center bg-white px-4 text-center">
         <h1 className="text-3xl font-bold text-slate-900">Something went wrong</h1>
         <p className="mt-3 max-w-md text-slate-600">
-          The site hit an unexpected error. Try again, or call Dr. Jan Duffy at 702-222-1964.
+          The site hit an unexpected error. Try again, or call Dr. Jan Duffy at 702-779-3735.
         </p>
         <button
           type="button"

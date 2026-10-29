@@ -12,8 +12,8 @@ export default function Error({
       <h1 className="text-3xl font-bold text-slate-900">Something went wrong</h1>
       <p className="mt-3 max-w-md text-slate-600">
         We could not load this page. Try again, or call Dr. Jan Duffy at{" "}
-        <a href="tel:+17022221964" className="font-semibold text-blue-600">
-          702-222-1964
+        <a href="tel:+17027793735" className="font-semibold text-blue-600">
+          702-779-3735
         </a>
         .
       </p>

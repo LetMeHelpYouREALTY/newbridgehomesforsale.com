@@ -11,7 +11,7 @@ import { generateNeighborhoodSchema, combineSchemas } from "@/lib/schema";
 export const metadata: Metadata = {
   title: "Lake Las Vegas Homes for Sale | Henderson NV | Dr. Jan Duffy",
   description:
-    "Lake Las Vegas Henderson homes: water-adjacent inventory, golf, and HOA rules. Dr. Jan Duffy, BHHS Nevada Properties. Call (702) 222-1964.",
+    "Lake Las Vegas Henderson homes: water-adjacent inventory, golf, and HOA rules. Dr. Jan Duffy, BHHS Nevada Properties. Call (702) 779-3735.",
 };
 
 const faqs = [
@@ -63,7 +63,7 @@ export default function LakeLasVegasPage() {
           <FaqAeo faqs={faqs} />
           <CtaBanner
             h2="Want Lake Las Vegas listings that match your dues budget?"
-            sub="Call 702-222-1964. BHHS Nevada Properties, 9406 W Lake Mead Blvd, Suite 100."
+            sub="Call 702-779-3735. BHHS Nevada Properties, 9406 W Lake Mead Blvd, Suite 100."
           />
         </div>
       </main>

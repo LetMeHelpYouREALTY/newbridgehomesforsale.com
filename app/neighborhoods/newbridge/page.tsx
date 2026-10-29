@@ -13,7 +13,7 @@ import { NEWBRIDGE_PRIMARY_H1 } from "@/lib/newbridge-h1";
 export const metadata: Metadata = newbridgeMetadata({
   title: "Newbridge Homes for Sale | Las Vegas 89139 | Dr. Jan Duffy",
   description:
-    "Newbridge homes for sale in Las Vegas 89139 near Blue Diamond Road. Richmond American ranch plans. Buyer agent Dr. Jan Duffy, BHHS. Call 702-222-1964.",
+    "Newbridge homes for sale in Las Vegas 89139 near Blue Diamond Road. Richmond American ranch plans. Buyer agent Dr. Jan Duffy, BHHS. Call 702-779-3735.",
   path: "/neighborhoods/newbridge",
   keywords: ["Newbridge ranch homes", "Richmond American Las Vegas 89139", "Middleton Falls Ave"],
 });
@@ -40,7 +40,7 @@ export default function NewbridgePage() {
           <SeoHero
             eyebrow="Newbridge · ZIP 89139 · Southwest Las Vegas"
             h1={NEWBRIDGE_PRIMARY_H1}
-            lede="Richmond American ranch plans near Blue Diamond Road. Dr. Jan Duffy represents you—not the builder desk—on Newbridge resales, any remaining builder inventory, and nearby 89139 streets. Call 702-222-1964."
+            lede="Richmond American ranch plans near Blue Diamond Road. Dr. Jan Duffy represents you—not the builder desk—on Newbridge resales, any remaining builder inventory, and nearby 89139 streets. Call 702-779-3735."
             image={images.neighborhoods.newbridge.src}
             imageAlt={images.neighborhoods.newbridge.alt}
             priority
@@ -75,7 +75,7 @@ export default function NewbridgePage() {
           <FaqAeo title="Newbridge community: questions answered" faqs={NEWBRIDGE_GUIDE_FAQS} />
           <CtaBanner
             h2="Tour Newbridge with your own agent"
-            sub="Call 702-222-1964. License S.0197614.LLC. 9406 W Lake Mead Blvd, Suite 100, Las Vegas, NV 89134."
+            sub="Call 702-779-3735. License S.0197614.LLC. 9406 W Lake Mead Blvd, Suite 100, Las Vegas, NV 89134."
           />
         </div>
       </main>

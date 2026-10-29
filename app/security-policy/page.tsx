@@ -49,8 +49,8 @@ export default function SecurityPolicyPage() {
                 </li>
                 <li>
                   <strong>Phone:</strong>{' '}
-                  <a href="tel:+17022221964" className="underline">
-                    (702) 222-1964
+                  <a href="tel:+17027793735" className="underline">
+                    (702) 779-3735
                   </a>
                 </li>
                 <li>
@@ -248,8 +248,8 @@ export default function SecurityPolicyPage() {
               </p>
               <p>
                 Phone:{' '}
-                <a href="tel:+17022221964" className="text-blue-600 underline">
-                  (702) 222-1964
+                <a href="tel:+17027793735" className="text-blue-600 underline">
+                  (702) 779-3735
                 </a>
               </p>
             </div>

@@ -24,10 +24,10 @@ export default function NotFound() {
           Contact Dr. Jan
         </Link>
         <a
-          href="tel:+17022221964"
+          href="tel:+17027793735"
           className="rounded-md border border-slate-300 px-6 py-3 font-semibold text-slate-800 hover:bg-slate-50"
         >
-          Call 702-222-1964
+          Call 702-779-3735
         </a>
       </div>
     </main>

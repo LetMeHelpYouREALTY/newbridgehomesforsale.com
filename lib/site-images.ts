@@ -132,8 +132,8 @@ export const NAP = {
   state: "NV",
   zip: "89134",
   fullAddress: "9406 W Lake Mead Blvd, Suite 100, Las Vegas, NV 89134",
-  phoneDisplay: "(702) 222-1964",
-  phoneTel: "tel:+17022221964",
+  phoneDisplay: "(702) 779-3735",
+  phoneTel: "tel:+17027793735",
   email: "homes@heyberkshire.com",
   license: "S.0197614.LLC",
 } as const;

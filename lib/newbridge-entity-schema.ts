@@ -28,7 +28,7 @@ export function buildNewbridgeEntityGraph() {
         name: "Dr. Jan Duffy",
         jobTitle: "REALTOR®",
         url: siteUrl,
-        telephone: "+17022221964",
+        telephone: "+17027793735",
         email: NAP.email,
         image: `${siteUrl}/og.jpg`,
         worksFor: { "@id": businessId },
@@ -39,7 +39,7 @@ export function buildNewbridgeEntityGraph() {
         "@id": businessId,
         name: NAP.name,
         url: siteUrl,
-        telephone: "+17022221964",
+        telephone: "+17027793735",
         email: NAP.email,
         address: {
           "@type": "PostalAddress",

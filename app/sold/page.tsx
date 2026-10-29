@@ -8,7 +8,7 @@ import { images } from "@/lib/site-images";
 export const metadata: Metadata = {
   title: "Recently Sold Homes in Las Vegas | Dr. Jan Duffy, BHHS Nevada",
   description:
-    "How sold comps work in Las Vegas and Henderson. Dr. Jan Duffy uses closed sales, not list prices, to set strategy. Call (702) 222-1964.",
+    "How sold comps work in Las Vegas and Henderson. Dr. Jan Duffy uses closed sales, not list prices, to set strategy. Call (702) 779-3735.",
 };
 
 export default function SoldPage() {
@@ -39,7 +39,7 @@ export default function SoldPage() {
         />
         <CtaBanner
           h2="Need sold comps for your street?"
-          sub="Call 702-222-1964 for a dated CMA. License S.0197614.LLC."
+          sub="Call 702-779-3735 for a dated CMA. License S.0197614.LLC."
         />
       </div>
     </main>

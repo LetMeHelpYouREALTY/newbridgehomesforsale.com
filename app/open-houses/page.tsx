@@ -8,7 +8,7 @@ import { images } from "@/lib/site-images";
 export const metadata: Metadata = {
   title: "Las Vegas Open Houses This Weekend | Dr. Jan Duffy",
   description:
-    "Tour Las Vegas and Henderson open houses with Dr. Jan Duffy, BHHS Nevada Properties. Prefer a private showing? Call (702) 222-1964.",
+    "Tour Las Vegas and Henderson open houses with Dr. Jan Duffy, BHHS Nevada Properties. Prefer a private showing? Call (702) 779-3735.",
 };
 
 export default function OpenHousesPage() {
@@ -31,7 +31,7 @@ export default function OpenHousesPage() {
         <RealScoutListings />
         <CtaBanner
           h2="Want a private showing instead of the weekend crowd?"
-          sub="Text or call 702-222-1964. 9406 W Lake Mead Blvd, Suite 100, Las Vegas, NV 89134."
+          sub="Text or call 702-779-3735. 9406 W Lake Mead Blvd, Suite 100, Las Vegas, NV 89134."
         />
       </div>
     </main>

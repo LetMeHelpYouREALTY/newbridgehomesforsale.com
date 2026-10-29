@@ -3,7 +3,7 @@ import type { FaqItem } from "./newbridge-seller-faqs";
 export const NEWBRIDGE_LISTINGS_FAQS: FaqItem[] = [
   {
     q: "Does this page show live MLS listings for Newbridge and 89139?",
-    a: "Yes. The RealScout office feed refreshes frequently and includes active for-sale listings Dr. Jan Duffy can tour with you. Filter by price, beds, and property type, then call (702) 222-1964 to schedule showings.",
+    a: "Yes. The RealScout office feed refreshes frequently and includes active for-sale listings Dr. Jan Duffy can tour with you. Filter by price, beds, and property type, then call (702) 779-3735 to schedule showings.",
   },
   {
     q: "Can I search only Richmond American Newbridge homes here?",

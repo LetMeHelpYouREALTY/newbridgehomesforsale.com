@@ -34,8 +34,8 @@ export async function generateMetadata(): Promise<Metadata> {
       ? "Buy in Newbridge Las Vegas | Dr. Jan Duffy, BHHS"
       : "Home Buying Guide Las Vegas | Berkshire Hathaway HomeServices",
     description: isNewbridge
-      ? "Buy Newbridge and 89139 homes with your own agent. New construction and resale near Blue Diamond Rd. Dr. Jan Duffy, BHHS. Call (702) 222-1964."
-      : "Looking to buy a home in Las Vegas? Dr. Jan Duffy with Berkshire Hathaway HomeServices Nevada Properties guides you through every step. Free buyer consultation. Call (702) 222-1964.",
+      ? "Buy Newbridge and 89139 homes with your own agent. New construction and resale near Blue Diamond Rd. Dr. Jan Duffy, BHHS. Call (702) 779-3735."
+      : "Looking to buy a home in Las Vegas? Dr. Jan Duffy with Berkshire Hathaway HomeServices Nevada Properties guides you through every step. Free buyer consultation. Call (702) 779-3735.",
     keywords: isNewbridge
       ? [
           "buy Newbridge home",
@@ -74,7 +74,7 @@ export default async function BuyersPage() {
       "@type": "RealEstateAgent",
       "@id": `${siteUrl}#dr-jan-duffy`,
       name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
-      telephone: "+17022221964",
+      telephone: "+17027793735",
     },
     areaServed: buildCommunityAreaServed(config),
     serviceType: "Buyer Representation",
@@ -459,11 +459,11 @@ export default async function BuyersPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+17022221964"
+                href="tel:+17027793735"
                 className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-md font-bold text-lg transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Call (702) 222-1964
+                Call (702) 779-3735
               </a>
               <Link
                 href="/contact"
