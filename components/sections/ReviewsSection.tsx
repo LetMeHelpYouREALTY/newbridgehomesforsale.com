@@ -64,7 +64,7 @@ export default function ReviewsSection({
   reviews = defaultReviews,
             title = "What do Las Vegas clients say about Dr. Jan Duffy?",
   subtitle = "Real testimonials from satisfied clients across Las Vegas and Henderson",
-  googleReviewsUrl = "https://g.page/r/heyberkshire/review",
+  googleReviewsUrl = "https://search.google.com/local/writereview?placeid=ChIJ7XLw8ta5yIARjTZPjgHJWVQ",
   className = "",
 }: ReviewsSectionProps) {
   return (
