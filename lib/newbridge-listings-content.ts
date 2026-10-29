@@ -28,7 +28,7 @@ export type ListingAreaCard = {
 export const LAS_VEGAS_LISTING_AREAS: ListingAreaCard[] = [
   {
     name: "Summerlin",
-    description: "Master-planned community with Red Rock views, top schools, and 150+ parks",
+    description: "Master-planned community with Red Rock views, nearby public schools, and 150+ parks",
     medianPrice: "$625,000",
     daysOnMarket: "22",
   },
@@ -115,7 +115,7 @@ export type PriceBand = { range: string; description: string; count: string };
 
 export const LAS_VEGAS_PRICE_BANDS: PriceBand[] = [
   { range: "Under $400K", description: "Starter homes, condos, townhomes", count: "1,500+" },
-  { range: "$400K - $600K", description: "Family homes, established neighborhoods", count: "2,100+" },
+  { range: "$400K - $600K", description: "Family homes, older neighborhoods", count: "2,100+" },
   { range: "$600K - $1M", description: "Premium locations, larger homes", count: "1,200+" },
   { range: "$1M - $2M", description: "Luxury homes, guard-gated communities", count: "450+" },
   { range: "$2M+", description: "Ultra-luxury estates, custom builds", count: "180+" },
