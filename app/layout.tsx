@@ -21,11 +21,10 @@ export const viewport: Viewport = {
 export const revalidate = 3600;
 
 export async function generateMetadata(): Promise<Metadata> {
-  const headersList = headers();
+  const headersList = await headers();
   const domain = headersList.get("x-domain") || "";
   const config = getDomainConfig(domain);
-  const defaultTitle =
-    config.seoTitle ?? `${config.tagline} | Las Vegas`;
+  const defaultTitle = config.seoTitle ?? `${config.tagline} | Las Vegas`;
 
   return {
     metadataBase: new URL(SITE_ORIGIN),
@@ -72,7 +71,11 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" className={GeistSans.className}>
       <body>
