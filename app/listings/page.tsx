@@ -43,8 +43,8 @@ export async function generateMetadata(): Promise<Metadata> {
       ? "Newbridge & 89139 Homes for Sale | MLS Search"
       : "Las Vegas Homes for Sale | MLS Property Search | Berkshire Hathaway HomeServices",
     description: isNewbridge
-      ? "Live MLS search for Newbridge and ZIP 89139 resales near Blue Diamond Rd. Dr. Jan Duffy, BHHS Nevada Properties. Call (702) 222-1964."
-      : "Browse all Las Vegas and Henderson homes for sale with live MLS listings. Search by neighborhood, price, and features. Dr. Jan Duffy, Berkshire Hathaway HomeServices. Call (702) 222-1964.",
+      ? "Live MLS search for Newbridge and ZIP 89139 resales near Blue Diamond Rd. Dr. Jan Duffy, BHHS Nevada Properties. Call (702) 779-3735."
+      : "Browse all Las Vegas and Henderson homes for sale with live MLS listings. Search by neighborhood, price, and features. Dr. Jan Duffy, Berkshire Hathaway HomeServices. Call (702) 779-3735.",
     keywords: isNewbridge
       ? [
           "Newbridge homes for sale MLS",
@@ -88,7 +88,7 @@ export default async function ListingsPage() {
       "@type": "RealEstateAgent",
       "@id": `${siteUrl}#dr-jan-duffy`,
       name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
-      telephone: "+17022221964",
+      telephone: "+17027793735",
     },
   };
 
@@ -425,11 +425,11 @@ export default async function ListingsPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+17022221964"
+                href="tel:+17027793735"
                 className="inline-flex items-center justify-center bg-white text-blue-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-50 transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Call (702) 222-1964
+                Call (702) 779-3735
               </a>
               <Link
                 href="/contact"

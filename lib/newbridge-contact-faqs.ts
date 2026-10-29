@@ -7,7 +7,7 @@ export const NEWBRIDGE_CONTACT_FAQS: FaqItem[] = [
   },
   {
     q: "Do I need to register Dr. Jan before touring new-construction models?",
-    a: "Call first. Builder policies vary, and some builders only recognize a buyer's agent who registers you or comes with you on your first visit. Call (702) 222-1964 before you walk into any builder sales office. As of October 17, 2026, Richmond American's Newbridge web pages redirect to its general Las Vegas new-homes page, so confirm what is still for sale in Newbridge first.",
+    a: "Call first. Builder policies vary, and some builders only recognize a buyer's agent who registers you or comes with you on your first visit. Call (702) 779-3735 before you walk into any builder sales office. As of October 17, 2026, Richmond American's Newbridge web pages redirect to its general Las Vegas new-homes page, so confirm what is still for sale in Newbridge first.",
   },
   {
     q: "Do I need a pre-approval before scheduling a showing?",
@@ -15,7 +15,7 @@ export const NEWBRIDGE_CONTACT_FAQS: FaqItem[] = [
   },
   {
     q: "How quickly does Dr. Jan Duffy respond?",
-    a: "Calls, texts, and emails are typically answered within two hours between 9am and 6pm daily. For urgent showing requests, text or call (702) 222-1964.",
+    a: "Calls, texts, and emails are typically answered within two hours between 9am and 6pm daily. For urgent showing requests, text or call (702) 779-3735.",
   },
   {
     q: "Is there a fee for consultations?",
@@ -38,7 +38,7 @@ export const GENERIC_CONTACT_FAQS: FaqItem[] = [
   },
   {
     q: "How quickly can you respond to inquiries?",
-    a: "Typically within two hours during 9am-6pm daily. Call or text (702) 222-1964 for urgent matters.",
+    a: "Typically within two hours during 9am-6pm daily. Call or text (702) 779-3735 for urgent matters.",
   },
   {
     q: "Do you charge for consultations?",

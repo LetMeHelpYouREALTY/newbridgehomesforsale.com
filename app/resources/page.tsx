@@ -8,7 +8,7 @@ import { images } from "@/lib/site-images";
 export const metadata: Metadata = {
   title: "Las Vegas Real Estate Guides | Resources | Dr. Jan Duffy",
   description:
-    "Buyer, seller, relocation, 55+, luxury, and neighborhood guides for Las Vegas and Henderson from Dr. Jan Duffy, BHHS Nevada Properties. Call (702) 222-1964.",
+    "Buyer, seller, relocation, 55+, luxury, and neighborhood guides for Las Vegas and Henderson from Dr. Jan Duffy, BHHS Nevada Properties. Call (702) 779-3735.",
 };
 
 const guides = [
@@ -64,7 +64,7 @@ export default function ResourcesPage() {
         </div>
         <CtaBanner
           h2="Need the short version on a call?"
-          sub="Dr. Jan Duffy answers 702-222-1964. BHHS Nevada Properties, 9406 W Lake Mead Blvd, Suite 100."
+          sub="Dr. Jan Duffy answers 702-779-3735. BHHS Nevada Properties, 9406 W Lake Mead Blvd, Suite 100."
         />
       </div>
     </main>

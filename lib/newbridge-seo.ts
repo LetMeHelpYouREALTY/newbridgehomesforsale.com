@@ -20,7 +20,7 @@ export const NEWBRIDGE_HOME_FAQS = [
   {
     question: "Is Newbridge sold out?",
     answer:
-      "As of October 17, 2026, Richmond American's Newbridge web pages redirect to its general Las Vegas new-homes page. Portals can lag, so confirm any remaining builder lots and current MLS resales with Dr. Jan Duffy before you tour. Call 702-222-1964.",
+      "As of October 17, 2026, Richmond American's Newbridge web pages redirect to its general Las Vegas new-homes page. Portals can lag, so confirm any remaining builder lots and current MLS resales with Dr. Jan Duffy before you tour. Call 702-779-3735.",
   },
   {
     question: "Do I need my own agent to buy in Newbridge?",

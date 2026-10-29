@@ -11,7 +11,7 @@ import { generateNeighborhoodSchema, combineSchemas } from "@/lib/schema";
 export const metadata: Metadata = {
   title: "Anthem Homes for Sale | Henderson NV | Dr. Jan Duffy",
   description:
-    "Anthem Henderson homes for sale: master-planned streets, golf, and 55+ options nearby. Dr. Jan Duffy, BHHS Nevada Properties. Call (702) 222-1964.",
+    "Anthem Henderson homes for sale: master-planned streets, golf, and 55+ options nearby. Dr. Jan Duffy, BHHS Nevada Properties. Call (702) 779-3735.",
 };
 
 const faqs = [
@@ -62,7 +62,7 @@ export default function AnthemPage() {
           <FaqAeo faqs={faqs} />
           <CtaBanner
             h2="Tour Anthem with a Henderson-focused agent"
-            sub="Call 702-222-1964. License S.0197614.LLC. 9406 W Lake Mead Blvd, Suite 100, Las Vegas."
+            sub="Call 702-779-3735. License S.0197614.LLC. 9406 W Lake Mead Blvd, Suite 100, Las Vegas."
           />
         </div>
       </main>

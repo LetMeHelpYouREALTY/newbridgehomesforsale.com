@@ -70,7 +70,7 @@ export const NEWBRIDGE_BUYER_MARKET_STATS: BuyerMarketStat[] = [
   { label: "GEO focus", value: "ZIP 89139", hint: "Newbridge & Southwest Las Vegas" },
   { label: "Inventory", value: "Weekly MLS", hint: "Resale + any standing builder lots" },
   { label: "Pricing", value: "Dated CMA", hint: "No blog averages—pull comps per address" },
-  { label: "Next step", value: "702-222-1964", hint: "Buyer consult + registration before models" },
+  { label: "Next step", value: "702-779-3735", hint: "Buyer consult + registration before models" },
 ];
 
 export type BuyingStep = {

@@ -21,8 +21,8 @@ export async function generateMetadata(): Promise<Metadata> {
         : "Contact Dr. Jan Duffy | Berkshire Hathaway HomeServices Las Vegas",
     },
     description: isNewbridge
-      ? "Contact Dr. Jan Duffy for Newbridge and 89139 real estate. Schedule a consult or call (702) 222-1964. BHHS Nevada Properties."
-      : "Contact Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. Schedule an appointment, get directions, or call (702) 222-1964.",
+      ? "Contact Dr. Jan Duffy for Newbridge and 89139 real estate. Schedule a consult or call (702) 779-3735. BHHS Nevada Properties."
+      : "Contact Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. Schedule an appointment, get directions, or call (702) 779-3735.",
     keywords: isNewbridge
       ? [
           "contact Newbridge real estate agent",
@@ -54,7 +54,7 @@ export default async function ContactPage() {
       "@type": "RealEstateAgent",
       "@id": `${siteUrl}#dr-jan-duffy`,
       name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
-      telephone: "+17022221964",
+      telephone: "+17027793735",
       email: NAP.email,
       areaServed: isNewbridge
         ? {
@@ -106,7 +106,7 @@ export default async function ContactPage() {
             </h1>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto">
               {isNewbridge
-                ? "Questions about Richmond American Newbridge, 89139 resale, or registering your buyer agent? Schedule a consult or call (702) 222-1964."
+                ? "Questions about Richmond American Newbridge, 89139 resale, or registering your buyer agent? Schedule a consult or call (702) 779-3735."
                 : "Questions about Las Vegas real estate? Your Berkshire Hathaway HomeServices expert is here to help. Schedule an appointment or reach out directly."}
             </p>
           </div>
@@ -129,10 +129,10 @@ export default async function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-slate-900 mb-1">Phone (Call or Text)</h3>
                     <a
-                      href="tel:+17022221964"
+                      href="tel:+17027793735"
                       className="text-2xl font-bold text-blue-600 hover:text-blue-700"
                     >
-                      (702) 222-1964
+                      (702) 779-3735
                     </a>
                     <p className="text-sm text-slate-500 mt-1">
                       Available 7 days a week, 9am-6pm
@@ -310,13 +310,13 @@ export default async function ContactPage() {
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
               <a
-                href="tel:+17022221964"
+                href="tel:+17027793735"
                 className="flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white p-6 rounded-xl transition-colors"
               >
                 <Phone className="h-8 w-8 mr-4" />
                 <div className="text-left">
                   <div className="font-bold text-lg">Call Now</div>
-                  <div className="text-blue-100">(702) 222-1964</div>
+                  <div className="text-blue-100">(702) 779-3735</div>
                 </div>
               </a>
               <a

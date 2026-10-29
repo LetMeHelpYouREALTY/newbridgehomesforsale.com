@@ -96,7 +96,7 @@ export function generateRealEstateAgentSchema() {
     logo: `${BASE_URL}/images/sections/las-vegas-office.jpg`,
     image: `${BASE_URL}/images/sections/las-vegas-office.jpg`,
     description: siteConfig.description,
-    telephone: "+1-702-222-1964",
+    telephone: "+1-702-779-3735",
     email: agentInfo.email,
     priceRange: "$385K - $10M+",
     address: {

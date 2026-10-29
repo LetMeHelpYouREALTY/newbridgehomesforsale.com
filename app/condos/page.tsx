@@ -9,7 +9,7 @@ import { images } from "@/lib/site-images";
 export const metadata: Metadata = {
   title: "Las Vegas Condos for Sale | High-Rise Living | Dr. Jan Duffy",
   description:
-    "Search Las Vegas condos and high-rise residences with Dr. Jan Duffy, BHHS Nevada Properties. HOA dues, views, and parking vary by tower. Call (702) 222-1964.",
+    "Search Las Vegas condos and high-rise residences with Dr. Jan Duffy, BHHS Nevada Properties. HOA dues, views, and parking vary by tower. Call (702) 779-3735.",
 };
 
 export default function CondosPage() {
@@ -46,7 +46,7 @@ export default function CondosPage() {
         />
         <CtaBanner
           h2="Want a condo shortlist by dues and commute?"
-          sub="Call 702-222-1964. BHHS Nevada Properties, 9406 W Lake Mead Blvd, Suite 100, Las Vegas, NV 89134."
+          sub="Call 702-779-3735. BHHS Nevada Properties, 9406 W Lake Mead Blvd, Suite 100, Las Vegas, NV 89134."
         />
       </div>
     </main>

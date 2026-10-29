@@ -57,7 +57,7 @@ describe("public/llms.txt", () => {
   });
 
   it("gives only the client CTA phone number", () => {
-    expect(llms).toContain("(702) 222-1964");
+    expect(llms).toContain("(702) 779-3735");
     expect(llms).not.toMatch(/500-1942/);
   });
 });
