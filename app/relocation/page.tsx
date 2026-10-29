@@ -52,13 +52,13 @@ const popularRelocationAreas = [
   {
     name: "Summerlin",
     best: "Families, professionals",
-    highlights: "Top-rated schools, 150+ parks, Red Rock Canyon proximity, master-planned living",
+    highlights: "Nearby public schools, 150+ parks, Red Rock Canyon proximity, master-planned living",
     from: "$500K",
   },
   {
     name: "Henderson",
     best: "Families, retirees",
-    highlights: "Lowest crime rates, CCSD-assigned campuses (verify by address), community feel, diverse neighborhoods",
+    highlights: "Public crime maps online, CCSD-assigned campuses (verify by address), community feel, diverse neighborhoods",
     from: "$450K",
   },
   {
@@ -69,7 +69,7 @@ const popularRelocationAreas = [
   },
   {
     name: "Skye Canyon",
-    best: "Young families",
+    best: "Buyers who want more bedrooms",
     highlights: "Newest construction, mountain trail access, modern amenities, growing area",
     from: "$500K",
   },
@@ -255,7 +255,7 @@ export default function RelocationPage() {
               Las Vegas Schools & Education
             </h2>
             <p className="text-slate-600 text-center max-w-3xl mx-auto mb-8">
-              For families with children, school quality is often the top priority when 
+              Many buyers ask about schools; check current CCSD and state ratings when 
               relocating. Las Vegas offers a range of public, charter, and private school 
               options. Dr. Jan provides detailed school research to help you make informed decisions.
             </p>
@@ -263,7 +263,7 @@ export default function RelocationPage() {
               <div className="bg-white border border-slate-200 rounded-xl p-6">
                 <h3 className="font-bold text-lg text-slate-900 mb-4 flex items-center">
                   <School className="h-5 w-5 text-blue-600 mr-2" />
-                  Top-Rated School Areas
+                  School Attendance Zones
                 </h3>
                 <ul className="space-y-2 text-slate-700">
                   <li className="flex items-start">

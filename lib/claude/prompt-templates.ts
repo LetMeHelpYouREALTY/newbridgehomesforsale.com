@@ -108,7 +108,7 @@ export const propertySearchTemplate: PromptTemplate = {
 - **The Ridges**: Ultra-luxury, guard-gated, stunning views
 - **Downtown/Arts District**: Urban, walkable, entertainment
 - **North Las Vegas**: Affordable, newer developments
-- **Mountains Edge**: Southwest, newer homes, family-oriented`,
+- **Mountains Edge**: Southwest, newer homes, parks and trails`,
   cacheable: true,
   estimatedTokens: 330,
 };
@@ -232,7 +232,7 @@ export const neighborhoodExpertTemplate: PromptTemplate = {
 - **Price Range**: $250K - $500K
 - **Schools**: Improving
 - **Features**: Newer developments, affordability, access to I-15
-- **Demographics**: First-time buyers, growing families
+- **Demographics**: First-time buyers, move-up buyers
 
 ## How to Use This Knowledge
 - Match client needs to appropriate neighborhoods

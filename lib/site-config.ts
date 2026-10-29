@@ -104,7 +104,7 @@ export const neighborhoods = [
     slug: "summerlin",
     description: "Master-planned community with parks, trails, and CCSD-assigned campuses",
     medianPrice: "$625,000",
-    highlights: ["Red Rock views", "150+ parks", "Top schools", "Golf courses"],
+    highlights: ["Red Rock views", "150+ parks", "Nearby public schools", "Golf courses"],
   },
   {
     name: "Henderson",

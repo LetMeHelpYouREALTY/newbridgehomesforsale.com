@@ -127,7 +127,7 @@ export default function LuxuryHomesPage() {
                     </span>
                   </div>
                   <p className="text-slate-600 mb-4">
-                    The valley's most exclusive enclave, home to celebrities, executives, and those who
+                    The valley's most luxury enclave, home to celebrities, executives, and those who
                     demand absolute privacy. Custom estates, Bear's Best Golf Club, and Red Rock views.
                   </p>
                   <ul className="space-y-2 mb-4">
@@ -277,7 +277,7 @@ export default function LuxuryHomesPage() {
                     </li>
                     <li className="flex items-center text-sm text-slate-700">
                       <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                      Top-rated schools
+                      Nearby public schools
                     </li>
                   </ul>
                   <Link
