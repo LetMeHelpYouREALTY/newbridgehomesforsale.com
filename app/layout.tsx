@@ -11,6 +11,7 @@ import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
 import AutoBreadcrumbSchema from "@/components/layouts/AutoBreadcrumbSchema";
 import SiteEntitySchema from "@/components/seo/SiteEntitySchema";
+import { SpeedInsights as VercelSpeedInsights } from "@vercel/speed-insights/next";
 
 export const viewport: Viewport = {
   themeColor: "#0f172a",
@@ -110,6 +111,7 @@ export default function RootLayout({
           window.widgetTracker("send","pageview");
         `}</Script>
         <Analytics />
+        <VercelSpeedInsights />
       </body>
     </html>
   );
